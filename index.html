@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoolourCoin — The Contact of Light</title>
+  <style>
+    :root {
+      --bg: #06070a;
+      --glow1: rgba(0, 232, 255, 0.55);
+      --glow2: rgba(103, 0, 255, 0.45);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0f1824 0%, #06070a 70%, #000 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+    .aurora {
+      position: absolute;
+      width: 120vmax;
+      height: 120vmax;
+      background: radial-gradient(circle, var(--glow1) 0%, rgba(0,0,0,0) 60%),
+                  radial-gradient(circle, var(--glow2) 0%, rgba(0,0,0,0) 60%);
+      filter: blur(80px);
+      opacity: 0.85;
+      animation: float 18s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes float {
+      0% { transform: translate(-20%, -10%) rotate(0deg); }
+      50% { transform: translate(10%, -20%) rotate(12deg); }
+      100% { transform: translate(-15%, 0%) rotate(-6deg); }
+    }
+    .card {
+      position: relative;
+      z-index: 2;
+      background: radial-gradient(circle at top, rgba(6,7,10,0.35), rgba(0,0,0,0));
+      text-align: center;
+      padding: 2rem 1.5rem 5rem;
+      border-radius: 20px;
+    }
+    .logo {
+      width: min(75vw, 330px);
+      border-radius: 50%;
+      box-shadow: 0 0 45px rgba(0, 229, 255, 0.45);
+    }
+    h1 {
+      font-size: clamp(2.1rem, 2.5vw, 2.7rem);
+      letter-spacing: 0.12em;
+      margin-top: 1.4rem;
+      text-transform: uppercase;
+    }
+    p.subtitle {
+      max-width: 480px;
+      margin: 1rem auto 1.5rem;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 1rem;
+      background: rgba(6, 248, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 2.6rem;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+      font-weight: 600;
+      transition: all .3s ease;
+    }
+    a.button:hover {
+      background: rgba(6, 248, 255, 0.4);
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+    footer {
+      position: fixed;
+      bottom: 1.2rem;
+      text-align: center;
+      width: 100%;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      z-index: 1;
+    }
+    @media (max-width: 540px) {
+      .card { padding-bottom: 4.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="card">
+    <img src="coolourcoin.png" alt="CoolourCoin logo" class="logo">
+    <h1>COOLOURCOIN</h1>
+    <p class="subtitle">
+      The contact of light. A colour-backed, non-devaluating digital asset.<br>
+      Each shade is born with a floor. Your value doesn’t fall — it rests.
+    </p>
+    <a class="button" href="https://forms.gle/" target="_blank" rel="noopener noreferrer">Join the Genesis list</a>
+  </div>
+  <footer>© 2025 CoolourCoin — A project by Mau & Uud • Built on the Law of Oscillation</footer>
+</body>
+</html>
