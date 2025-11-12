@@ -1,1 +1,178 @@
-<the full how.html code from previous message>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoolourCoin — How it works</title>
+  <style>
+    :root {
+      --bg: #04070d;
+      --accent: #4ef3ff;
+      --text: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0b1625 0%, #04070d 55%, #000 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 3.3rem 1rem 1.8rem;
+    }
+    header img {
+      width: 110px;
+      border-radius: 50%;
+      box-shadow: 0 0 35px rgba(78, 243, 255, 0.35);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .subtitle {
+      opacity: .7;
+      margin-top: .4rem;
+    }
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
+      display: grid;
+      gap: 1.3rem;
+    }
+    section {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(78, 243, 255, 0.08);
+      border-radius: 18px;
+      padding: 1.3rem 1.4rem 1.1rem;
+      backdrop-filter: blur(16px);
+    }
+    h2 {
+      font-size: 1rem;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+    h2::before {
+      content: "";
+      width: 5px;
+      height: 18px;
+      background: linear-gradient(180deg, #4ef3ff 0%, rgba(78,243,255,0) 100%);
+      border-radius: 12px;
+    }
+    .step-num {
+      display: inline-block;
+      background: rgba(78,243,255,.14);
+      border: 1px solid rgba(78,243,255,.35);
+      border-radius: 999px;
+      padding: .25rem .65rem;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .4rem;
+    }
+    a {
+      color: #94f4ff;
+    }
+    .callout {
+      background: radial-gradient(circle, rgba(78,243,255,.14), rgba(0,0,0,0));
+      border: 1px solid rgba(148, 244, 255, .2);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      margin-top: .8rem;
+      font-size: .9rem;
+    }
+    footer {
+      text-align: center;
+      color: rgba(255,255,255,.35);
+      font-size: .7rem;
+      padding-bottom: 2rem;
+    }
+    @media (max-width: 620px) {
+      main { padding: 0 .6rem 4rem; }
+      section { padding: 1.1rem 1rem .9rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="coolourcoin.png" alt="CoolourCoin logo" />
+    <h1>How CoolourCoin Works</h1>
+    <p class="subtitle">The colour-based digital asset that never sells below its last price.</p>
+  </header>
+
+  <main>
+    <section id="step1">
+      <span class="step-num">STEP 1</span>
+      <h2>Every coin = a unique colour</h2>
+      <p>CoolourCoin doesn’t sell random codes — it mints <strong>colours</strong> from a finite spectrum (Genesis 4,096). Every colour has its own ID and can exist only once. Similar shades may appear, but never the exact same one.</p>
+      <p>When a colour is discovered, the 3 users who unlocked it are saved as its discoverers forever.</p>
+    </section>
+
+    <section id="step2">
+      <span class="step-num">STEP 2</span>
+      <h2>You can’t sell cheaper than last time</h2>
+      <p>When a colour is first bought or mined, its price becomes the <strong>Spectral Floor</strong>. Any future sale inside the CoolourCoin ecosystem must be at or above that value. That’s why we say: <em>“let your value rest in light.”</em></p>
+      <div class="callout">
+        ✔ No undercutting<br>
+        ✔ No dumping<br>
+        ✔ Value only goes sideways or up
+      </div>
+    </section>
+
+    <section id="step3">
+      <span class="step-num">STEP 3</span>
+      <h2>Getting a colour (3 ways)</h2>
+      <p><strong>1. Buy</strong> an available colour from the platform / treasury.</p>
+      <p><strong>2. Mine</strong> a colour with 2 friends — you form an RGB team (one Red, one Green, one Blue).</p>
+      <p><strong>3. Receive</strong> a colour as payment, gift or reward.</p>
+      <p>All three paths create <em>traceable</em> and <em>non-devaluating</em> ownership.</p>
+    </section>
+
+    <section id="step4">
+      <span class="step-num">STEP 4</span>
+      <h2>RGB social mining</h2>
+      <p>Colours don’t appear always. The system opens “windows” where a specific colour is available — e.g. <code>R200 G128 B099</code>.</p>
+      <p>To claim it, 3 different users must be online at the same time, each with licences that match those values. First valid team wins. Their names are written on that colour forever.</p>
+      <p>Mining is human, not hardware.</p>
+    </section>
+
+    <section id="step5">
+      <span class="step-num">STEP 5</span>
+      <h2>Licences are the entry tickets</h2>
+      <p>To mine, you buy a small licence for Red / Green / Blue. Licences have a clear price. Because you pay for them, the colour you discover inherits that value and can’t be sold below it.</p>
+      <p>Licence prices can go up over time as fewer colours remain — so early users mine cheaper.</p>
+    </section>
+
+    <section id="step6">
+      <span class="step-num">STEP 6</span>
+      <h2>Treasury keeps the ecosystem alive</h2>
+      <p>A public treasury holds some rare colours (near-white, aurora tones). We use those to pay collaborators, influencers or dev work — without printing infinite tokens.</p>
+      <p>Any treasury colour can be converted into licences at the current rate, so it always has real utility.</p>
+    </section>
+
+    <section id="step7">
+      <span class="step-num">STEP 7</span>
+      <h2>Why it’s safe for non-crypto people</h2>
+      <p>• you always see the colour you own<br>
+         • it can’t be listed cheaper after you bought it<br>
+         • you don’t need trading skills<br>
+         • you can just hold it as a protected digital asset</p>
+      <p class="callout">CoolourCoin offers no passive yield, no staking and no airdrops. Its promise is simple: <strong>your colour will not be sold below what it was worth.</strong></p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 CoolourCoin — “We are the colours of light.”
+  </footer>
+</body>
+</html>
