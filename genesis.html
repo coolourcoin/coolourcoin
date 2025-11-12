@@ -1,1 +1,198 @@
-<the full genesis.html code from previous message>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoolourCoin — Genesis Spectrum</title>
+  <style>
+    :root {
+      --bg: #020508;
+      --accent: #4ef3ff;
+      --text: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0a1523 0%, #020508 55%, #000 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 3.4rem 1rem 2rem;
+    }
+    header img {
+      width: 120px;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(78, 243, 255, 0.4);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .subtitle {
+      margin-top: .5rem;
+      opacity: .65;
+    }
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1rem 4.5rem;
+      display: grid;
+      gap: 1.4rem;
+    }
+    section {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(78, 243, 255, 0.08);
+      border-radius: 20px;
+      padding: 1.4rem 1.5rem 1.1rem;
+      backdrop-filter: blur(16px);
+    }
+    h2 {
+      font-size: 1rem;
+      letter-spacing: .05em;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+    h2::before {
+      content: "";
+      width: 5px;
+      height: 18px;
+      background: linear-gradient(180deg, #4ef3ff 0%, rgba(78,243,255,0) 100%);
+      border-radius: 12px;
+    }
+    .pill {
+      display: inline-block;
+      background: rgba(78,243,255,.11);
+      border: 1px solid rgba(78,243,255,.35);
+      border-radius: 999px;
+      padding: .25rem .7rem;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .45rem;
+    }
+    .grid {
+      display: grid;
+      gap: 0.7rem;
+    }
+    .tier-box {
+      background: rgba(3,6,9,0.28);
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 14px;
+      padding: .7rem .9rem .5rem;
+    }
+    .tier-title {
+      font-weight: 600;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: .25rem;
+    }
+    .poem {
+      background: radial-gradient(circle, rgba(148,244,255,.05), rgba(0,0,0,0));
+      border: 1px solid rgba(148,244,255,.15);
+      border-radius: 14px;
+      padding: 1rem 1.1rem .6rem;
+      font-size: .9rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    footer {
+      text-align: center;
+      padding-bottom: 2.5rem;
+      color: rgba(255,255,255,.35);
+      font-size: .7rem;
+    }
+    @media (max-width: 620px) {
+      main { padding: 0 .6rem 4.5rem; }
+      section { padding: 1.2rem 1rem .9rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="coolourcoin.png" alt="CoolourCoin logo" />
+    <h1>Genesis Spectrum</h1>
+    <p class="subtitle">4,096 colours • finite • luminous • tiered</p>
+  </header>
+
+  <main>
+    <section>
+      <span class="pill">Origin of light</span>
+      <h2>1. Why 4,096 colours?</h2>
+      <p>CoolourCoin starts from a <strong>controlled, finite palette</strong>. 4,096 is big enough to feel like a real spectrum, but small enough to keep rarity clear. Every colour in this genesis set is precomputed, ordered and identifiable.</p>
+      <p>This gives us a stable “map of light” — we know what exists, what was mined, and what is still locked.</p>
+    </section>
+
+    <section>
+      <span class="pill">Uniqueness</span>
+      <h2>2. One colour, one existence</h2>
+      <p>Each colour in the Genesis Spectrum can be minted only once. After it is mined or sold, it is marked as <em>claimed</em>. Other users can only trade it, never recreate it.</p>
+      <p>Nearby shades can appear later in extended spectrums, but the genesis one is special — it’s the “first light” of CoolourCoin.</p>
+    </section>
+
+    <section>
+      <span class="pill">The light pyramid</span>
+      <h2>3. Tiered rarity</h2>
+      <p>The 4,096 colours are arranged in a pyramid of rarity, based on distance from pure white (#FFFFFF):</p>
+      <div class="grid">
+        <div class="tier-box">
+          <div class="tier-title">Tier 0 — White / Near-White</div>
+          <p>Ultra rare. May be auctioned or reserved in Treasury. Appears rarely, like aurora bursts.</p>
+        </div>
+        <div class="tier-box">
+          <div class="tier-title">Tier 1 — Primaries of Light</div>
+          <p>Key RGB-like tones, used for symbolic and brand colours.</p>
+        </div>
+        <div class="tier-box">
+          <div class="tier-title">Tier 2 — Derived &amp; pastel spectrum</div>
+          <p>Where most artistic / national flag colours will live.</p>
+        </div>
+        <div class="tier-box">
+          <div class="tier-title">Tier 3 / 4 — Broad base</div>
+          <p>Accessible, mineable, good for community onboarding.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="pill">Discovery</span>
+      <h2>4. Found once, remembered forever</h2>
+      <p>When a team of 3 mines a genesis colour, the platform saves:</p>
+      <ul>
+        <li>colour ID (from the 4,096)</li>
+        <li>exact RGB/HEX</li>
+        <li>timestamp</li>
+        <li>the 3 discoverer wallets / usernames</li>
+      </ul>
+      <p>This entry becomes part of the public history of CoolourCoin. Even if the colour is sold 100 times later, the first team stays written.</p>
+    </section>
+
+    <section>
+      <span class="pill">Future layers</span>
+      <h2>5. Above Genesis</h2>
+      <p>Spectrum can later be expanded into much finer palettes (full 24-bit colour = 16,777,216 shades), but only after Genesis is mostly mined and the community votes for expansion.</p>
+      <p>This keeps speculation healthy and prevents dilution. New layers can have different rules (e.g. artists-only, brand-only, event-only).</p>
+    </section>
+
+    <section class="poem">
+      Light remembers who found it first.<br>
+      Every colour is a story of three people who were online together.<br>
+      Some will trade it. Some will keep it. All will be seen.<br>
+      — CoolourCoin Genesis Note
+    </section>
+  </main>
+
+  <footer>
+    © 2025 CoolourCoin — “We are the colours of light.”
+  </footer>
+</body>
+</html>
