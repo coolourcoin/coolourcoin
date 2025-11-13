@@ -1,0 +1,1 @@
+console.info("CoolourCoin site loaded.");
