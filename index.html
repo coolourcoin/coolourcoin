@@ -1,112 +1,141 @@
 <!doctype html>
 <html lang="en">
-<style>
-  .site-header{
-    position: sticky; top:0; z-index:1000;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 22px;
-    background: rgba(0,0,16,0.55);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
-  .brand .logo{height:36px; width:auto; display:block}
-  .brand span{color:#fff; font-weight:600; letter-spacing:0.4px}
-  .main-nav a{color:#fff; text-decoration:none; margin-left:16px; opacity:0.9}
-  .main-nav a:hover{opacity:1; text-decoration:underline}
-  /* dacă ai deja un header, păstrează doar .brand .logo {height:36px} și înlocuiește doar <img> */
-</style>
-  <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CoolourCoin — Light-backed, floor-protected digital colours</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
-  <link rel="stylesheet" href="styles.css"/>
-  <meta name="description" content="CoolourCoin — colours as on-chain assets with a spectral price floor and RGB team-mining."/>
+  <meta name="description" content="CoolourCoin — Light-backed, floor-protected digital colours. Put your value in light. Let it rest.">
+  <style>
+    /* ===== Base ===== */
+    :root { --bg1:#020414; --bg2:#0b1024; --ink:#eaf2ff; --ink2:#a9b7d9; --accent:#7fd7ff; }
+    * { box-sizing: border-box; }
+    html, body { height:100%; }
+    body {
+      margin:0; font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #14204a 0%, transparent 60%),
+        radial-gradient(1000px 700px at 90% 10%, #1a2458 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg1) 60%, #000010 100%);
+      overflow-x:hidden;
+    }
+    a { color: var(--ink); text-decoration: none; }
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+
+    /* ===== Header ===== */
+    .site-header{
+      position: sticky; top:0; z-index:1000;
+      backdrop-filter: blur(8px);
+      background: rgba(2,4,20,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 8px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand img.logo { width:auto; height:36px; display:block; }
+    .brand span { font-weight:700; letter-spacing:.4px; }
+
+    .menu a { margin-left:18px; opacity:.9 }
+    .menu a:hover { opacity:1; text-decoration: underline; }
+
+    /* ===== Hero ===== */
+    .hero { padding: 64px 0 32px; text-align:center; }
+    .hero h1 { margin:0 0 10px; font-size: clamp(28px, 4.5vw, 44px); letter-spacing:.3px; }
+    .hero p.lead { margin:8px auto 20px; color: var(--ink2); width:min(820px, 92vw); }
+    .badge {
+      display:inline-block; padding:8px 12px; border:1px solid rgba(255,255,255,.12);
+      border-radius:999px; font-size:14px; color:var(--ink2);
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* ===== Sections ===== */
+    section { padding: 28px 0 12px; }
+    .card {
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px; padding:18px;
+    }
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+
+    /* ===== Footer ===== */
+    footer { margin-top: 40px; padding: 24px 0 50px; color: var(--ink2); text-align:center;
+      border-top:1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.15); }
+
+    /* ===== Aurora ring (hero visual) ===== */
+    .ring {
+      margin: 28px auto 0; width: 240px; aspect-ratio:1/1; border-radius: 999px;
+      position: relative; overflow: hidden;
+      background: radial-gradient(closest-side, #0c112c 0%, #040818 55%, transparent 56%),
+                  conic-gradient(from 0deg,
+                    #7fffd4, #7fd7ff, #9aa6ff, #d38bff, #ff7bd8, #ff9a7f, #ffe97f, #7fffd4);
+      filter: saturate(1.3) contrast(1.1);
+      animation: spin 14s linear infinite;
+    }
+    .ring::after{
+      content:""; position:absolute; inset:10px; border-radius:999px;
+      background: radial-gradient(closest-side, rgba(0,0,0,.35), transparent 60%);
+      box-shadow: inset 0 0 40px rgba(0,0,0,.45);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </head>
-<body> 
-<header class="site-header">
-  <a href="index.html" class="brand">
-    <img src="assets/logo.png" alt="CoolourCoin logo" class="logo">
-    <span>CoolourCoin</span>
-  </a>
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="genesis.html">Genesis Spectrum</a>
-    <a href="how.html">How it works</a>
-    <a href="whitepaper.html">Whitepaper</a>
-  </nav>
-</header>
-  
-<div class="nav">
-  <div class="nav-inner container">
-    <a class="brand" href="index.html" title="CoolourCoin — home">
-      <img src="assets/logo.svg" alt="logo"/><span>CoolourCoin</span>
-    </a>
-    <div class="spacer"></div>
-    <a class="item active" href="index.html">Home</a>
-<a class="item" href="genesis.html">Genesis Spectrum</a>
-<a class="item" href="how.html">How it works</a>
-<a class="item" href="whitepaper.html">Whitepaper</a>
-<a class="item" href="transparency.html">Transparency</a>
-    <a class="btn" href="index.html" title="Main site">Home</a>
-  </div>
-</div>
-  <header class="hero">
-    <div class="hero-inner container">
-      <div>
-        <h1>Light‑backed, floor‑protected digital colours.</h1>
-        <p class="small">Each colour is a one‑of‑one on‑chain asset. Floors prevent dumping. RGB teams mine together — no GPUs, just people.</p>
-        <div style="display:flex;gap:10px;margin-top:16px">
-          <a class="btn" href="how.html">How it works</a>
-          <a class="btn" href="whitepaper.html">Read whitepaper</a>
-        </div>
-        <div class="alert" style="margin-top:14px">
-          <span class="badge">Alpha</span> MVP is in design & security review. Shipping when it’s safe.
-        </div>
-      </div>
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:12px">
-          <img src="assets/logo.svg" alt="logo" width="64" height="64"/>
-          <div>
-            <div style="font-weight:700">Put your value in light.</div>
-            <div class="small">Let it rest.</div>
-          </div>
-        </div>
-        <div class="hr"></div>
-        <div class="grid cols-2">
-          <div>
-            <h3>Spectral Floor</h3>
-            <p class="small">No sale under the highest price ever paid for that colour. Enforced by contract.</p>
-          </div>
-          <div>
-            <h3>Team Mining</h3>
-            <p class="small">Three people (R, G, B) coordinate licences to claim appearing colours.</p>
-          </div>
-        </div>
-      </div>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="CoolourCoin home">
+        <!-- schimba numele fișierului dacă logo-ul tău are alt nume -->
+        <img class="logo" src="assets/logo.png" alt="CoolourCoin logo">
+        <span>CoolourCoin</span>
+      </a>
+      <nav class="menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="genesis.html">Genesis Spectrum</a>
+        <a href="how.html">How it works</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="mailto:admin@coolourcoin.com">Contact</a>
+      </nav>
     </div>
   </header>
-  <main class="container" style="padding-bottom:40px">
-    <section class="grid cols-3">
-      <div class="card">
-        <h3>Genesis 4096</h3>
-        <p class="small">A curated 12‑bit palette for the first release. Clean rarity, predictable UX.</p>
-        <a class="btn" href="genesis.html">Explore</a>
-      </div>
-      <div class="card">
-        <h3>Open, but safe</h3>
-        <p class="small">Open‑source contracts, public audits, multisig treasury. No passive yield.</p>
-      </div>
-      <div class="card">
-        <h3>Respect & ethics</h3>
-        <p class="small">No hate symbols or illegal use. Colours are universal.</p>
+
+  <!-- ===== Hero ===== -->
+  <main class="container">
+    <div class="hero">
+      <span class="badge">Light-backed • Floor-protected • Open-verifiable</span>
+      <h1>CoolourCoin</h1>
+      <p class="lead">
+        A colour-first digital asset: each token is a unique shade of light with an on-chain
+        price floor that can never go down. Put your value in light. Let it rest.
+      </p>
+      <div class="ring" title="Aurora ring"></div>
+    </div>
+
+    <!-- Highlights -->
+    <section>
+      <div class="grid">
+        <div class="card">
+          <h3>Genesis (4096)</h3>
+          <p>Finite palette, tiered rarity, transparent rules. Start small, stay scarce.</p>
+          <p><a href="genesis.html">Explore the Genesis Spectrum →</a></p>
+        </div>
+        <div class="card">
+          <h3>Spectral Floor</h3>
+          <p>On-chain rule: a colour cannot be sold below its highest sale (ever).</p>
+          <p><a href="whitepaper.html">Read the whitepaper →</a></p>
+        </div>
+        <div class="card">
+          <h3>RGB Team-Mining</h3>
+          <p>Three people, three channels (R,G,B). Simple, fair, human-first mining.</p>
+          <p><a href="how.html">How it works →</a></p>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="footer">
-    <div>© 2025 CoolourCoin — admin@coolourcoin.com</div>
+
+  <footer>
+    © 2025 CoolourCoin • admin@coolourcoin.com
   </footer>
-  <script src="script.js"></script>
 </body>
 </html>
