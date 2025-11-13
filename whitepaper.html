@@ -1,43 +1,284 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CoolourCoin — Whitepaper</title>
-  <link rel="icon" type="image/png" href="assets/logo2.png">
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CoolourCoin — Whitepaper v0.2</title>
+  <meta name="description" content="CoolourCoin Whitepaper — Light-backed, floor-protected digital colours. Put your value in light. Let it rest.">
+  <link rel="icon" href="assets/logo2.png">
+  <style>
+    :root{
+      --bg:#0b1020; --fg:#e9f2ff; --muted:#9fb0c9; --accent:#64d6ff; --glass:rgba(255,255,255,.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--fg);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(100,214,255,.22), transparent 60%),
+        radial-gradient(900px 700px at 90% 10%, rgba(180,130,255,.20), transparent 60%),
+        radial-gradient(700px 600px at 50% 110%, rgba(60,255,190,.14), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+    }
+    /* NAV */
+    .nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(1.2) blur(8px);
+      background:linear-gradient(to bottom, rgba(10,15,30,.7), rgba(10,15,30,.35));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{max-width:1100px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between}
+    .brand{display:flex; align-items:center; gap:10px; color:var(--fg); text-decoration:none}
+    .brand img{width:28px; height:28px; border-radius:50%}
+    .menu{display:flex; gap:16px; flex-wrap:wrap}
+    .menu a{color:var(--fg); text-decoration:none; opacity:.9; padding:6px 10px; border-radius:10px}
+    .menu a:hover{background:var(--glass); opacity:1}
+    /* PAGE */
+    main{max-width:1100px; margin:26px auto 80px; padding:0 16px}
+    .title{margin:6px 0 8px; font-size:34px; line-height:1.15}
+    .sub{color:var(--muted); margin:0 0 16px}
+    .tag{display:inline-block; padding:6px 10px; border:1px solid rgba(255,255,255,.15); border-radius:999px; font-size:12.5px; color:var(--muted)}
+    .hero{margin:8px 0 20px}
+    .block{background:var(--glass); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.25); margin:14px 0}
+    h2{font-size:22px; margin:24px 0 8px}
+    h3{font-size:18px; margin:18px 0 8px}
+    p{margin:8px 0; color:var(--fg)}
+    ul{margin:8px 0 8px 18px; color:var(--muted)}
+    code{background:rgba(255,255,255,.08); padding:2px 6px; border-radius:6px}
+    a{color:var(--accent); text-decoration:none}
+    .fine{color:var(--muted); font-size:13px}
+    .cta{display:inline-block; margin-top:10px; padding:10px 14px; background:linear-gradient(90deg,#68dbff,#a07bff);
+      color:#061018; font-weight:800; border:none; border-radius:12px; text-decoration:none; box-shadow:0 8px 22px rgba(100,214,255,.35);}
+    .cta:hover{transform:translateY(-1px)}
+    footer{max-width:1100px; margin:30px auto 80px; padding:0 16px; color:var(--muted); text-align:center}
+    .toc a{display:block; padding:6px 0; color:var(--muted)}
+    .note{border-left:3px solid rgba(100,214,255,.6); background:rgba(255,255,255,.04); padding:10px 12px; border-radius:8px; margin:8px 0}
+    .rule{border-left:3px solid rgba(255,200,120,.65); background:rgba(255,255,255,.03); padding:8px 10px; border-radius:8px; margin:8px 0}
+  </style>
 </head>
-<body class="page--wp">
-  <header class="cc-nav">
-    <div class="cc-nav__inner">
-      <a class="cc-brand" href="index.html" aria-label="CoolourCoin — Home">
-        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img" />
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
+        <strong>CoolourCoin</strong>
       </a>
-      <nav class="cc-menu">
-        <a href="genesis.html">Genesis Spectrum</a>
-        <a href="how.html">How it works</a>
-        <a class="is-active" href="whitepaper.html">Whitepaper</a>
-        <a href="mailto:admin@coolourcoin.com">Contact</a>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="genesis.html">Genesis</a>
+        <a href="how.html">How</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="declaration.html">Declaration</a>
       </nav>
     </div>
-  </header>
+  </div>
 
-  <section class="cc-hero cc-hero--compact">
-    <h1>Whitepaper</h1>
-    <p>Concept, rules and the Spectral Floor protocol — in detail.</p>
-  </section>
+  <main>
+    <div class="hero">
+      <span class="tag">Whitepaper v0.2 • Draft</span>
+      <h1 class="title">Light-backed, floor-protected digital colours.</h1>
+      <p class="sub">Put your value in light. Let it rest.</p>
+      <div class="block fine">
+        <strong>Summary.</strong> CoolourCoin is a colour-first crypto system. Every token is a unique shade of light. Once a shade receives a price, it can never be sold for less (the <em>Spectral Floor</em>). Mining is social (three people: R, G, B). Contracts are open; trust is encoded; hype is out.
+      </div>
+      <div>
+        <a class="cta" href="genesis.html">Explore Genesis Spectrum</a>
+        <!-- Optional: if a PDF exists in repo -->
+        <!-- <a class="cta" href="CoolourCoin.pdf" style="margin-left:8px">Download PDF</a> -->
+      </div>
+    </div>
 
-  <main class="cc-wrap">
-    <section class="docbox">
-      <p>You can host the full PDF in this repository and link it below. For now we’ll use a placeholder link.</p>
-      <p><a class="cc-btn" href="CoolourCoin.pdf">Open PDF</a></p>
-      <p class="muted">Tip: place <code>CoolourCoin.pdf</code> in the repository root (same level as this file) or update the link to your actual file name.</p>
+    <div class="block">
+      <h2 id="toc">Contents</h2>
+      <div class="toc">
+        <a href="#1">1. Thesis & Principles</a>
+        <a href="#2">2. Genesis Spectrum</a>
+        <a href="#3">3. Mining Model (RGB Teams & Licences)</a>
+        <a href="#4">4. Spectral Floor Rule</a>
+        <a href="#5">5. Market Mechanics (Buy/Sell, Direct Purchase)</a>
+        <a href="#6">6. Splits, Merges & Assemblies</a>
+        <a href="#7">7. Treasury, Fees & Sustainability</a>
+        <a href="#8">8. Security & Fairness</a>
+        <a href="#9">9. Compliance Notes</a>
+        <a href="#10">10. Roadmap (MVP → v1.0)</a>
+        <a href="#glossary">Glossary</a>
+        <a href="#appendix">Appendix: Floor mapping snippet</a>
+      </div>
+    </div>
+
+    <section id="1">
+      <h2>1. Thesis & Principles</h2>
+      <p><strong>Thesis.</strong> Most crypto is volatile and opaque. CoolourCoin makes value visible and grounded in perception: colour. A colour exists once, and once priced, its <em>floor</em> is never lowered again. The protocol encodes this protection.</p>
+      <h3>Principles</h3>
+      <ul>
+        <li><strong>Clarity:</strong> no passive yield, no staking promises, no inflation tricks.</li>
+        <li><strong>Finality:</strong> floor is monotonic ↑ only; we never add backdoors.</li>
+        <li><strong>Human-first:</strong> mining requires a small social team (R, G, B), not hardware farms.</li>
+        <li><strong>Open:</strong> contracts and rules are open-source; the colour release seed is private but audit-verifiable.</li>
+      </ul>
+      <div class="note">Ticker (tentative): <strong>COLR</strong>. Asset type: non-fungible “Spectral Assets” (1 shade = 1 token ID).</div>
+    </section>
+
+    <section id="2">
+      <h2>2. Genesis Spectrum</h2>
+      <p>We start with a finite, curated set of <strong>4,096</strong> shades (the <em>Genesis</em>). More can appear later via explicit expansion rules (by octaves, i.e., ×8 splits) only if community value justifies it.</p>
+      <h3>Tiers</h3>
+      <ul>
+        <li><strong>Tier 1:</strong> White apex (unique).</li>
+        <li><strong>Tier 2:</strong> Primary anchors (R, G, B) + a few near-white rarities.</li>
+        <li><strong>Tier 3–4:</strong> Structured derivatives and rare gradations.</li>
+      </ul>
+      <p class="fine">Each shade has: <code>id</code>, <code>name</code>, <code>HEX/RGB</code>, <code>tier</code>, <code>rarity</code>.</p>
+    </section>
+
+    <section id="3">
+      <h2>3. Mining Model (RGB Teams & Licences)</h2>
+      <p><strong>Team mining.</strong> A colour is claimed only by a <em>present</em> trio: one Red, one Green, one Blue miner (each with a valid licence). The team targets an exact shade (e.g., R200 G128 B099). No multi-targeting; one team → one shade at a time.</p>
+      <h3>Licences</h3>
+      <p>Each miner holds a channel licence (R or G or B). A licence has a capacity up to 255 units for its channel. When a shade is mined, the team’s capacities are <em>spent</em> exactly on those channel amounts; the remainder stays on the licence for the next attempts.</p>
+      <div class="rule"><strong>Disconnect rule.</strong> If any team member disconnects, the team has a 15-minute grace period to reconnect; otherwise the shade window is released to the next queued team.</div>
+      <div class="note"><strong>Window gating.</strong> Mining happens in time windows where the protocol “releases” a shade. Only one team can occupy a given target at a time (others are queued).</div>
+    </section>
+
+    <section id="4">
+      <h2>4. Spectral Floor Rule</h2>
+      <p>The <strong>Spectral Floor</strong> is the core invariant: <em>no on-chain sale may execute below a shade’s highest historical on-chain price.</em></p>
+      <h3>How the initial floor is set (mined shades)</h3>
+      <p>At mining, the <em>floor</em> equals the fraction of paid licence capacity actually consumed to obtain the colour. Example (start price 10 USD per licence):</p>
+      <ul>
+        <li>Team mines R=100, G=30, B=200 → spend fractions 100/255, 30/255, 200/255 of each 10 USD licence.</li>
+        <li>Initial floor ≈ 10×(100/255) + 10×(30/255) + 10×(200/255) = <strong>12.94 USD</strong>.</li>
+      </ul>
+      <p><em>Rounding.</em> Floors are rounded to the nearest cent; accumulated rounding pennies are added to a public “pennies pool” that periodically tops up floors across all colours pro-rata (tiny but fair drift upwards over time).</p>
+      <h3>On-chain enforcement</h3>
+      <div class="block">
+        <code>mapping(uint256 =&gt; uint256) public spectralFloor; // colorId =&gt; floor price (wei)<br>
+require(msg.value &gt;= spectralFloor[colorId], "Below spectral floor");</code>
+        <p class="fine">Transfers that bypass the official market are disabled: token transfers route through the market contract to enforce floor checks.</p>
+      </div>
+      <p class="note"><strong>Neighbourhood protection.</strong> High-value neighbours can raise a shade’s effective floor by a small, transparent delta (optional parameter; off in MVP, can be community-governed later).</p>
+    </section>
+
+    <section id="5">
+      <h2>5. Market Mechanics (Buy/Sell, Direct Purchase)</h2>
+      <h3>Sell</h3>
+      <p>Owners can list at or above floor; settlement is non-custodial via the market contract. Floor updates upward at every successful sale.</p>
+      <h3>Buy</h3>
+      <p>Buyers pay listing price + buyer fee; ownership transfers atomically; events are emitted for full transparency.</p>
+      <h3>Direct purchase (Treasury-priced)</h3>
+      <p>The protocol may list select shades at a <em>premium</em> (especially early tiers) to bootstrap treasury and establish reference prices. Direct purchase prices are intentionally high vs mining cost.</p>
+    </section>
+
+    <section id="6">
+      <h2>6. Splits, Merges & Assemblies</h2>
+      <h3>Splits</h3>
+      <p>A shade may be split into 8 children (octave) if its latest sale ≥ <code>T(k)</code>, where <code>T(1) = 1,000,000 USDC</code> and <code>T(k)=1,000,000×8^(k-1)</code> for deeper levels. Children inherit the parent floor proportionally.</p>
+      <h3>Merges</h3>
+      <p>Any holder who owns 100% of the direct children can merge them back into the parent; the new floor becomes the weighted average of the children’s floors (by units).</p>
+      <h3>Assemblies</h3>
+      <p>Curated sets (e.g., national flags) can be bound as an <strong>Assembly</strong> with a fixed assembly fee (e.g., 333,000 USDC → goes to treasury). Dissolution only if the holder owns all parts; fee is not returned.</p>
+    </section>
+
+    <section id="7">
+      <h2>7. Treasury, Fees & Sustainability</h2>
+      <p>Fees fund audits, security, public goods and operations. No passive yield to users; CoolourCoin is <em>value preservation</em>, not yield.</p>
+      <h3>Fee policy (MVP)</h3>
+      <ul>
+        <li>Seller fee: <strong>2.5%</strong></li>
+        <li>Buyer fee: <strong>1.0%</strong></li>
+        <li>Burn: <strong>0.2%</strong> of trade value (deflationary signal)</li>
+        <li>Audit & security fund: <strong>0.3%</strong></li>
+      </ul>
+      <p class="fine">All fees split are on-chain constants in v1.0; changeable only by time-locked governance (or never, if we lock them permanently post-audit).</p>
+      <div class="note"><strong>Treasury uses:</strong> contract audits, infrastructure, legal, open-source grants, education. No team promises of dividends or profit sharing.</div>
+    </section>
+
+    <section id="8">
+      <h2>8. Security & Fairness</h2>
+      <h3>Floor enforcement</h3>
+      <p>Only the marketplace contract can transfer shade ownership. Attempted OTC under-floor trades are blocked by design (transfer hooks).</p>
+      <h3>Mining fairness</h3>
+      <ul>
+        <li><strong>One target at a time:</strong> a team can lock only one shade target; other teams queue.</li>
+        <li><strong>Presence proof:</strong> live session tokens + device attestation (privacy-preserving). No harvesters, no GPU advantage.</li>
+        <li><strong>Anti-bot windows:</strong> release oscillator seeded by live team IDs (+ verifiable randomness). Seed commit-reveal with audit logs.</li>
+        <li><strong>Grace disconnect:</strong> 15 minutes; otherwise queue advances.</li>
+      </ul>
+      <h3>Open source & audits</h3>
+      <p>Contracts are MIT-licensed, with third-party audits. Critical constants (fee split, floor checks) are non-upgradable or gated by a public time-lock.</p>
+    </section>
+
+    <section id="9">
+      <h2>9. Compliance Notes</h2>
+      <ul>
+        <li>No yield, no staking, no “expected profits from the efforts of others”.</li>
+        <li>KYC/AML on fiat on-ramps and large treasury purchases; chain analytics for anomalies.</li>
+        <li>Clear Terms: user licenses, no promise of appreciation, floors ≠ guarantees of liquidity.</li>
+      </ul>
+      <p class="fine">Jurisdictions differ. We will consult counsel before mainnet launch.</p>
+    </section>
+
+    <section id="10">
+      <h2>10. Roadmap (MVP → v1.0)</h2>
+      <h3>MVP</h3>
+      <ul>
+        <li>ERC-721/1155 “Spectral Asset” + Marketplace with floor enforcement.</li>
+        <li>Genesis 4,096 shades (registry JSON), manual windows, basic queue.</li>
+        <li>Licences payment flow (USDC), initial pricing (e.g., 10 USD per channel).</li>
+        <li>Public explorer (read-only): floors, owners, sales.</li>
+      </ul>
+      <h3>v0.9</h3>
+      <ul>
+        <li>Release oscillator (commit-reveal + VRF), anti-bot presence.</li>
+        <li>Splits/Merges; Assemblies with fee.</li>
+        <li>Direct purchase catalogue at premium (treasury-priced).</li>
+      </ul>
+      <h3>v1.0</h3>
+      <ul>
+        <li>Time-lock or lock-in fees; formal audits; Fair-seed proofs.</li>
+        <li>Optional neighbourhood floor; governance minimalism.</li>
+      </ul>
+    </section>
+
+    <section id="glossary">
+      <h2>Glossary</h2>
+      <p><strong>Spectral Floor:</strong> highest on-chain price for a shade; future sales cannot go below it.</p>
+      <p><strong>Genesis:</strong> initial curated set of shades (4,096).</p>
+      <p><strong>Assembly:</strong> named set of colours bound together (e.g., a flag) with its own floor.</p>
+      <p><strong>Licence:</strong> paid right to contribute a channel (R/G/B) to mining during windows.</p>
+    </section>
+
+    <section id="appendix">
+      <h2>Appendix: Floor mapping snippet</h2>
+      <div class="block">
+        <pre style="white-space:pre-wrap; font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;">
+// Pseudocode (Solidity-like)
+mapping(uint256 => uint256) public spectralFloor; // colorId => price in wei
+
+function setInitialFloor(uint256 colorId, uint256 rUsed, uint256 gUsed, uint256 bUsed, uint256 pricePerLicenceWei) internal {
+    // rUsed,gUsed,bUsed in [0..255]
+    uint256 floorWei =
+        (pricePerLicenceWei * rUsed) / 255 +
+        (pricePerLicenceWei * gUsed) / 255 +
+        (pricePerLicenceWei * bUsed) / 255;
+    spectralFloor[colorId] = floorWei;
+}
+
+function buy(uint256 colorId) external payable {
+    require(msg.value >= spectralFloor[colorId], "Below spectral floor");
+    // ... transfer, fee split, emit events, raise floor if msg.value > spectralFloor[colorId]
+    if (msg.value > spectralFloor[colorId]) {
+        spectralFloor[colorId] = msg.value;
+    }
+}
+        </pre>
+        <p class="fine">In production, transfers route through the market; direct token transfers are blocked or hook-checked to enforce floors.</p>
+      </div>
+      <p class="fine">License: MIT for code; brand assets under a permissive community licence (no misuse, no hatred).</p>
     </section>
   </main>
 
-  <footer class="cc-foot">
-    <p>© 2025 CoolourCoin — The Contact of Light.</p>
+  <footer>
+    <div>© 2025 CoolourCoin • <a href="index.html">Home</a> • <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></div>
   </footer>
-  <script src="app.js"></script>
 </body>
 </html>
