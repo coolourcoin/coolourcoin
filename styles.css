@@ -1,0 +1,446 @@
+/* ==== Base layout & background ==== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
+  color: #f6f7ff;
+  background: radial-gradient(circle at top left, #1d2748, #050715 55%, #04030a 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Slow aurora-style background animation */
+body {
+  background-size: 200% 200%;
+  animation: bgShift 40s ease-in-out infinite alternate;
+}
+
+@keyframes bgShift {
+  0% {
+    background-position: 0% 0%;
+    background-image: radial-gradient(circle at top left, #1f2640, #050715 55%, #04030a 100%);
+  }
+  50% {
+    background-position: 50% 50%;
+    background-image: radial-gradient(circle at center, #1a2b46, #050417 60%, #03020b 100%);
+  }
+  100% {
+    background-position: 100% 100%;
+    background-image: radial-gradient(circle at bottom right, #18253a, #050415 55%, #05020a 100%);
+  }
+}
+
+/* ==== Header & nav ==== */
+
+.cc-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 60%);
+}
+
+.cc-header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cc-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #f8fafc;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.cc-logo img {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: contain;
+}
+
+.cc-nav {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #cbd5f5;
+  font-size: 0.9rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #ffffff;
+  border-color: rgba(129, 212, 250, 0.85);
+}
+
+/* ==== Main layout ==== */
+
+.cc-main {
+  flex: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 20px 40px;
+}
+
+.cc-main.narrow {
+  max-width: 860px;
+}
+
+/* ==== Hero (home) ==== */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr);
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.hero-text h1 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin: 0 0 14px;
+}
+
+.hero-sub {
+  margin: 0 0 18px;
+  color: #d1ddff;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.hero-bullets p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #c5d2ff;
+}
+
+.hero-cta {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ==== Buttons ==== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e2ebff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #5ad0ff, #88f0ff);
+  color: #021018;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #7ae0ff, #a5f6ff);
+}
+
+.btn.subtle {
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.btn.subtle:hover {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* ==== Hero orb ==== */
+
+.hero-orb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-orb-ring {
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.15), transparent 50%),
+    conic-gradient(from 0deg, #8cfbff, #f5ffcc, #ffddf5, #8cfbff);
+  padding: 20px;
+  animation: spinRing 24s linear infinite;
+  box-shadow:
+    0 0 40px rgba(139, 233, 255, 0.3),
+    0 0 80px rgba(244, 255, 204, 0.18);
+}
+
+.hero-orb-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: radial-gradient(circle, #020613 0%, #050816 55%, #020108 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.8);
+}
+
+.hero-orb-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 999px;
+}
+
+.hero-orb-caption {
+  font-size: 0.86rem;
+  color: #c7e6ff;
+  text-align: center;
+  max-width: 220px;
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ==== Grid & cards ==== */
+
+.grid-section {
+  margin-top: 16px;
+}
+
+.grid-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.grid.four {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  padding: 16px 16px 18px;
+  border-radius: 14px;
+  background: radial-gradient(circle at top left, rgba(148, 163, 255, 0.12), rgba(15, 23, 42, 0.94));
+  border: 1px solid rgba(148, 163, 255, 0.22);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
+
+.card h3,
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.card p {
+  margin: 4px 0;
+  font-size: 0.92rem;
+  color: #d2ddff;
+}
+
+.card ul {
+  margin: 6px 0 0 18px;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #d2ddff;
+}
+
+/* ==== Statement block ==== */
+
+.statement {
+  margin-top: 34px;
+  padding: 20px 18px 22px;
+  border-radius: 16px;
+  background: radial-gradient(circle at top, rgba(129, 212, 250, 0.22), rgba(15, 23, 42, 0.98));
+  border: 1px solid rgba(148, 163, 255, 0.4);
+  box-shadow:
+    0 0 40px rgba(15, 23, 42, 0.9),
+    0 0 70px rgba(129, 212, 250, 0.3);
+}
+
+.statement h2 {
+  margin: 0 0 8px;
+}
+
+.statement p {
+  margin: 4px 0;
+  font-size: 0.96rem;
+}
+
+/* ==== Page hero (inner pages) ==== */
+
+.page-hero {
+  margin-bottom: 24px;
+}
+
+.page-hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 2.3vw, 2rem);
+}
+
+.page-sub {
+  margin: 0;
+  color: #cbd5ff;
+  max-width: 620px;
+  font-size: 0.96rem;
+}
+
+/* ==== Steps (How it works) ==== */
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.step h2 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.step p {
+  margin: 4px 0 6px;
+  font-size: 0.94rem;
+  color: #d4defe;
+}
+
+.step ul {
+  margin: 4px 0 4px 18px;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #d4defe;
+}
+
+/* ==== Genesis layout ==== */
+
+.genesis-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.3fr) minmax(0, 3fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.genesis-image img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 255, 0.28);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
+}
+
+.genesis-text h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.genesis-text p {
+  font-size: 0.94rem;
+  color: #d5dffe;
+}
+
+.genesis-text .poem {
+  margin: 10px 0 14px;
+  font-style: italic;
+  color: #e0f2ff;
+}
+
+/* ==== Whitepaper page ==== */
+
+.doc-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #aab8ee;
+  margin-top: 6px;
+}
+
+/* ==== Footer ==== */
+
+.cc-footer {
+  border-top: 1px solid rgba(148, 163, 255, 0.2);
+  padding: 10px 18px 16px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9da9dd;
+  background: radial-gradient(circle at bottom, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 1));
+}
+
+/* ==== Responsiveness ==== */
+
+@media (max-width: 800px) {
+  .cc-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .cc-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-orb {
+    order: -1;
+    margin-bottom: 8px;
+  }
+
+  .genesis-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-main {
+    padding-top: 22px;
+  }
+}
