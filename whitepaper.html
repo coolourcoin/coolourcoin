@@ -1,66 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CoolourCoin — The Contact of Light</title>
-  <meta name="description" content="Light‑backed, floor‑protected digital colours. Put your value in light. Let it rest.">
-  <link rel="preload" href="assets/styles.css" as="style">
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8" />
+  <title>CoolourCoin — Whitepaper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div id="aurora-bg" aria-hidden="true"></div>
-  <div class="spectral-ring" aria-hidden="true"></div>
+  <div class="site-bg"></div>
 
-  <header class="site-nav">
-    <a class="brand" href="index.html">
-      <img src="assets/logo2.png" alt="CoolourCoin" class="brand-logo" onerror="this.src='assets/logo.png'">
-      <span>CoolourCoin</span>
-    </a>
-    <nav>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" />
+        <span>CoolourCoin</span>
+      </a>
+    </div>
+    <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="how.html">How it works</a>
-      <a href="genesis.html">Genesis spectrum</a>
-      <a href="manifesto.html">Manifest</a>
-      <a href="whitepaper.html">Whitepaper</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="genesis.html">Genesis Spectrum</a>
+      <a href="whitepaper.html" class="active">Whitepaper</a>
     </nav>
   </header>
-  <main class="page">
 
-  <section class="title">
-    <h1>CoolourCoin — Whitepaper (HTML)</h1>
-    <p class="lead">Light‑backed, floor‑protected digital colours.</p>
-  </section>
+  <main class="page narrow">
+    <h1>CoolourCoin — Whitepaper v0.1</h1>
 
-  <section class="content">
-    <h2>Abstract</h2>
-    <p>Most crypto assets are volatile and hard to understand. CoolourCoin proposes a colour‑first economy: finite shades of light, each protected by an immutable Spectral Floor — the highest price ever achieved by that colour.</p>
+    <section class="text-block">
+      <p>
+        The whitepaper defines the protocol in full detail:
+      </p>
+      <ul>
+        <li>Genesis Spectrum structure and tiers,</li>
+        <li>Spectral Floor Rule and price memory,</li>
+        <li>RGB mining mechanics and licence economics,</li>
+        <li>Treasury model and governance constraints,</li>
+        <li>Security assumptions and risk analysis.</li>
+      </ul>
+      <p>
+        Until the final PDF version is uploaded, this page serves as an entry
+        point for all technical documentation.
+      </p>
+    </section>
 
-    <h2>1. Palette & scarcity</h2>
-    <p>Genesis: 4,096 shades. Each token represents a unique RGB triplet; tiers reflect rarity towards white.</p>
-
-    <h2>2. Mining protocol</h2>
-    <p>RGB team mining synchronizes three people to commit the exact value of a newly released shade. Licenses allocate per‑channel capacity; value used sets the initial floor proportionally.</p>
-
-    <h2>3. Spectral Floor rule</h2>
-    <p>On‑chain enforcement prevents any sale below the recorded floor. OTC escapes are handled by official escrow that refuses transfers under floor.</p>
-
-    <h2>4. Market design</h2>
-    <p>Direct purchase at tier price, secondary marketplace with floor enforcement, split/merge mechanics and Assemblies with fixed creation fee.</p>
-
-    <h2>5. Governance of trust</h2>
-    <p>No passive yields or staking. Open contracts, public audits, and legal compliance. Clarity over hype.</p>
-
-    <hr>
-    <p><strong>PDF:</strong> If you also host <code>CoolourCoin.pdf</code> in the site root, a download link appears below.</p>
-    <p id="pdf-link"></p>
-  </section>
-
+    <section class="text-block">
+      <h2>Download</h2>
+      <p>
+        When ready, the whitepaper will be available as a PDF via a permanent link
+        (for example on GitHub or Zenodo).
+      </p>
+      <p>
+        For now, you can follow development on the public repository:
+      </p>
+      <p>
+        <a href="https://github.com/coolourcoin/coolourcoin" target="_blank">
+          github.com/coolourcoin/coolourcoin
+        </a>
+      </p>
+    </section>
   </main>
-  <footer class="site-footer">
-    <p>© 2025 CoolourCoin · Light‑backed, floor‑protected digital colours.</p>
+
+  <footer class="footer">
+    <span>© 2025 CoolourCoin.</span>
+    <span>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></span>
   </footer>
-  <script src="assets/script.js"></script>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
