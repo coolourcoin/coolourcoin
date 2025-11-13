@@ -1,127 +1,208 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CoolourCoin — Light‑backed, floor‑protected digital colours</title>
-<link rel="icon" href="assets/logo2.png">
-<style>
-/* ---------- Base / Reset ---------- */
-*{box-sizing:border-box} html,body{height:100%} body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#e9f2ff;background:#0a0f1e}
-a{color:#cfe6ff;text-decoration:none} a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto;padding:24px 16px}
-h1,h2,h3{margin:0 0 10px} h1{font-size:40px;letter-spacing:.3px} h2{font-size:26px} h3{font-size:19px}
-p{margin:0 0 12px;opacity:.95}
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+  <title>CoolourCoin — Light-backed, floor-protected digital colours.</title>
+  <meta name="description" content="CoolourCoin — the trust-first colour economy: light-backed, floor-protected digital colours.">
+  <link rel="icon" href="/assets/logo.png" type="image/png">
+  <style>
+    :root{
+      /* Paletă „trust & safety” (surse mai jos) */
+      --slate-ink:#0F172A;   /* deep navy / stability */
+      --classic-blue:#0F4C81;/* Pantone Classic Blue — trust */
+      --teal:#0E7490;        /* teal — balance */
+      --emerald:#0F766E;     /* emerald — renewal/safety */
+      --soft-cyan:#38BDF8;   /* clarity */
+      --card-bg: rgba(15,17,26,.55);
+      --border: rgba(255,255,255,.08);
+      --text: #E6EEF7;
+      --muted:#B8C7D9;
+      --accent:#A7F3D0;      /* subtle mint accent */
+    }
 
-/* ---------- Aurora background ---------- */
-.bg-aurora{position:relative;overflow:hidden}
-.bg-aurora:before,.bg-aurora:after{
-  content:"";position:absolute;inset:-30%;
-  background:radial-gradient(55% 65% at 30% 40%, rgba(69,233,255,.35), transparent 60%),
-             radial-gradient(45% 60% at 70% 35%, rgba(145, 85, 255,.30), transparent 60%),
-             radial-gradient(60% 55% at 50% 75%, rgba(255,220,120,.22), transparent 60%);
-  filter:blur(24px) saturate(1.15);
-  animation:flow 18s linear infinite alternate
-}
-.bg-aurora:after{animation-duration:26s;opacity:.8;mix-blend-mode:screen}
-@keyframes flow{0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(2%, -2%, 0) scale(1.03)}}
+    /* Reset & layout */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text); font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+      background: #0b1220;
+      overflow-x:hidden;
+    }
 
-/* ---------- NAV ---------- */
-.nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(1.2) blur(8px);
-     background:linear-gradient(to bottom, rgba(10,15,30,.78), rgba(10,15,30,.45));
-     border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;color:#e9f2ff;text-decoration:none}
-.brand img{width:28px;height:28px;border-radius:50%}
-.menu{display:flex;gap:16px;flex-wrap:wrap}
-.menu a{color:#e9f2ff;text-decoration:none;opacity:.9;padding:6px 10px;border-radius:10px}
-.menu a:hover{background:rgba(255,255,255,.06);opacity:1}
+    /* Aurora background (super lent, fără JS) */
+    .aurora{
+      position:fixed; inset:0; z-index:-2;
+      background:
+        radial-gradient(60% 70% at 20% 25%, var(--classic-blue) 0%, transparent 60%),
+        radial-gradient(55% 65% at 80% 30%, var(--teal) 0%, transparent 60%),
+        radial-gradient(65% 75% at 50% 85%, var(--emerald) 0%, transparent 65%),
+        linear-gradient(135deg, var(--slate-ink) 0%, #0b1220 100%);
+      filter: blur(40px) saturate(120%);
+      opacity:.9;
+      animation: drift 180s ease-in-out infinite alternate;
+    }
+    @keyframes drift{
+      0%   { transform: translate3d(0,0,0) scale(1);    filter: hue-rotate(0deg) blur(40px) saturate(120%); }
+      33%  { transform: translate3d(0,-1%,0) scale(1.02);filter: hue-rotate(6deg) blur(42px) saturate(120%); }
+      66%  { transform: translate3d(0,-2%,0) scale(1.04);filter: hue-rotate(10deg) blur(44px) saturate(122%);}
+      100% { transform: translate3d(0,-3%,0) scale(1.06);filter: hue-rotate(14deg) blur(46px) saturate(124%);}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .aurora{animation:none}
+    }
 
-/* ---------- Cards / Sections ---------- */
-.grid{display:grid;gap:16px}
-.grid.cols-3{grid-template-columns:repeat(1,minmax(0,1fr))}
-@media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; box-shadow:0 10px 40px rgba(0,0,0,.25)}
-.card h3{margin-bottom:6px}
-.badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.15);opacity:.9;margin-right:8px;font-size:13px}
+    /* subtle film grain + vignette pentru profunzime */
+    .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background-image: radial-gradient(transparent 60%, rgba(0,0,0,.25));
+      mix-blend-mode:soft-light;
+    }
 
-/* ---------- Buttons ---------- */
-.buttons{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
-.btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06)}
-.btn.primary{background:linear-gradient(90deg,#aee2ff33,#ffd27a33);border-color:rgba(255,255,255,.22)}
-.btn:hover{filter:saturate(1.2);transform:translateY(-1px)}
+    /* Nav bar fixă */
+    .nav{
+      position:sticky; top:0; z-index:5;
+      backdrop-filter: blur(10px) saturate(120%);
+      background: linear-gradient(180deg, rgba(10,14,24,.55), rgba(10,14,24,.2));
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text)}
+    .brand img{width:28px; height:28px; display:block}
+    .brand b{letter-spacing:.3px}
+    .spacer{flex:1}
+    .nav a{
+      color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px;
+    }
+    .nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
 
-/* ---------- Footer ---------- */
-footer{opacity:.8;border-top:1px solid rgba(255,255,255,.06);margin-top:24px}
-footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    /* Hero */
+    .hero{
+      max-width:1100px; margin:40px auto 24px; padding:28px 20px;
+      display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center;
+    }
+    .tag{display:inline-block; padding:6px 10px; font-size:12px; letter-spacing:.4px;
+      border:1px solid var(--border); border-radius:999px; color:var(--muted); background:rgba(255,255,255,.04)}
+    h1{margin:10px 0 8px; font-size:38px; line-height:1.05; letter-spacing:.2px}
+    .lead{color:var(--muted); font-size:18px; max-width:56ch}
+    .cta{display:flex; gap:12px; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:11px 14px; border-radius:14px;
+      text-decoration:none; font-weight:600; letter-spacing:.2px; border:1px solid var(--border);
+      color:var(--text); background:rgba(255,255,255,.06)
+    }
+    .btn.primary{background:linear-gradient(90deg, rgba(167,243,208,.2), rgba(56,189,248,.15)); border-color:rgba(167,243,208,.35)}
+    .btn:hover{background:rgba(255,255,255,.1)}
 
-/* ---------- Genesis Grid ---------- */
-.palette-controls{display:flex;gap:10px;align-items:center;margin:8px 0 14px}
-.view-toggle{padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.04)}
-.palette{display:grid;grid-template-columns:repeat(64, minmax(0,1fr)); gap:2px; background:rgba(255,255,255,.04);
-         padding:8px;border-radius:16px;border:1px solid rgba(255,255,255,.08)}
-.sw{width:100%;aspect-ratio:1;border-radius:6px;border:1px solid rgba(255,255,255,.06)}
-.pyramid .sw{clip-path:polygon(0 100%, 100% 100%, 50% 0)} /* triangular mask for demo */
+    .coin{
+      aspect-ratio:1/1; border-radius:50%;
+      background:
+        radial-gradient(40% 35% at 35% 30%, rgba(255,255,255,.4), transparent 60%),
+        conic-gradient(from 200deg, #c9fdd7 0%, #8ee6f9 22%, #7adcd4 33%, #a8ffd8 44%, #8fe0ff 66%, #d6fff2 88%, #c9fdd7 100%);
+      box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,.25),
+        inset 0 0 24px rgba(255,255,255,.18),
+        0 10px 40px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.18);
+      display:grid; place-items:center;
+    }
+    .coin img{width:66%; opacity:.95; filter: drop-shadow(0 6px 18px rgba(0,0,0,.45))}
+    .note{margin-top:8px; text-align:center; color:var(--muted); font-size:12px}
 
-/* ---------- Declaration ---------- */
-.declaration{font-size:18px}
-.declaration li{margin:10px 0 0 0}
-hr.sep{border:0;border-top:1px solid rgba(255,255,255,.1);margin:18px 0}
-</style>
+    /* Cards (6 bucăți, fără emoji) */
+    .grid{
+      max-width:1100px; margin:10px auto 60px; padding:0 20px;
+      display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+    }
+    .card{
+      background: var(--card-bg); border:1px solid var(--border);
+      border-radius:16px; padding:16px 16px 14px; min-height:120px;
+    }
+    .card h3{margin:0 0 6px; font-size:16px; letter-spacing:.2px}
+    .card p{margin:0; color:var(--muted)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border); color:var(--muted); padding:18px 20px; text-align:center}
+
+    /* Mobile */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr; gap:22px}
+      .grid{grid-template-columns:1fr}
+      h1{font-size:30px}
+    }
+  </style>
 </head>
-<body class="bg-aurora">
+<body>
+  <div class="aurora"></div>
+  <div class="grain"></div>
 
-<div class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="index.html">
-      <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
-      <strong>CoolourCoin</strong>
-    </a>
-    <nav class="menu">
-      <a href="index.html">Home</a>
-      <a href="genesis.html">Genesis</a>
-      <a href="how.html">How</a>
-      <a href="whitepaper.html">Whitepaper</a>
-      <a href="declaration.html">Declaration</a>
-    </nav>
-  </div>
-</div>
-
-<header class="container" style="padding-top:34px;padding-bottom:10px">
-  <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
-    <img src="assets/logo2.png" onerror="this.src='assets/logo.png'" alt="CoolourCoin" style="width:96px;height:96px;border-radius:999px;border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 40px rgba(0,0,0,.35)">
-    <div>
-      <h1>Light‑backed, floor‑protected digital colours.</h1>
-      <p>Put your value in light. Let it rest.</p>
-      <div class="buttons">
-        <a class="btn primary" href="how.html">How it works</a>
-        <a class="btn" href="genesis.html">Genesis spectrum (4096)</a>
-        <a class="btn" href="whitepaper.html">Read whitepaper</a>
-      </div>
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main">
+    <div class="nav-inner">
+      <a class="brand" href="/"><img src="/assets/logo.png" alt="CoolourCoin logo"><b>CoolourCoin</b></a>
+      <div class="spacer"></div>
+      <a href="/index.html">Home</a>
+      <a href="/how.html">How it works</a>
+      <a href="/genesis.html">Genesis Spectrum</a>
+      <a href="/whitepaper.html">Read Whitepaper</a>
+      <a href="mailto:admin@coolourcoin.com">Contact</a>
     </div>
-  </div>
-</header>
+  </nav>
 
-<main class="container">
-  <div class="grid cols-3">
-    <div class="card"><h3>1) Spectral Floor (never below)</h3><p>Each colour has a permanent price floor equal to its all‑time high sale. Listed anywhere below? Blocked at the protocol level.</p></div>
-    <div class="card"><h3>2) Two ways to obtain</h3><p><b>Mine</b> as an RGB team using licences, or <b>Buy Direct</b> from the protocol at tier‑based prices. No lotteries. No hype.</p></div>
-    <div class="card"><h3>3) RGB social mining</h3><p>Three humans, three channels (R, G, B). Commit the exact shade during an open window. If one drops, a 15‑minute grace; after that, the window reopens.</p></div>
-    <div class="card"><h3>4) Licences</h3><p>Simple, capped, and time‑released. Early are cheaper; later rarer → pricier. Licences fuel mining and anchor initial value.</p></div>
-    <div class="card"><h3>5) Splits & Merges</h3><p>Split a colour into on‑chain fractions when price milestones are met. Merge back by reuniting all parts. Floor always follows the max sale.</p></div>
-    <div class="card"><h3>6) Assemblies</h3><p>Combine multiple colours (e.g., a national flag). A fixed fee (to treasury) sets a floor for the assembly. Dissolve later if you own them all.</p></div>
-    <div class="card"><h3>7) Treasury</h3><p>Holds colours and fees to stabilise markets, fund audits, and pay contributors with on‑chain assets, not promises.</p></div>
-    <div class="card"><h3>8) Open, auditable</h3><p>Core contracts are public. Randomness = verifiable (onion RNG). No admin backdoors for price floors. No passive yield.</p></div>
-    <div class="card"><h3>9) Human‑first</h3><p>CoolourCoin is not a casino. It’s a resting place for light — and a tool to store value without dumps.</p></div>
-  </div>
-</main>
+  <!-- HERO -->
+  <main class="hero">
+    <div>
+      <span class="tag">Light-backed • Floor-protected</span>
+      <h1>Put your value in light.<br>Let it rest.</h1>
+      <p class="lead">
+        The first colour-economy where every shade is unique, provable on-chain,
+        and cannot be sold below its highest price. Mining is social (RGB teams).
+        Buying is simple. Trust is visible.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="/how.html">How it works</a>
+        <a class="btn" href="/genesis.html">Explore Genesis</a>
+        <a class="btn" href="/whitepaper.html">Read Whitepaper</a>
+      </div>
+      <p class="note">No yield. No promises. Only preservation.</p>
+    </div>
+    <div class="coin">
+      <img src="/assets/logo2.png" alt="CoolourCoin mark">
+    </div>
+  </main>
 
-<footer>
-  <div class="container">
-    <div>© 2025 CoolourCoin</div>
-    <div>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a> · <a href="https://github.com/coolourcoin/coolourcoin">GitHub</a></div>
-  </div>
-</footer>
+  <!-- 6 CARDS (fără butoanele duplicate) -->
+  <section class="grid" aria-label="Key pillars">
+    <article class="card">
+      <h3>Spectral Floor</h3>
+      <p>Smart-contract rule: no resale under the highest recorded price. Ever.</p>
+    </article>
+    <article class="card">
+      <h3>RGB Team Mining</h3>
+      <p>Three people (R, G, B) must be online to mint a shade. Ultra-simple, human-first.</p>
+    </article>
+    <article class="card">
+      <h3>Direct Purchase</h3>
+      <p>Buy colours at fixed tiers with a premium. Mining stays fair; markets stay calm.</p>
+    </article>
+    <article class="card">
+      <h3>Transparent Treasury</h3>
+      <p>Fees & donations accrue on-chain; periodic fair-drop into all floors.</p>
+    </article>
+    <article class="card">
+      <h3>Open-source Core</h3>
+      <p>Public contracts, public rules. Secret only where security demands (colour seed).</p>
+    </article>
+    <article class="card">
+      <h3>Anti-dump by Design</h3>
+      <p>No passive yield, no leverage, no backdoors. Just light with memory.</p>
+    </article>
+  </section>
+
+  <footer>© 2025 CoolourCoin • admin@coolourcoin.com</footer>
 </body>
 </html>
