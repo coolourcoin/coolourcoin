@@ -1,159 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>How CoolourCoin works</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Understand how CoolourCoin works: Genesis Spectrum, RGB team mining, price floors and direct colour purchase."
+  />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: #e9f1ff;
+      background: radial-gradient(circle at top left, #172335 0, #050814 55%, #02030a 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.5rem 0 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: contain;
+      box-shadow: 0 0 14px rgba(130, 220, 255, 0.75);
+      background: radial-gradient(circle at 30% 20%, #ffffff, #c7f3ff 60%, #050814);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.78rem;
+      opacity: 0.75;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+    }
+
+    nav a {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(134, 196, 255, 0.28);
+      background: radial-gradient(circle at top, rgba(29, 88, 160, 0.8), rgba(3, 10, 30, 0.9));
+      backdrop-filter: blur(10px);
+      opacity: 0.96;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease,
+        opacity 0.15s ease;
+    }
+
+    nav a:hover {
+      background: radial-gradient(circle at top, rgba(58, 140, 220, 0.98), rgba(6, 18, 50, 0.95));
+      box-shadow: 0 0 18px rgba(120, 210, 255, 0.6);
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+
+    nav a.active {
+      border-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 20px rgba(150, 230, 255, 0.8);
+    }
+
+    main {
+      padding-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9bbdff;
+      opacity: 0.9;
+      margin-bottom: 0.2rem;
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      max-width: 40rem;
+      color: #c3d4ff;
+      opacity: 0.96;
+      margin-bottom: 1.3rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-top: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    p {
+      font-size: 0.92rem;
+      color: #ced9ff;
+      opacity: 0.96;
+      line-height: 1.5;
+      margin: 0.3rem 0 0.5rem;
+    }
+
+    ul {
+      font-size: 0.9rem;
+      color: #ced9ff;
+      opacity: 0.96;
+      padding-left: 1.2rem;
+      margin: 0.2rem 0 0.8rem;
+    }
+
+    li { margin: 0.15rem 0; }
+
+    .callout {
+      margin-top: 1.5rem;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(158, 210, 255, 0.6);
+      background: radial-gradient(circle at top left, rgba(40, 104, 176, 0.9), rgba(5, 10, 30, 0.98));
+      font-size: 0.9rem;
+      color: #eaf3ff;
+    }
+
+    .callout strong {
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(90, 130, 190, 0.5);
+      font-size: 0.78rem;
+      color: #9eb4e6;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+      opacity: 0.9;
+    }
+
+    footer a:hover { opacity: 1; }
+
+    @media (max-width: 720px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-<body class="page-how">
-  <header class="cc-header">
-    <div class="cc-header-inner">
-      <a href="index.html" class="cc-logo">
-        <img src="assets/logo2.png" alt="CoolourCoin logo">
-        <span>CoolourCoin</span>
-      </a>
-      <nav class="cc-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="how.html" class="nav-link active">How it works</a>
-        <a href="genesis.html" class="nav-link">Genesis Spectrum</a>
-        <a href="whitepaper.html" class="nav-link">Whitepaper</a>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-name">CoolourCoin</div>
+          <div class="brand-tagline">Light-backed, floor-protected digital colours</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="how.html" class="active">How it works</a>
+        <a href="genesis.html">Genesis Spectrum</a>
+        <a href="whitepaper.html">Read whitepaper</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="cc-main">
-    <section class="page-hero">
+    <main>
+      <div class="kicker">Step by step</div>
       <h1>How CoolourCoin works</h1>
-      <p class="page-sub">
-        A simple, transparent protocol that turns colours into protected digital assets.
+      <p class="subtitle">
+        CoolourCoin is built on three ideas: a finite spectrum of colours, a social way of mining them,
+        and a strict rule that no colour can ever be sold below the highest price it has reached.
       </p>
-    </section>
 
-    <section class="steps">
-      <article class="step">
-        <h2>1. The Genesis Palette</h2>
-        <p>
-          The system starts from a finite set of genesis colours (e.g. 4,096 shades)
-          arranged in a structured spectrum. Each colour has:
-        </p>
-        <ul>
-          <li>a unique ID,</li>
-          <li>a precise RGB / HEX code,</li>
-          <li>a tier in the spectrum (from darker to near-white).</li>
-        </ul>
-        <p>
-          No new genesis colours can be created. The spectrum is finite, auditable and public.
-        </p>
-      </article>
+      <h2>1. The Genesis Spectrum</h2>
+      <p>
+        The protocol starts from a finite <strong>Genesis Spectrum</strong> – a set of 4,096 base colours.
+        Each colour has:
+      </p>
+      <ul>
+        <li>a unique ID (colourId),</li>
+        <li>an RGB / HEX code,</li>
+        <li>a tier (from deep shades up to near-white),</li>
+        <li>a <strong>spectral floor</strong> (initially zero, then updated by the market).</li>
+      </ul>
+      <p>
+        No new base colours are ever minted. Over time, some of them may be split into sub-units,
+        but the total spectrum is fixed: you cannot create additional light out of nowhere.
+      </p>
 
-      <article class="step">
-        <h2>2. RGB Social Mining</h2>
-        <p>
-          Mining in CoolourCoin is social, not hardware-based. To mine a colour,
-          three people form an RGB team:
-        </p>
-        <ul>
-          <li>one holds the red licence,</li>
-          <li>one holds the green licence,</li>
-          <li>one holds the blue licence.</li>
-        </ul>
-        <p>
-          When the protocol opens a mining window for a target colour
-          (for example R=120, G=40, B=200), the team must be online together
-          and have at least those channel values available in their licences.
-        </p>
-      </article>
+      <h2>2. RGB team mining – three people for one shade</h2>
+      <p>
+        To bring a colour to life, you don’t run GPUs – you build a small team.
+        Mining in CoolourCoin requires exactly three independent people:
+      </p>
+      <ul>
+        <li>one Red miner (controls the R channel),</li>
+        <li>one Green miner (controls the G channel),</li>
+        <li>one Blue miner (controls the B channel).</li>
+      </ul>
+      <p>
+        Each miner buys a <strong>mining licence</strong> for their channel (R, G or B).
+        A licence is a fixed budget of “channel intensity” – for example, 255 units of Red
+        that can be spent across multiple colours. Licences are bought with stablecoins
+        (ex. USDC) through the official dApp.
+      </p>
+      <p>
+        When the protocol announces that a specific colour (R,G,B) is available in a mining window,
+        a team that has at least those values remaining in their licences can lock in:
+      </p>
+      <ul>
+        <li>Red commits exactly R units,</li>
+        <li>Green commits exactly G units,</li>
+        <li>Blue commits exactly B units.</li>
+      </ul>
+      <p>
+        If all three commit successfully and stay connected for the required time,
+        the colour is mined and assigned to them. Any unused units in their licences
+        stay available for future colours.
+      </p>
 
-      <article class="step">
-        <h2>3. Licences and colour value</h2>
-        <p>
-          Each licence has a cost in real currency and a maximum channel capacity
-          (for example 255 units of R, G or B). When a team successfully mines a colour:
-        </p>
-        <ul>
-          <li>
-            a part of each licence is “spent” to reach the target RGB values;
-          </li>
-          <li>
-            the proportional cost of those used units becomes the colour’s
-            initial price floor;
-          </li>
-          <li>
-            the remaining unused units in the licences stay with the miners,
-            who can join future mining rounds.
-          </li>
-        </ul>
-        <p>
-          The colour is then minted as a unique on-chain asset with a
-          clearly defined minimum value.
-        </p>
-      </article>
+      <h2>3. How the price floor is created</h2>
+      <p>
+        When a colour is mined by a team, its <strong>initial floor</strong> is based on how much of each licence
+        was actually used, multiplied by the licence price. In simple terms:
+        the more licence power you spend, the higher the minimum value of that shade.
+      </p>
+      <p>
+        After mining, the colour can be listed for sale on the official marketplace.
+        Any time a buyer pays a higher price than before, the protocol updates the
+        <strong>spectralFloor[colourId]</strong>.
+      </p>
+      <p>
+        From that moment on, the rule is hard:
+        no future sale can go below this floor. That’s the core of CoolourCoin.
+      </p>
 
-      <article class="step">
-        <h2>4. Spectral Floor – price protection</h2>
-        <p>
-          The core rule of the protocol is the Spectral Floor:
-          <strong>a colour cannot be sold below the highest price it has ever reached
-          on the official marketplace.</strong>
-        </p>
-        <p>
-          The floor is enforced in the smart contract. There are no admin backdoors
-          to lower it. Once the light of a colour has been paid for, that level
-          can never be undercut by any later sale.
-        </p>
-      </article>
+      <h2>4. Two ways to obtain a colour</h2>
+      <h3>4.1. Mining with friends</h3>
+      <p>
+        You and two others can decide to mine together. Each of you chooses a channel (R, G or B),
+        buys a licence, and waits for mining windows where colours from the current band are released.
+        If you mine successfully, you split the ownership as you all agree (equal shares, or any ratio).
+      </p>
 
-      <article class="step">
-        <h2>5. Buying colours directly</h2>
-        <p>
-          Not everyone will want to mine. Some people or organisations
-          will prefer to buy colours directly:
-        </p>
-        <ul>
-          <li>
-            lower-tier colours (darker, more common) can be priced close to
-            the expected mining cost;
-          </li>
-          <li>
-            higher-tier colours (rare, near-white) can have premium fixed prices
-            or auctions;
-          </li>
-          <li>
-            all purchases immediately set or raise the Spectral Floor for
-            that colour.
-          </li>
-        </ul>
-        <p>
-          Buying directly is like claiming a specific patch of the spectrum
-          without joining mining rounds.
-        </p>
-      </article>
+      <h3>4.2. Direct purchase</h3>
+      <p>
+        If you don’t want to mine, you can buy directly:
+      </p>
+      <ul>
+        <li>either colours that other people have mined and listed,</li>
+        <li>or a small set of colours sold directly by the protocol at premium tiers.</li>
+      </ul>
+      <p>
+        Direct sales by the protocol are intentionally priced <strong>far above</strong> the expected mining cost.
+        This reinforces the idea that mining is the primary way to bring light into the system,
+        while direct purchase is an expensive shortcut for collectors or brands.
+      </p>
 
-      <article class="step">
-        <h2>6. No yield, no leverage</h2>
-        <p>
-          CoolourCoin does not offer staking, passive yield, leverage or
-          “interest-bearing” products at the protocol level. It is intentionally
-          conservative:
-        </p>
-        <ul>
-          <li>no “APY” promises,</li>
-          <li>no algorithmic yield systems,</li>
-          <li>no built-in leverage.</li>
-        </ul>
-        <p>
-          The focus is on value preservation and transparent ownership,
-          not on speculative reward engines.
-        </p>
-      </article>
-    </section>
-  </main>
+      <h2>5. Splitting and combining colours</h2>
+      <p>
+        Some colours may eventually become very expensive. When a single shade reaches a very high floor
+        (for example 1,000,000 USDC), the protocol can allow it to be split into a fixed number of
+        smaller units (like 8 equal parts).
+      </p>
+      <ul>
+        <li>Each part inherits a fraction of the original floor.</li>
+        <li>The original colour is locked, so total value and total light are preserved.</li>
+        <li>If someone later collects all parts again, they can recombine them into a full shade.</li>
+      </ul>
+      <p>
+        This mechanism lets very high-value colours remain usable in smaller pieces,
+        without breaking the trust that the floor represents.
+      </p>
 
-  <footer class="cc-footer">
-    <p>© 2025 CoolourCoin. Light-backed, floor-protected digital colours.</p>
-  </footer>
+      <h2>6. What CoolourCoin does <em>not</em> do</h2>
+      <p>
+        To stay honest and simple, the protocol avoids a few common patterns:
+      </p>
+      <ul>
+        <li>No staking rewards or passive yield promises.</li>
+        <li>No lotteries, “mystery boxes” or hidden odds.</li>
+        <li>No admin controls that can silently lower floors or confiscate colours.</li>
+      </ul>
+      <p>
+        CoolourCoin is closer to a <strong>digital vault for colour</strong> than to a speculative game.
+      </p>
 
-  <script src="scripts.js"></script>
+      <div class="callout">
+        <strong>Summary:</strong><br />
+        You can think of CoolourCoin as a way to turn pure colour into a protected digital asset.
+        A finite spectrum, mined socially, with an on-chain rule that says:
+        <em>“never sell below the light it cost.”</em>  
+        Everything else – the art, the stories, the brands – sits on top of that rule.
+      </div>
+    </main>
+
+    <footer>
+      <div>© 2025 CoolourCoin. Protocol description subject to refinement as the code is implemented.</div>
+      <div>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></div>
+    </footer>
+  </div>
 </body>
 </html>
