@@ -2,72 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CoolourCoin — How it works</title>
+  <title>How CoolourCoin works</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <div class="site-bg"></div>
+<body class="page page-how">
+  <div class="aurora-bg"></div>
 
-  <header class="top-nav">
-    <div class="nav-left">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/logo2.png" alt="CoolourCoin logo" />
-        <span>CoolourCoin</span>
+  <header class="cc-header">
+    <div class="cc-header-inner">
+      <a href="index.html" class="cc-brand">
+        <div class="cc-logo-ring-small">
+          <div class="cc-logo-core-small">
+            <img src="assets/logo2.png" alt="CoolourCoin logo" />
+          </div>
+        </div>
+        <span class="cc-brand-text">CoolourCoin</span>
       </a>
+
+      <nav class="cc-nav">
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html" class="active">How it works</a>
+        <a href="genesis.html">Genesis Spectrum</a>
+        <a href="whitepaper.html">Whitepaper</a>
+      </nav>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="how-it-works.html" class="active">How it works</a>
-      <a href="genesis.html">Genesis Spectrum</a>
-      <a href="whitepaper.html">Whitepaper</a>
-    </nav>
   </header>
 
-  <main class="page narrow">
-    <h1>How CoolourCoin works</h1>
+  <main class="cc-main cc-main-narrow">
+    <section class="page-header">
+      <h1>How CoolourCoin works</h1>
+      <p class="page-lead">
+        A finite palette of colours, a strict floor rule, and a social way to mine them.
+        No leverage. No hidden tricks. Just light and rules.
+      </p>
+    </section>
 
-    <section class="text-block">
-      <h2>1. Fixed Genesis Spectrum</h2>
+    <section class="step-section">
+      <h2>1. Genesis Spectrum — finite from day one</h2>
       <p>
-        CoolourCoin starts from a finite, public set of <strong>4,096 base colours</strong>.
-        Each colour has:
+        CoolourCoin starts from a <strong>Genesis Spectrum</strong> of
+        <strong>4&nbsp;096 base colours</strong>. Each base colour:
       </p>
       <ul>
-        <li>a stable ID,</li>
-        <li>a precise RGB / HEX value,</li>
-        <li>a rarity Tier (1–4), based on distance to white,</li>
-        <li>a known position inside the Genesis pyramid.</li>
+        <li>has a fixed ID, HEX / RGB code and a rarity tier,</li>
+        <li>exists only once at that exact coordinate in the spectrum,</li>
+        <li>can later split into sub-blocks, but origin remains traceable.</li>
       </ul>
       <p>
-        No new Genesis colours can be added later. The spectrum is fixed, visible,
-        and can be inspected by anyone.
+        You are not buying a “token type”. You are buying
+        <strong>one specific shade of light</strong>.
       </p>
     </section>
 
-    <section class="text-block">
-      <h2>2. Spectral Floor Rule</h2>
+    <section class="step-section">
+      <h2>2. Spectral Floor — the “never below” rule</h2>
       <p>
-        Every colour has a <strong>spectral floor</strong>: the highest price it has ever
-        been bought for on the official marketplace.
+        For every colour, the protocol keeps a single value:
+        its <strong>spectral floor</strong>.
       </p>
-      <p>The contract logic is simple:</p>
-      <pre class="code-block">
-spectralFloor[colorId] = max(spectralFloor[colorId], lastSalePrice);
-
-require(salePrice &gt;= spectralFloor[colorId], "Below spectral floor");
-      </pre>
-      <p>
-        This makes each colour an asset with <strong>price memory</strong>.
-        Panic selling cannot push it below its own history from inside the protocol.
+      <ul>
+        <li>The spectral floor is the <em>highest price ever paid</em> for that colour.</li>
+        <li>Smart contracts block any sale below that floor.</li>
+        <li>No admin key can bypass this rule once deployed.</li>
+      </ul>
+      <p class="quote">
+        “Never sell below the light it cost.”
       </p>
     </section>
 
-    <section class="text-block">
-      <h2>3. RGB mining teams</h2>
+    <section class="step-section">
+      <h2>3. RGB Social Mining — three humans, one colour</h2>
       <p>
-        New colours are not mined with hash power. They are mined by
-        <strong>RGB teams</strong> — three people online at the same time:
+        Mining a colour requires a small <strong>RGB team</strong>:
       </p>
       <ul>
         <li>one Red miner (R licence),</li>
@@ -75,89 +82,96 @@ require(salePrice &gt;= spectralFloor[colorId], "Below spectral floor");
         <li>one Blue miner (B licence).</li>
       </ul>
       <p>
-        Each licence gives a limited channel capacity (for example 255 units of its colour)
-        for a fixed time window. Together, the team chooses a target RGB triple and
-        mines that exact shade.
+        Each miner buys a licence with a maximum channel capacity (for example R=255).
+        When the protocol releases a target colour (e.g. R=100, G=30, B=200),
+        the team must:
       </p>
+      <ul>
+        <li>be online at the same time, from different devices,</li>
+        <li>lock exactly those channel values from their licences,</li>
+        <li>successfully commit the match in the time window.</li>
+      </ul>
       <p>
-        If any member disconnects and does not return within a short grace period,
-        the team is dropped from that mining attempt. One team can mine only one colour
-        at a time.
+        The percentage of each licence used to catch that colour becomes the
+        <strong>minimum value</strong> of the colour. The remaining channel capacity
+        stays with the miners for future attempts.
       </p>
     </section>
 
-    <section class="text-block">
-      <h2>4. Licences and initial floor</h2>
+    <section class="step-section">
+      <h2>4. Buying colours directly</h2>
       <p>
-        Licences are the <strong>only controlled entry</strong> for new value.
+        Not everyone wants to mine. Some people or companies simply want to
+        <strong>buy a colour directly</strong>:
       </p>
-      <p>Example (simplified):</p>
       <ul>
-        <li>Each licence costs 10 USD equivalent.</li>
-        <li>A full RGB team has 3 licences → 30 USD of mining capacity.</li>
+        <li>Interface lists available colours from the current mining band.</li>
+        <li>Each colour has a direct purchase price determined by tier &amp; demand.</li>
+        <li>When you buy, your price becomes the new spectral floor.</li>
       </ul>
       <p>
-        If they mine a colour using a fraction of each licence, the initial floor
-        is proportional to what they actually spent. Rounded amounts (cents etc.)
-        can be directed into protocol reserves to keep accounting clean.
-      </p>
-      <p>
-        No free inflation, no hidden rewards. You get colours in proportion
-        to what you put in and how you coordinate.
-      </p>
-    </section>
-
-    <section class="text-block">
-      <h2>5. Direct colour purchase</h2>
-      <p>
-        Some users prefer to buy a specific colour directly — for example a
-        corporate shade or a national flag combination.
-      </p>
-      <p>
-        For selected colours, the protocol can offer <strong>direct purchase</strong>
-        from a pool held by the Treasury. These prices are:
+        This allows use cases such as:
       </p>
       <ul>
-        <li>always above expected mining cost,</li>
-        <li>always respecting the Spectral Floor Rule,</li>
-        <li>fully visible and deterministic.</li>
+        <li>brands securing “their” colour as a treasury asset,</li>
+        <li>companies gifting a corporate shade to employees,</li>
+        <li>individuals choosing a colour as a long-term store of value.</li>
       </ul>
     </section>
 
-    <section class="text-block">
-      <h2>6. Treasury and contributors</h2>
+    <section class="step-section">
+      <h2>5. Splitting &amp; merging colour blocks</h2>
       <p>
-        A defined share of licence revenue goes into a transparent Treasury.
-        The Treasury may:
+        When a colour reaches certain value thresholds, it can be:
       </p>
       <ul>
-        <li>hold rare colours as long-term reserves,</li>
-        <li>pay core contributors directly in colours,</li>
-        <li>support audits, security and protocol maintenance.</li>
+        <li><strong>split</strong> into smaller sub-blocks (e.g. 1 full block → 10×10%),</li>
+        <li>or <strong>merged</strong> back if someone collects all parts again.</li>
       </ul>
       <p>
-        Nobody receives yield just for holding. The protocol is designed
-        as a <strong>resting place for light</strong>, not a yield farm.
+        The new block’s floor is computed as the weighted average of all parts.
+        You can pay with fractions of a colour, but the protocol never forgets
+        from which full block they came.
       </p>
     </section>
 
-    <section class="text-block">
-      <h2>7. What CoolourCoin is not</h2>
+    <section class="step-section">
+      <h2>6. No yield, no leverage — just a rest place for value</h2>
+      <p>
+        CoolourCoin does <strong>not</strong> offer:
+      </p>
       <ul>
-        <li>It is not a leveraged trading platform.</li>
-        <li>It does not pay interest or “APY”.</li>
-        <li>It does not guarantee profit.</li>
+        <li>staking rewards,</li>
+        <li>promised APYs,</li>
+        <li>or leverage mechanisms.</li>
       </ul>
       <p>
-        The only guarantee is structural: a colour cannot be sold below its own floor
-        inside the official protocol.
+        Its only guarantee is:
+        <strong>your colour cannot be sold below its own spectral floor</strong>.
+        The rest is market, community and time.
+      </p>
+    </section>
+
+    <section class="step-section">
+      <h2>7. Why it matters</h2>
+      <p>
+        Most crypto assets are built around speculation and variance.
+        CoolourCoin is built around <strong>preservation and visibility</strong>:
+      </p>
+      <ul>
+        <li>what you own is visible (a colour you can see),</li>
+        <li>how far it can fall is bounded (the floor),</li>
+        <li>how it is mined is social, not industrial.</li>
+      </ul>
+      <p>
+        It is not a casino. It is <strong>an instrument of rest</strong>
+        in an otherwise volatile space.
       </p>
     </section>
   </main>
 
-  <footer class="footer">
-    <span>© 2025 CoolourCoin.</span>
-    <span>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></span>
+  <footer class="cc-footer">
+    <p>© 2025 CoolourCoin. Light-backed, floor-protected digital colours.</p>
   </footer>
 
   <script src="scripts.js"></script>
