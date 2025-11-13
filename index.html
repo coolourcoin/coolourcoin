@@ -1,6 +1,22 @@
 <!doctype html>
 <html lang="en">
-<head>
+<style>
+  .site-header{
+    position: sticky; top:0; z-index:1000;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 22px;
+    background: rgba(0,0,16,0.55);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+  .brand .logo{height:36px; width:auto; display:block}
+  .brand span{color:#fff; font-weight:600; letter-spacing:0.4px}
+  .main-nav a{color:#fff; text-decoration:none; margin-left:16px; opacity:0.9}
+  .main-nav a:hover{opacity:1; text-decoration:underline}
+  /* dacă ai deja un header, păstrează doar .brand .logo {height:36px} și înlocuiește doar <img> */
+</style>
+  <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>CoolourCoin — Light-backed, floor-protected digital colours</title>
