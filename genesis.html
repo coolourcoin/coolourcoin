@@ -1,53 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CoolourCoin — The Contact of Light</title>
-  <meta name="description" content="Light‑backed, floor‑protected digital colours. Put your value in light. Let it rest.">
-  <link rel="preload" href="assets/styles.css" as="style">
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8" />
+  <title>CoolourCoin — Genesis Spectrum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div id="aurora-bg" aria-hidden="true"></div>
-  <div class="spectral-ring" aria-hidden="true"></div>
+  <div class="site-bg"></div>
 
-  <header class="site-nav">
-    <a class="brand" href="index.html">
-      <img src="assets/logo2.png" alt="CoolourCoin" class="brand-logo" onerror="this.src='assets/logo.png'">
-      <span>CoolourCoin</span>
-    </a>
-    <nav>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" />
+        <span>CoolourCoin</span>
+      </a>
+    </div>
+    <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="how.html">How it works</a>
-      <a href="genesis.html">Genesis spectrum</a>
-      <a href="manifesto.html">Manifest</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="genesis.html" class="active">Genesis Spectrum</a>
       <a href="whitepaper.html">Whitepaper</a>
     </nav>
   </header>
-  <main class="page">
 
-  <section class="title">
-    <h1>Genesis spectrum</h1>
-    <p class="lead">4,096 shades. One pyramid. The spectrum as a finite, mineable terrain.</p>
-  </section>
+  <main class="page narrow">
+    <h1>Genesis Spectrum</h1>
 
-  <figure class="pyramid">
-    <img src="assets/genesis-pyramid.webp" alt="CoolourCoin — Genesis Spectrum pyramid"/>
-    <figcaption>
-      <em>“We do not gamble with light. We discover it.”</em>
-    </figcaption>
-  </figure>
+    <section class="text-block center">
+      <p>
+        The Genesis Spectrum is the first and only full layer of CoolourCoin:
+        <strong>4,096 unique base colours</strong>, arranged as a spectral pyramid.
+      </p>
+      <p>
+        Each tile in the pyramid is a potential asset. It will be mined once,
+        acquire a floor once, and then live under the rule of its own history.
+      </p>
+    </section>
 
-  <section class="content">
-    <p>Colours are released in waves from the base to the apex. Early rows are broader and more frequent; upper rows arrive rarer, until the apex touches white.</p>
-  </section>
+    <section class="pyramid-block">
+      <img src="assets/pyramid.png" alt="CoolourCoin Genesis Spectrum pyramid" class="pyramid-img" />
+      <p class="pyramid-caption">
+        Genesis Spectrum — 4,096 colours. Finite, public, non-replicable.
+      </p>
+    </section>
 
+    <section class="text-block">
+      <h2>Tiers and rarity</h2>
+      <p>
+        Colours closer to white form the upper tiers of the pyramid. They are fewer,
+        brighter, and naturally tend to attract higher bids. The lower tiers hold
+        broader, deeper shades — more accessible, but still unique.
+      </p>
+      <p>
+        The mapping (Tier, ID, RGB, HEX, rarity) is defined once and will be
+        published as an open dataset. The protocol does not hide supply.
+      </p>
+    </section>
+
+    <section class="text-block">
+      <h2>Origin is recorded forever</h2>
+      <p>
+        When a team mines a Genesis colour, the protocol records:
+      </p>
+      <ul>
+        <li>the colour ID and RGB code,</li>
+        <li>the initial floor, based on licence capacity used,</li>
+        <li>the discoverer IDs (team members).</li>
+      </ul>
+      <p>
+        Ownership may change many times after that. The origin does not.
+      </p>
+    </section>
   </main>
-  <footer class="site-footer">
-    <p>© 2025 CoolourCoin · Light‑backed, floor‑protected digital colours.</p>
+
+  <footer class="footer">
+    <span>© 2025 CoolourCoin.</span>
+    <span>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></span>
   </footer>
-  <script src="assets/script.js"></script>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
