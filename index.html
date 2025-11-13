@@ -1,107 +1,83 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CoolourCoin — Light‑backed, floor‑protected digital colours</title>
-<meta name="description" content="CoolourCoin is a colour‑first crypto economy: light‑backed, floor‑protected, mined by RGB teams.">
-<link rel="icon" href="coolourcoin.png">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-  color:#eaf3ff;
-  background: radial-gradient(1000px 600px at 10% 10%, #0a1a33 0%, #050b16 60%, #03060c 100%);
-  line-height:1.6;
-}
-.aurora{position:fixed; inset:0; pointer-events:none; z-index:-1; overflow:hidden}
-.aurora span{position:absolute; filter: blur(60px); opacity:.45; mix-blend-mode: screen;
-  width:40vw; height:40vh; border-radius:40%; animation: float 18s ease-in-out infinite}
-.aurora .a1{ background: linear-gradient(120deg,#4fd1ff,#8a9bff); top:10%; left:-5%; animation-delay: -2s}
-.aurora .a2{ background: linear-gradient(120deg,#70ffbf,#00ffd9); top:35%; right:-10%; animation-delay: -6s}
-.aurora .a3{ background: linear-gradient(120deg,#ff7ad6,#ffd36b); bottom:-5%; left:15%; animation-delay: -10s}
-.aurora .a4{ background: linear-gradient(120deg,#c1a3ff,#73e0ff); bottom:15%; right:20%; animation-delay: -14s}
-@keyframes float{0%,100%{ transform: translate3d(0,0,0) rotate(0deg) } 50%{ transform: translate3d(3vw,-3vh,0) rotate(10deg) }}
-.topbar{position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between;
-  padding:16px 24px; background: rgba(4,10,22,.55); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(255,255,255,.06)}
-.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:#eaf3ff; font-weight:700; letter-spacing:.3px}
-.brand .logo{height:36px; width:auto; display:block}
-.nav a{ color:#cfe3ff; text-decoration:none; margin-left:18px; font-weight:600; opacity:.9}
-.nav a:hover{ opacity:1; text-decoration:underline}
-.container{ max-width:1100px; margin:0 auto; padding:48px 24px}
-.hero{ text-align:center; padding:60px 12px 40px }
-h1{ font-size: clamp(28px, 4vw, 48px); line-height:1.1; margin-bottom:12px; letter-spacing:.2px}
-h2{ font-size: clamp(22px, 3vw, 28px); margin:26px 0 10px }
-p.lead{font-size: clamp(16px, 2.2vw, 20px); color:#cfe3ff; opacity:.95}
-.kicker{ color:#99c8ff; text-transform:uppercase; font-weight:700; letter-spacing:.2em; font-size:12px; margin-bottom:10px; opacity:.9}
-.grid{ display:grid; gap:24px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:28px}
-.card{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px 18px 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25)}
-.card h3{ margin-bottom:8px; font-size:18px}
-.card p{ color:#cfe3ff; font-size:15px}
-.cta{ margin-top:26px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-.button{ display:inline-block; padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; 
-  border:1px solid rgba(255,255,255,.2); background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); color:#eaf3ff}
-.button:hover{ transform: translateY(-1px)}
-.button.primary{ background: linear-gradient(180deg,#7dd3fc,#60a5fa); color:#0b1220; border:none}
-footer{ color:#a9c6f6; opacity:.9; font-size:14px; padding:32px 24px; text-align:center}
-.small{font-size:13px; color:#a9c6f6}
-hr{border:0; height:1px; background:linear-gradient(90deg,transparent, rgba(255,255,255,.2), transparent); margin:28px 0}
-ul{padding-left:18px} li{margin:6px 0}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoolourCoin — Light-backed, floor-protected digital colours</title>
+  <meta name="description" content="CoolourCoin: light-backed, floor-protected digital colours. Simple. Transparent. Human." />
+  <link rel="icon" type="image/png" href="assets/logo2.png">
+  <link rel="preload" href="assets/logo.png" as="image">
+  <link rel="preload" href="assets/logo2.png" as="image">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-<div class="aurora" aria-hidden="true">
-  <span class="a1"></span><span class="a2"></span><span class="a3"></span><span class="a4"></span>
-</div>
-<header class="topbar">
-  <a class="brand" href="index.html" aria-label="CoolourCoin home">
-    <img class="logo" src="coolourcoin.png" alt="CoolourCoin logo" width="144" height="36" />
-    <span>CoolourCoin</span>
-  </a>
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="genesis.html">Genesis Spectrum</a>
-    <a href="how.html">How it Works</a>
-    <a href="whitepaper.html">Whitepaper</a>
-    <a href="mailto:admin@coolourcoin.com">Contact</a>
-  </nav>
-</header>
+<body class="page--home">
+  <!-- NAV -->
+  <header class="cc-nav">
+    <div class="cc-nav__inner">
+      <a class="cc-brand" href="index.html" aria-label="CoolourCoin — Home">
+        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img">
+      </a>
+      <nav class="cc-menu">
+        <a href="genesis.html">Genesis Spectrum</a>
+        <a href="how.html">How it works</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="mailto:admin@coolourcoin.com">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<main class="container">
-  <section class="hero">
-    <div class="kicker">coolourcoin</div>
-    <h1>Light‑backed, floor‑protected&nbsp;digital colours.</h1>
-    <p class="lead">A finite Genesis Spectrum you can mine or buy. Each colour is unique, on‑chain, and can never be sold below its all‑time highest price. Put your value in light. Let it rest.</p>
-    <div class="cta">
-      <a class="button primary" href="genesis.html">Explore Genesis Spectrum</a>
-      <a class="button" href="whitepaper.html">Read Whitepaper</a>
-      <a class="button" href="how.html">How it Works</a>
+  <!-- HERO -->
+  <section class="cc-hero">
+    <div class="cc-hero__copy">
+      <h1>Light-backed, floor-protected digital colours.</h1>
+      <p class="cc-tag">Put your value in light. Let it rest.</p>
     </div>
+    <div class="cc-hero__glow" aria-hidden="true"></div>
   </section>
-  <section>
-    <div class="grid">
-      <div class="card"><h3>🎯 Spectral Floor Rule</h3>
-        <p>Every colour carries a non‑decreasing floor (the highest price it ever sold for). Transfers under this floor are rejected by the marketplace contract.</p></div>
-      <div class="card"><h3>🔺 Finite & Tiered</h3>
-        <p>A curated Genesis palette (≈ 4096 colours) launches first. Later phases unlock higher‑resolution spectra once adoption is strong.</p></div>
-      <div class="card"><h3>🧑‍🤝‍🧑 RGB Team Mining</h3>
-        <p>Three people, three channels (R, G, B). Join a colour window; if your exact triplet matches when a colour opens, your team mints it.</p></div>
-      <div class="card"><h3>🔐 Open‑source Core</h3>
-        <p>Contracts and marketplace logic are transparent and auditable. The appearance schedule uses a public oscillator with verifiable randomness beacons.</p></div>
-    </div>
-  </section>
-  <hr/>
-  <section class="grid">
-    <div class="card"><h3>✨ Why colours?</h3>
-      <p>People understand colour intuitively. CoolourCoin turns finite shades of light into scarce, tradable digital assets — simple, universal, emotional.</p></div>
-    <div class="card"><h3>🛡️ Anti‑dump by design</h3>
-      <p>Floor‑protected sales stop panic‑selling spirals. Owners can exit, but never below the last peak price.</p></div>
-    <div class="card"><h3>🧭 Clean ethics</h3>
-      <p>No passive yield, no leverage, no casino mechanics. Just scarcity, provenance, and clear rules.</p></div>
-  </section>
-</main>
-<footer>© 2025 CoolourCoin · Light‑backed, floor‑protected digital colours
-  <div class="small">Site is static. No cookies. No trackers.</div></footer>
-</body></html>
+
+  <!-- WATERMARK BG -->
+  <div class="cc-watermark" aria-hidden="true">
+    <img src="assets/logo2.png" alt="">
+  </div>
+
+  <!-- PILLARS -->
+  <main class="cc-wrap">
+    <section class="cc-grid">
+      <article class="cc-card">
+        <h3>Spectral Floor Rule</h3>
+        <p>Every colour remembers its highest price. Listings below that floor are rejected at the contract level.</p>
+      </article>
+      <article class="cc-card">
+        <h3>RGB Team Mining</h3>
+        <p>Three people, three channels (R, G, B). Mine an exact shade together during an open window.</p>
+      </article>
+      <article class="cc-card">
+        <h3>Licences</h3>
+        <p>Simple, fixed-price per channel at start. Capacity is consumed proportionally when you mine.</p>
+      </article>
+      <article class="cc-card">
+        <h3>Treasury</h3>
+        <p>Holds protocol colours and receives transparent fees. No hidden emissions. No yield promises.</p>
+      </article>
+      <article class="cc-card">
+        <h3>Assemblies</h3>
+        <p>Combine owned colours into a single on-chain asset (e.g., a flag palette). Dissolve only if you own all parts.</p>
+      </article>
+      <article class="cc-card">
+        <h3>Open & Human</h3>
+        <p>Public code and verifiable rules. Audit anyone, anytime. The only secret: the colour release seed.</p>
+      </article>
+    </section>
+
+    <section class="cc-cta">
+      <a class="cc-btn" href="genesis.html">Explore the Genesis Spectrum</a>
+      <a class="cc-btn cc-btn--ghost" href="whitepaper.html">Read the Whitepaper</a>
+    </section>
+  </main>
+
+  <footer class="cc-foot">
+    <p>© 2025 CoolourCoin — The Contact of Light.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
