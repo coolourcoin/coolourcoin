@@ -1,49 +1,81 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>How it works • CoolourCoin</title>
-<link rel="icon" href="assets/logo2.png">
-<link rel="stylesheet" href="assets/styles.css"></head><body>
-<div class="grid-overlay"></div>
-<header class="nav"><div class="nav-inner">
-  <a class="brand" data-home href="index.html" title="CoolourCoin — Home">
-    <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
-    <div><div class="title">CoolourCoin</div><small>Light‑backed • Floor‑protected</small></div>
-  </a>
-  <nav class="navlinks">
-    <a href="index.html">Home</a><a href="how.html">How it works</a><a href="genesis.html">Genesis Spectrum</a><a href="whitepaper.html">Whitepaper</a><a href="manifesto.html">Manifest</a>
-  </nav>
-</div></header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CoolourCoin — The Contact of Light</title>
+  <meta name="description" content="Light‑backed, floor‑protected digital colours. Put your value in light. Let it rest.">
+  <link rel="preload" href="assets/styles.css" as="style">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
 
-<main class="wrap"><div class="hero-sub">
-  <span class="badge">Ultra‑simple by design</span>
-  <h1 class="h1">How CoolourCoin works</h1>
-  <p class="lead">A colour is a one‑of‑one digital asset. It’s mined by a live RGB team or purchased directly. Either way, its Spectral Floor is enforced forever by the smart contract.</p>
-</div>
-<h3>1) RGB Team Mining</h3>
-<p><b>Form a team of three</b> — Red, Green, Blue — each with a license. When the protocol releases a target shade (e.g., R200 G128 B099), your team dials <b>exactly</b> those values. If you’re connected and complete, the shade is yours.</p>
-<ul>
-<li><b>One shade at a time:</b> a team can mine only a single target concurrently.</li>
-<li><b>Exact match:</b> partial or “less than” values don’t mint.</li>
-<li><b>Presence rule:</b> if one member disconnects, you have a 15‑minute grace to reconnect, otherwise the slot reopens.</li>
-<li><b>Fairness:</b> the system prevents multiple teams from mining the same shade simultaneously (queue with pending state).</li>
-</ul>
-<h3>2) License Economics</h3>
-<p>Each channel license has a fixed capacity (0–255). When you mint a shade, you spend that capacity proportionally.</p>
-<p class="kicker">Example: with three 10 USD licenses, minting R100 G30 B200 sets the <b>floor</b> to the sum of used proportions: 10×(100/255) + 10×(30/255) + 10×(200/255) ≈ 12.94 USD. Rounded to the nearest 0.50 by protocol.</p>
-<h3>3) Direct Purchase</h3>
-<p>At any time, you can buy colours from the active tier at the <b>protocol price</b> (much higher than the mining input) — ideal for collectors, brands and gifts. The Spectral Floor applies identically.</p>
-<h3>4) The Spectral Floor (anti‑dump)</h3>
-<p>For each colour <code>colorId</code> the contract keeps <code>spectralFloor[colorId]</code> in wei. Any transfer with value below that is rejected. Off‑market transfers are blocked by design — trading happens only through the official marketplace.</p>
-<h3>5) Splits & Merges</h3>
-<ul><li><b>Split:</b> when a colour exceeds a threshold (e.g., ≥ 1,000,000 USDC last sale), it can split into 8 child units. Each child inherits or increases the parent floor.</li>
-<li><b>Merge:</b> if you later own <b>all children</b>, you may merge them back into the parent. The new floor becomes the value‑weighted average.</li></ul>
-<h3>6) Assemblies (optional)</h3>
-<p>Own a meaningful set (e.g., your national flag or a brand palette)? Lock it into an Assembly for provenance. A fixed fee (e.g., 333,000) goes to the treasury and the Assembly receives a floor ≥ that fee. Dissolving doesn’t refund the fee; floors persist with the new owners.</p>
-<h3>7) Fees & Allocation</h3>
-<ul><li>Market fee: 2% (1.25% treasury, 0.5% community pool, 0.25% long‑term reserve).</li>
-<li>License revenue: to treasury for audits, grants, infrastructure.</li>
-<li>Rounding gains: accumulated and periodically distributed across colours (pro‑rata to floor).</li></ul>
-<h3>8) Transparency & Safety</h3>
-<p>Open‑source contracts, open treasury, public analytics. No yield promises. No admin “god mode”. Anti‑Sybil checks for team mining. Full‑audit before mainnet.</p>
-</main>
-<footer>© 2025 CoolourCoin • “Put your value in light. Let it rest.”</footer><script src="assets/script.js"></script></body></html>
+<body>
+  <div id="aurora-bg" aria-hidden="true"></div>
+  <div class="spectral-ring" aria-hidden="true"></div>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo2.png" alt="CoolourCoin" class="brand-logo" onerror="this.src='assets/logo.png'">
+      <span>CoolourCoin</span>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="how.html">How it works</a>
+      <a href="genesis.html">Genesis spectrum</a>
+      <a href="manifesto.html">Manifest</a>
+      <a href="whitepaper.html">Whitepaper</a>
+    </nav>
+  </header>
+  <main class="page">
+
+  <section class="title">
+    <h1>How CoolourCoin works</h1>
+    <p class="lead">Simple, transparent, human. The first light‑backed asset with a hard <em>Spectral Floor</em>.</p>
+  </section>
+
+  <section class="content">
+    <h2>1) Palette & tiers</h2>
+    <p>We begin with a finite Genesis palette (4,096 shades) arranged from dark to white. Each colour has an ID, an RGB/HEX code, a tier and rarity rank.</p>
+
+    <h2>2) Mining with teams (RGB)</h2>
+    <ul>
+      <li>Create a team of three. One plays Red, one Green, one Blue.</li>
+      <li>When a colour appears (e.g., <code>R200 G128 B099</code>), a team holding the exact values commits it first and wins.</li>
+      <li>Licenses allocate capacity per channel (R/G/B) and deplete proportionally to what you used.</li>
+      <li>One team can mine only one colour at a time. Disconnect? You have 15 minutes to rejoin or the slot reopens.</li>
+    </ul>
+
+    <h2>3) Spectral Floor (price protection)</h2>
+    <p>Every colour stores the highest price it ever achieved. Marketplace enforces <strong>never below floor</strong>, on‑chain.</p>
+
+    <h2>4) Direct purchase</h2>
+    <p>Any available colour can be bought directly at its tier price. This sets the initial floor. High‑tier catalogue prices are intentionally steep to protect miners’ upside.</p>
+
+    <h2>5) Splits & merges</h2>
+    <ul>
+      <li><strong>Split</strong>: pricey colours can be split into smaller, tradable parts once thresholds are met.</li>
+      <li><strong>Merge</strong>: you can recombine siblings into the parent token if you hold them all.</li>
+      <li>Provenance, history, and floors are preserved across operations.</li>
+    </ul>
+
+    <h2>6) Assemblies (e.g., flags, logos)</h2>
+    <p>Own multiple colours that form a meaningful set? Lock them into an <em>Assembly</em>. A fixed fee mints the bundle with its own identity and floor. Dissolving returns the colours; the fee is not refunded.</p>
+
+    <h2>7) Fees & treasury</h2>
+    <p>Fees are minimal and public: primary sales, marketplace trades, assembly creation, and withdrawals. A portion goes to maintenance; a portion strengthens community tools. No secret taxes. No dangling yields.</p>
+
+    <h2>8) Clarity by design</h2>
+    <ul>
+      <li>No passive yield. No staking. No “number go up” promises.</li>
+      <li>Open‑source contracts. Third‑party audits. Public changelog.</li>
+      <li>Compliance first: KYC/AML where law requires. Honest geofencing where we must.</li>
+    </ul>
+  </section>
+
+  </main>
+  <footer class="site-footer">
+    <p>© 2025 CoolourCoin · Light‑backed, floor‑protected digital colours.</p>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>

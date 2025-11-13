@@ -1,28 +1,66 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Whitepaper • CoolourCoin</title>
-<link rel="icon" href="assets/logo2.png">
-<link rel="stylesheet" href="assets/styles.css"></head><body>
-<div class="grid-overlay"></div>
-<header class="nav"><div class="nav-inner">
-  <a class="brand" data-home href="index.html" title="CoolourCoin — Home">
-    <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
-    <div><div class="title">CoolourCoin</div><small>Light‑backed • Floor‑protected</small></div>
-  </a>
-  <nav class="navlinks">
-    <a href="index.html">Home</a><a href="how.html">How it works</a><a href="genesis.html">Genesis Spectrum</a><a href="whitepaper.html">Whitepaper</a><a href="manifesto.html">Manifest</a>
-  </nav>
-</div></header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CoolourCoin — The Contact of Light</title>
+  <meta name="description" content="Light‑backed, floor‑protected digital colours. Put your value in light. Let it rest.">
+  <link rel="preload" href="assets/styles.css" as="style">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
 
-<main class="wrap"><div class="hero-sub"><span class="badge">Design doc (MVP)</span>
-<h1 class="h1">CoolourCoin — Whitepaper v0.2 (preview)</h1></div>
-<p class="lead">Read the latest PDF or the HTML preview below. The full cryptoeconomic spec (Spectral Floor, mining, splits/merges, assemblies, fees, and governance) is continuously updated.</p>
-<p><a class="btn" href="CoolourCoin.pdf">Open PDF</a> (upload <code>CoolourCoin.pdf</code> to the repo root) • or continue reading:</p>
-<hr style="border-color:#2a3b58; opacity:.5;">
-<h3>Abstract</h3>
-<p>Most crypto assets are volatile and hard to reason about. CoolourCoin proposes value that honours cost: every colour is a unique on‑chain asset with a non‑decreasing price floor equal to its highest purchase price.</p>
-<h3>Mechanics</h3>
-<ul><li>Team mining (RGB) with license capacity.</li><li>Protocol direct purchase.</li><li>Spectral Floor enforced on‑chain (no admin override).</li><li>Divisible by thresholds; mergeable by full ownership.</li><li>Open treasury, transparent fees.</li></ul>
-<p>See <a href="how.html">How it works</a> for a human‑readable walkthrough.</p>
-</main>
-<footer>© 2025 CoolourCoin • “Put your value in light. Let it rest.”</footer><script src="assets/script.js"></script></body></html>
+<body>
+  <div id="aurora-bg" aria-hidden="true"></div>
+  <div class="spectral-ring" aria-hidden="true"></div>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo2.png" alt="CoolourCoin" class="brand-logo" onerror="this.src='assets/logo.png'">
+      <span>CoolourCoin</span>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="how.html">How it works</a>
+      <a href="genesis.html">Genesis spectrum</a>
+      <a href="manifesto.html">Manifest</a>
+      <a href="whitepaper.html">Whitepaper</a>
+    </nav>
+  </header>
+  <main class="page">
+
+  <section class="title">
+    <h1>CoolourCoin — Whitepaper (HTML)</h1>
+    <p class="lead">Light‑backed, floor‑protected digital colours.</p>
+  </section>
+
+  <section class="content">
+    <h2>Abstract</h2>
+    <p>Most crypto assets are volatile and hard to understand. CoolourCoin proposes a colour‑first economy: finite shades of light, each protected by an immutable Spectral Floor — the highest price ever achieved by that colour.</p>
+
+    <h2>1. Palette & scarcity</h2>
+    <p>Genesis: 4,096 shades. Each token represents a unique RGB triplet; tiers reflect rarity towards white.</p>
+
+    <h2>2. Mining protocol</h2>
+    <p>RGB team mining synchronizes three people to commit the exact value of a newly released shade. Licenses allocate per‑channel capacity; value used sets the initial floor proportionally.</p>
+
+    <h2>3. Spectral Floor rule</h2>
+    <p>On‑chain enforcement prevents any sale below the recorded floor. OTC escapes are handled by official escrow that refuses transfers under floor.</p>
+
+    <h2>4. Market design</h2>
+    <p>Direct purchase at tier price, secondary marketplace with floor enforcement, split/merge mechanics and Assemblies with fixed creation fee.</p>
+
+    <h2>5. Governance of trust</h2>
+    <p>No passive yields or staking. Open contracts, public audits, and legal compliance. Clarity over hype.</p>
+
+    <hr>
+    <p><strong>PDF:</strong> If you also host <code>CoolourCoin.pdf</code> in the site root, a download link appears below.</p>
+    <p id="pdf-link"></p>
+  </section>
+
+  </main>
+  <footer class="site-footer">
+    <p>© 2025 CoolourCoin · Light‑backed, floor‑protected digital colours.</p>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
