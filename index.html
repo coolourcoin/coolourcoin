@@ -1,205 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CoolourCoin — Light-backed, floor-protected digital colours</title>
-  <meta name="description" content="CoolourCoin — Light-backed, floor-protected digital colours. Put your value in light. Let it rest.">
-  <link rel="icon" href="assets/logo2.png">
-  <style>
-    :root{
-      --bg:#0b1020; --fg:#e9f2ff; --muted:#98a7c0; --accent:#64d6ff; --glass:rgba(255,255,255,.06);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
-      color:var(--fg);
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(100,214,255,.25), transparent 60%),
-                  radial-gradient(900px 700px at 90% 10%, rgba(180,130,255,.22), transparent 60%),
-                  radial-gradient(700px 600px at 50% 110%, rgba(60,255,190,.18), transparent 60%),
-                  var(--bg);
-      background-attachment: fixed;
-    }
-    /* NAV */
-    .nav{
-      position:sticky; top:0; z-index:40;
-      backdrop-filter:saturate(1.2) blur(8px);
-      background:linear-gradient(to bottom, rgba(10,15,30,.7), rgba(10,15,30,.35));
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{
-      max-width:1200px; margin:0 auto; padding:14px 18px;
-      display:flex; align-items:center; gap:18px; justify-content:space-between;
-    }
-    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--fg)}
-    .brand img{width:34px; height:34px; border-radius:50%; object-fit:cover; background:#111}
-    .brand span{font-weight:700; letter-spacing:.3px}
-    .menu{display:flex; gap:18px; flex-wrap:wrap}
-    .menu a{
-      color:var(--fg); text-decoration:none; opacity:.9; font-weight:600; font-size:14.5px;
-      padding:6px 10px; border-radius:10px;
-    }
-    .menu a:hover{background:var(--glass); opacity:1}
-    /* HERO */
-    .hero{
-      max-width:1200px; margin:48px auto 28px; padding:0 18px; text-align:center;
-    }
-    .tag{display:inline-block; padding:6px 10px; border:1px solid rgba(255,255,255,.15); border-radius:999px; font-size:12.5px; color:var(--muted); letter-spacing:.3px}
-    h1{margin:16px auto 10px; font-size:38px; line-height:1.15}
-    .lead{max-width:820px; margin:0 auto; color:var(--muted); font-size:18px}
-    /* CARDS */
-    .grid{max-width:1200px; margin:36px auto 90px; padding:0 18px;
-      display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    }
-    .card{
-      background: var(--glass); border:1px solid rgba(255,255,255,.08);
-      border-radius:16px; padding:18px; min-height:160px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.25);
-    }
-    .card h3{margin:2px 0 8px; font-size:18px}
-    .card p{margin:0; color:var(--muted)}
-    .cta{
-      display:inline-block; margin-top:14px; padding:10px 14px; background:linear-gradient(90deg,#68dbff,#a07bff);
-      color:#061018; font-weight:800; border:none; border-radius:12px; text-decoration:none;
-      box-shadow:0 8px 22px rgba(100,214,255,.35);
-    }
-    .cta:hover{transform:translateY(-1px)}
-    /* FOOT */
-    footer{max-width:1200px; margin:30px auto 60px; padding:0 18px; color:var(--muted); text-align:center}
-    footer a{color:var(--accent); text-decoration:none}
-    /* DECLARATION MODAL */
-    .modal-backdrop{
-      position:fixed; inset:0; background:rgba(5,8,18,.65);
-      display:none; align-items:center; justify-content:center; z-index:100;
-      backdrop-filter: blur(6px);
-    }
-    .modal{
-      max-width:840px; width:min(92vw,840px); max-height:86vh; overflow:auto;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:22px 20px 18px;
-      box-shadow: 0 30px 90px rgba(0,0,0,.45);
-    }
-    .modal h2{margin:0 0 8px; text-align:center}
-    .rule{margin:8px 0; padding:10px 12px; border-left:3px solid rgba(100,214,255,.6); background:rgba(255,255,255,.03); border-radius:8px}
-    .oath{margin-top:16px; padding:14px; border:1px dashed rgba(255,255,255,.25); border-radius:12px; background:rgba(255,255,255,.03)}
-    .modal-actions{display:flex; gap:10px; justify-content:center; margin-top:16px}
-    .btn{
-      padding:10px 14px; border-radius:12px; font-weight:700; border:none; cursor:pointer;
-    }
-    .btn-primary{background:linear-gradient(90deg,#68dbff,#a07bff); color:#061018}
-    .btn-ghost{background:transparent; color:var(--fg); border:1px solid rgba(255,255,255,.18)}
-    @media (max-width:640px){ h1{font-size:28px} .lead{font-size:16px} }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoolourCoin — Light‑backed, floor‑protected digital colours</title>
+<link rel="icon" href="assets/logo2.png">
+<style>
+/* ---------- Base / Reset ---------- */
+*{box-sizing:border-box} html,body{height:100%} body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#e9f2ff;background:#0a0f1e}
+a{color:#cfe6ff;text-decoration:none} a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px}
+h1,h2,h3{margin:0 0 10px} h1{font-size:40px;letter-spacing:.3px} h2{font-size:26px} h3{font-size:19px}
+p{margin:0 0 12px;opacity:.95}
+
+/* ---------- Aurora background ---------- */
+.bg-aurora{position:relative;overflow:hidden}
+.bg-aurora:before,.bg-aurora:after{
+  content:"";position:absolute;inset:-30%;
+  background:radial-gradient(55% 65% at 30% 40%, rgba(69,233,255,.35), transparent 60%),
+             radial-gradient(45% 60% at 70% 35%, rgba(145, 85, 255,.30), transparent 60%),
+             radial-gradient(60% 55% at 50% 75%, rgba(255,220,120,.22), transparent 60%);
+  filter:blur(24px) saturate(1.15);
+  animation:flow 18s linear infinite alternate
+}
+.bg-aurora:after{animation-duration:26s;opacity:.8;mix-blend-mode:screen}
+@keyframes flow{0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(2%, -2%, 0) scale(1.03)}}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(1.2) blur(8px);
+     background:linear-gradient(to bottom, rgba(10,15,30,.78), rgba(10,15,30,.45));
+     border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;color:#e9f2ff;text-decoration:none}
+.brand img{width:28px;height:28px;border-radius:50%}
+.menu{display:flex;gap:16px;flex-wrap:wrap}
+.menu a{color:#e9f2ff;text-decoration:none;opacity:.9;padding:6px 10px;border-radius:10px}
+.menu a:hover{background:rgba(255,255,255,.06);opacity:1}
+
+/* ---------- Cards / Sections ---------- */
+.grid{display:grid;gap:16px}
+.grid.cols-3{grid-template-columns:repeat(1,minmax(0,1fr))}
+@media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.card h3{margin-bottom:6px}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.15);opacity:.9;margin-right:8px;font-size:13px}
+
+/* ---------- Buttons ---------- */
+.buttons{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+.btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06)}
+.btn.primary{background:linear-gradient(90deg,#aee2ff33,#ffd27a33);border-color:rgba(255,255,255,.22)}
+.btn:hover{filter:saturate(1.2);transform:translateY(-1px)}
+
+/* ---------- Footer ---------- */
+footer{opacity:.8;border-top:1px solid rgba(255,255,255,.06);margin-top:24px}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* ---------- Genesis Grid ---------- */
+.palette-controls{display:flex;gap:10px;align-items:center;margin:8px 0 14px}
+.view-toggle{padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.04)}
+.palette{display:grid;grid-template-columns:repeat(64, minmax(0,1fr)); gap:2px; background:rgba(255,255,255,.04);
+         padding:8px;border-radius:16px;border:1px solid rgba(255,255,255,.08)}
+.sw{width:100%;aspect-ratio:1;border-radius:6px;border:1px solid rgba(255,255,255,.06)}
+.pyramid .sw{clip-path:polygon(0 100%, 100% 100%, 50% 0)} /* triangular mask for demo */
+
+/* ---------- Declaration ---------- */
+.declaration{font-size:18px}
+.declaration li{margin:10px 0 0 0}
+hr.sep{border:0;border-top:1px solid rgba(255,255,255,.1);margin:18px 0}
+</style>
 </head>
-<body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html" aria-label="Go Home">
-        <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
-        <span>CoolourCoin</span>
-      </a>
-      <nav class="menu" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="genesis.html">Genesis Spectrum</a>
-        <a href="how.html">How it Works</a>
-        <a href="whitepaper.html">Whitepaper</a>
-        <a href="declaration.html" title="Read our declaration again">Declaration</a>
-        <a href="mailto:admin@coolourcoin.com">Contact</a>
-      </nav>
-    </div>
+<body class="bg-aurora">
+
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
+      <strong>CoolourCoin</strong>
+    </a>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="genesis.html">Genesis</a>
+      <a href="how.html">How</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="declaration.html">Declaration</a>
+    </nav>
   </div>
+</div>
 
-  <!-- HERO -->
-  <header class="hero">
-    <span class="tag">Light-backed • Floor-protected • Human-simple</span>
-    <h1>Put your value in light.<br/>Let it rest.</h1>
-    <p class="lead">Every colour is unique. Once a shade is mined, it holds a **Spectral Floor** — it can never be sold for less than its highest on-chain price. Mining is social: Red, Green, Blue — three people, one colour.</p>
-    <div style="margin-top:18px">
-      <a class="cta" href="genesis.html">Explore Genesis Spectrum</a>
-    </div>
-  </header>
-
-  <!-- CARDS -->
-  <section class="grid" aria-label="Highlights">
-    <article class="card">
-      <h3>1) A finite colour economy</h3>
-      <p>Start with a curated Genesis of 4,096 shades. Expand by octaves (8× splits) only when community value justifies it.</p>
-    </article>
-    <article class="card">
-      <h3>2) Spectral Floor</h3>
-      <p>Protocol-level rule: **never below the highest sale**. No backdoors. No admin overrides. Trust, encoded.</p>
-    </article>
-    <article class="card">
-      <h3>3) Team-mined colours</h3>
-      <p>Three miners (R, G, B) must be present to claim a shade. Simple, human, device-light. No GPUs needed.</p>
-    </article>
-    <article class="card">
-      <h3>4) Transparent & open</h3>
-      <p>Open contracts, auditable rules. Private only where needed (colour release seed), with proof-of-fairness.</p>
-    </article>
-    <article class="card">
-      <h3>5) Buy direct or mine</h3>
-      <p>Colours can be mined at windows or purchased directly at a premium. Either way, floor protection applies.</p>
-    </article>
-    <article class="card">
-      <h3>6) Assemblies</h3>
-      <p>Combine colours (e.g., flags) into a named Assembly with its own floor. Dissolve only by holding all parts.</p>
-    </article>
-    <article class="card">
-      <h3>7) Treasury = stability</h3>
-      <p>Fees fund a transparent treasury, protocol audits and public goods. No passive yield. No promises.</p>
-    </article>
-    <article class="card">
-      <h3>8) For humans, not bots</h3>
-      <p>Windows gated by semi-random oscillators seeded by live team data. Anti-bot, pro-presence.</p>
-    </article>
-  </section>
-
-  <footer>
-    <div>© 2025 CoolourCoin • <a href="declaration.html">A declaration of value</a> • <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></div>
-  </footer>
-
-  <!-- DECLARATION — first-visit modal -->
-  <div id="decl-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="decl-title">
-    <div class="modal">
-      <h2 id="decl-title">A declaration of value. A geometry of trust.</h2>
-      <div class="rule"><strong>1.</strong> Light is not a commodity. It is the first right.</div>
-      <div class="rule"><strong>2.</strong> You cannot devalue colour once it is mined with intention. Every drop of light has a memory.</div>
-      <div class="rule"><strong>3.</strong> Spectral Floor = Aura of Trust. It protects value like gravity protects form.</div>
-      <div class="rule"><strong>4.</strong> A colour cannot be copied, blurred, or duplicated. It exists once. And that is enough.</div>
-      <div class="rule"><strong>5.</strong> Trust is not a function of money. Trust is a spectrum.</div>
-      <div class="rule"><strong>6.</strong> Ownership may change, but origin does not. The discoverer’s light is forever.</div>
-      <div class="rule"><strong>7.</strong> Each colour holds its floor. No one shall pull it down. Even time bends to colour.</div>
-      <div class="rule"><strong>8.</strong> To mine a shade, you need three. Red, Green, Blue — a communion of presence.</div>
-      <div class="rule"><strong>9.</strong> CoolourCoin is not a casino. It is a resting place for light.</div>
-      <div class="rule"><strong>10.</strong> The rule is simple: Never sell below the light it cost.</div>
-      <div class="oath"><strong>Oath:</strong> When you hold a colour, you hold a right. When you sell it, you honour the floor. When you mine, you become part of the spectrum. Let the light remain true.</div>
-      <div class="modal-actions">
-        <button class="btn btn-ghost" onclick="location.href='declaration.html'">Read on a full page</button>
-        <button class="btn btn-primary" id="decl-accept">Enter CoolourCoin</button>
+<header class="container" style="padding-top:34px;padding-bottom:10px">
+  <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
+    <img src="assets/logo2.png" onerror="this.src='assets/logo.png'" alt="CoolourCoin" style="width:96px;height:96px;border-radius:999px;border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 40px rgba(0,0,0,.35)">
+    <div>
+      <h1>Light‑backed, floor‑protected digital colours.</h1>
+      <p>Put your value in light. Let it rest.</p>
+      <div class="buttons">
+        <a class="btn primary" href="how.html">How it works</a>
+        <a class="btn" href="genesis.html">Genesis spectrum (4096)</a>
+        <a class="btn" href="whitepaper.html">Read whitepaper</a>
       </div>
     </div>
   </div>
+</header>
 
-  <script>
-    // Show declaration only on first visit (per browser)
-    (function(){
-      try {
-        const KEY='cc_declared_v1';
-        const seen = localStorage.getItem(KEY);
-        const backdrop = document.getElementById('decl-backdrop');
-        const accept = document.getElementById('decl-accept');
-        if(!seen && backdrop){
-          backdrop.style.display='flex';
-          accept?.addEventListener('click', ()=>{
-            localStorage.setItem(KEY, 'yes');
-            backdrop.style.display='none';
-          });
-        }
-      } catch(e){ /* ignore */ }
-    })();
-  </script>
+<main class="container">
+  <div class="grid cols-3">
+    <div class="card"><h3>1) Spectral Floor (never below)</h3><p>Each colour has a permanent price floor equal to its all‑time high sale. Listed anywhere below? Blocked at the protocol level.</p></div>
+    <div class="card"><h3>2) Two ways to obtain</h3><p><b>Mine</b> as an RGB team using licences, or <b>Buy Direct</b> from the protocol at tier‑based prices. No lotteries. No hype.</p></div>
+    <div class="card"><h3>3) RGB social mining</h3><p>Three humans, three channels (R, G, B). Commit the exact shade during an open window. If one drops, a 15‑minute grace; after that, the window reopens.</p></div>
+    <div class="card"><h3>4) Licences</h3><p>Simple, capped, and time‑released. Early are cheaper; later rarer → pricier. Licences fuel mining and anchor initial value.</p></div>
+    <div class="card"><h3>5) Splits & Merges</h3><p>Split a colour into on‑chain fractions when price milestones are met. Merge back by reuniting all parts. Floor always follows the max sale.</p></div>
+    <div class="card"><h3>6) Assemblies</h3><p>Combine multiple colours (e.g., a national flag). A fixed fee (to treasury) sets a floor for the assembly. Dissolve later if you own them all.</p></div>
+    <div class="card"><h3>7) Treasury</h3><p>Holds colours and fees to stabilise markets, fund audits, and pay contributors with on‑chain assets, not promises.</p></div>
+    <div class="card"><h3>8) Open, auditable</h3><p>Core contracts are public. Randomness = verifiable (onion RNG). No admin backdoors for price floors. No passive yield.</p></div>
+    <div class="card"><h3>9) Human‑first</h3><p>CoolourCoin is not a casino. It’s a resting place for light — and a tool to store value without dumps.</p></div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2025 CoolourCoin</div>
+    <div>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a> · <a href="https://github.com/coolourcoin/coolourcoin">GitHub</a></div>
+  </div>
+</footer>
 </body>
 </html>

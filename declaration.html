@@ -1,72 +1,116 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CoolourCoin — Declaration</title>
-  <link rel="icon" href="assets/logo2.png">
-  <style>
-    :root{ --bg:#0b1020; --fg:#e9f2ff; --muted:#9fb0c9; --glass:rgba(255,255,255,.06) }
-    body{
-      margin:0; color:var(--fg); background:
-       radial-gradient(1100px 520px at 15% -10%, rgba(100,214,255,.24), transparent 60%),
-       radial-gradient(900px 680px at 90% 10%, rgba(180,130,255,.20), transparent 60%),
-       var(--bg);
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
-    }
-    .nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(1.1) blur(8px);
-      background:linear-gradient(to bottom, rgba(10,15,30,.7), rgba(10,15,30,.35)); border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-inner{max-width:900px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between}
-    .brand{display:flex; gap:10px; align-items:center; text-decoration:none; color:var(--fg)}
-    .brand img{width:28px; height:28px; border-radius:50%}
-    .menu a{color:var(--fg); text-decoration:none; opacity:.9; padding:6px 10px; border-radius:10px}
-    .menu a:hover{background:var(--glass); opacity:1}
-    main{max-width:900px; margin:26px auto 60px; padding:0 16px}
-    h1{font-size:30px; margin:12px 0 6px}
-    .sub{color:var(--muted); margin:0 0 18px}
-    .block{background:var(--glass); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .rule{margin:8px 0; padding:10px 12px; border-left:3px solid rgba(100,214,255,.6); background:rgba(255,255,255,.03); border-radius:8px}
-    .oath{margin-top:14px; padding:12px; border:1px dashed rgba(255,255,255,.22); border-radius:12px; background:rgba(255,255,255,.03)}
-    footer{max-width:900px; margin:30px auto 60px; padding:0 16px; color:var(--muted); text-align:center}
-    footer a{color:#64d6ff; text-decoration:none}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoolourCoin — Declaration of Value</title>
+<link rel="icon" href="assets/logo2.png">
+<style>
+/* ---------- Base / Reset ---------- */
+*{box-sizing:border-box} html,body{height:100%} body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#e9f2ff;background:#0a0f1e}
+a{color:#cfe6ff;text-decoration:none} a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px}
+h1,h2,h3{margin:0 0 10px} h1{font-size:40px;letter-spacing:.3px} h2{font-size:26px} h3{font-size:19px}
+p{margin:0 0 12px;opacity:.95}
+
+/* ---------- Aurora background ---------- */
+.bg-aurora{position:relative;overflow:hidden}
+.bg-aurora:before,.bg-aurora:after{
+  content:"";position:absolute;inset:-30%;
+  background:radial-gradient(55% 65% at 30% 40%, rgba(69,233,255,.35), transparent 60%),
+             radial-gradient(45% 60% at 70% 35%, rgba(145, 85, 255,.30), transparent 60%),
+             radial-gradient(60% 55% at 50% 75%, rgba(255,220,120,.22), transparent 60%);
+  filter:blur(24px) saturate(1.15);
+  animation:flow 18s linear infinite alternate
+}
+.bg-aurora:after{animation-duration:26s;opacity:.8;mix-blend-mode:screen}
+@keyframes flow{0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(2%, -2%, 0) scale(1.03)}}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(1.2) blur(8px);
+     background:linear-gradient(to bottom, rgba(10,15,30,.78), rgba(10,15,30,.45));
+     border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;color:#e9f2ff;text-decoration:none}
+.brand img{width:28px;height:28px;border-radius:50%}
+.menu{display:flex;gap:16px;flex-wrap:wrap}
+.menu a{color:#e9f2ff;text-decoration:none;opacity:.9;padding:6px 10px;border-radius:10px}
+.menu a:hover{background:rgba(255,255,255,.06);opacity:1}
+
+/* ---------- Cards / Sections ---------- */
+.grid{display:grid;gap:16px}
+.grid.cols-3{grid-template-columns:repeat(1,minmax(0,1fr))}
+@media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.card h3{margin-bottom:6px}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.15);opacity:.9;margin-right:8px;font-size:13px}
+
+/* ---------- Buttons ---------- */
+.buttons{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+.btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06)}
+.btn.primary{background:linear-gradient(90deg,#aee2ff33,#ffd27a33);border-color:rgba(255,255,255,.22)}
+.btn:hover{filter:saturate(1.2);transform:translateY(-1px)}
+
+/* ---------- Footer ---------- */
+footer{opacity:.8;border-top:1px solid rgba(255,255,255,.06);margin-top:24px}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* ---------- Genesis Grid ---------- */
+.palette-controls{display:flex;gap:10px;align-items:center;margin:8px 0 14px}
+.view-toggle{padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.04)}
+.palette{display:grid;grid-template-columns:repeat(64, minmax(0,1fr)); gap:2px; background:rgba(255,255,255,.04);
+         padding:8px;border-radius:16px;border:1px solid rgba(255,255,255,.08)}
+.sw{width:100%;aspect-ratio:1;border-radius:6px;border:1px solid rgba(255,255,255,.06)}
+.pyramid .sw{clip-path:polygon(0 100%, 100% 100%, 50% 0)} /* triangular mask for demo */
+
+/* ---------- Declaration ---------- */
+.declaration{font-size:18px}
+.declaration li{margin:10px 0 0 0}
+hr.sep{border:0;border-top:1px solid rgba(255,255,255,.1);margin:18px 0}
+</style>
 </head>
-<body>
-  <div class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
-        <strong>CoolourCoin</strong>
-      </a>
-      <nav class="menu">
-        <a href="index.html">Home</a>
-        <a href="genesis.html">Genesis</a>
-        <a href="how.html">How</a>
-        <a href="whitepaper.html">Whitepaper</a>
-      </nav>
-    </div>
+<body class="bg-aurora">
+
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo2.png" alt="CoolourCoin logo" onerror="this.src='assets/logo.png'">
+      <strong>CoolourCoin</strong>
+    </a>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="genesis.html">Genesis</a>
+      <a href="how.html">How</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="declaration.html">Declaration</a>
+    </nav>
   </div>
+</div>
 
-  <main>
-    <h1>A declaration of value. A geometry of trust.</h1>
-    <p class="sub">The ethos that governs our spectrum.</p>
-    <div class="block">
-      <div class="rule"><strong>1.</strong> Light is not a commodity. It is the first right.</div>
-      <div class="rule"><strong>2.</strong> You cannot devalue colour once it is mined with intention. Every drop of light has a memory.</div>
-      <div class="rule"><strong>3.</strong> Spectral Floor = Aura of Trust. It protects value like gravity protects form.</div>
-      <div class="rule"><strong>4.</strong> A colour cannot be copied, blurred, or duplicated. It exists once. And that is enough.</div>
-      <div class="rule"><strong>5.</strong> Trust is not a function of money. Trust is a spectrum.</div>
-      <div class="rule"><strong>6.</strong> Ownership may change, but origin does not. The discoverer’s light is forever.</div>
-      <div class="rule"><strong>7.</strong> Each colour holds its floor. No one shall pull it down. Even time bends to colour.</div>
-      <div class="rule"><strong>8.</strong> To mine a shade, you need three. Red, Green, Blue — a communion of presence.</div>
-      <div class="rule"><strong>9.</strong> CoolourCoin is not a casino. It is a resting place for light.</div>
-      <div class="rule"><strong>10.</strong> The rule is simple: Never sell below the light it cost.</div>
-      <div class="oath"><strong>Oath:</strong> When you hold a colour, you hold a right. When you sell it, you honour the floor. When you mine, you become part of the spectrum. Let the light remain true.</div>
-    </div>
-  </main>
-
-  <footer>
-    <div>© 2025 CoolourCoin • <a href="index.html">Return Home</a> • <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></div>
-  </footer>
+<main class="container" style="padding-top:24px">
+  <h1>A Declaration of Value. A Geometry of Trust.</h1>
+  <hr class="sep">
+  <ol class="declaration">
+    <li><b>Light is not a commodity.</b> It is the first right.</li>
+    <li>You cannot devalue colour once it is mined with intention. Every drop of light has a memory.</li>
+    <li><b>Spectral Floor = Aura of Trust.</b> It protects value like gravity protects form.</li>
+    <li>A colour cannot be copied, blurred, or duplicated. It exists once. And that is enough.</li>
+    <li>Trust is not a function of money. Trust is a spectrum.</li>
+    <li>Ownership may change, but origin does not. The discoverer’s light is forever.</li>
+    <li>Each colour holds its floor. No one shall pull it down. Even time bends to colour.</li>
+    <li>To mine a shade, you need three. Red, Green, Blue — a communion of presence.</li>
+    <li>CoolourCoin is not a casino. It is a resting place for light.</li>
+    <li>The rule is simple: <b>Never sell below the light it cost.</b></li>
+  </ol>
+  <hr class="sep">
+  <p style="opacity:.85">When you hold a colour, you hold a right. When you sell it, you honour the floor. When you mine, you become part of the spectrum. Let the light remain true.</p>
+</main>
+<footer>
+  <div class="container">
+    <div>© 2025 CoolourCoin</div>
+    <div>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a> · <a href="https://github.com/coolourcoin/coolourcoin">GitHub</a></div>
+  </div>
+</footer>
 </body>
 </html>
