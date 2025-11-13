@@ -1,0 +1,85 @@
+/* CoolourCoin — minimal premium theme */
+:root{
+  --bg:#05070c;
+  --bg-2:#0a1222;
+  --ink:#e7ecff;
+  --muted:#93a5c6;
+  --card:#0f1730;
+  --stroke:#26324d;
+  --accent:#6be7ff;
+  --btn:#172142;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
+img{max-width:100%;height:auto;display:block}
+
+/* NAV */
+.cc-nav{position:sticky;top:0;z-index:40;background:rgba(5,7,12,.74);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+.cc-nav__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
+.cc-brand{display:inline-flex;align-items:center;text-decoration:none}
+.cc-brand__img{height:34px}
+.cc-menu a{color:var(--ink);text-decoration:none;margin-left:18px;opacity:.85;transition:opacity .2s ease}
+.cc-menu a:hover,.cc-menu a.is-active{opacity:1;color:var(--accent)}
+
+/* HERO */
+.cc-hero{position:relative;max-width:1200px;margin:32px auto 0;padding:52px 18px 80px}
+.cc-hero__copy h1{font-size:clamp(30px,4.5vw,56px);margin:0 0 8px;font-weight:700;letter-spacing:.2px}
+.cc-tag{margin:6px 0 0;color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
+.cc-hero__glow{position:absolute;inset:auto 10% -40% 10%;height:240px;background:
+  radial-gradient(120px 80px at 35% 30%, rgba(120,255,255,.16), transparent),
+  radial-gradient(180px 100px at 65% 40%, rgba(160,100,255,.16), transparent);
+  filter:blur(24px);pointer-events:none}
+
+.cc-hero--compact{padding-bottom:26px}
+
+/* Watermark */
+.cc-watermark{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;opacity:.06}
+.cc-watermark img{max-width:58vmin;filter:drop-shadow(0 0 6px rgba(0,0,0,.6))}
+
+/* Layout */
+.cc-wrap{max-width:1200px;margin:0 auto;padding:0 18px 64px}
+
+/* Cards grid */
+.cc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:6px}
+@media (max-width:900px){.cc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.cc-grid{grid-template-columns:1fr}}
+.cc-card{background:linear-gradient(180deg,var(--card),#0c1326);border:1px solid var(--stroke);border-radius:16px;padding:18px 18px 16px;min-height:140px}
+.cc-card h3{margin:4px 0 8px;font-size:18px}
+.cc-card p{margin:0;color:var(--muted);line-height:1.55}
+
+/* Steps */
+.steps{margin-top:34px}
+.steps h2{margin:0 0 12px}
+.steps__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:1100px){.steps__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.steps__grid{grid-template-columns:1fr}}
+.step{background:linear-gradient(180deg,var(--card),#0c1326);border:1px solid var(--stroke);border-radius:16px;padding:16px;position:relative}
+.badge{position:absolute;top:10px;left:12px;display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#1c2a4e;border:1px solid var(--stroke);font-size:13px;color:var(--accent)}
+
+/* Road */
+.road{margin-top:34px}
+.roadlist{margin:8px 0 0 18px;color:var(--muted)}
+.roadlist li{margin:8px 0}
+
+/* Legal */
+.legal{margin-top:34px}
+.legal p,.legend,.muted{color:var(--muted)}
+.plain{margin:8px 0 0 18px;color:var(--muted)}
+
+/* Buttons */
+.cc-cta{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 0}
+.cc-btn{background:var(--btn);border:1px solid var(--stroke);color:var(--ink);text-decoration:none;padding:12px 18px;border-radius:12px}
+.cc-btn:hover{border-color:var(--accent)}
+.cc-btn--ghost{background:transparent}
+
+/* Footer */
+.cc-foot{border-top:1px solid rgba(255,255,255,.06);padding:18px;text-align:center;color:var(--muted)}
+
+/* Genesis canvas wrapper */
+.page--genesis .pyramid-wrap{position:relative;display:grid;place-items:center;margin:10px auto 30px;max-width:1200px;border:1px solid var(--stroke);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#060a12,#0b1324)}
+#pyr{display:block;width:100%;height:auto}
+.aurora-overlay{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:
+  radial-gradient(45% 25% at 50% 0%, rgba(120,255,255,.22), rgba(0,0,0,0)),
+  radial-gradient(50% 35% at 50% 30%, rgba(170,120,255,.12), rgba(0,0,0,0))}
+.legend{color:var(--muted);text-align:center;margin-top:10px}

@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CoolourCoin — Light-backed, floor-protected digital colours</title>
-  <meta name="description" content="CoolourCoin: light-backed, floor-protected digital colours. Simple. Transparent. Human." />
+  <title>CoolourCoin — Light‑backed, floor‑protected digital colours</title>
+  <meta name="description" content="CoolourCoin: light‑backed, floor‑protected digital colours. Simple. Transparent. Human." />
   <link rel="icon" type="image/png" href="assets/logo2.png">
   <link rel="preload" href="assets/logo.png" as="image">
   <link rel="preload" href="assets/logo2.png" as="image">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page--home">
-  <!-- NAV -->
-  <header class="cc-nav">
+  <!-- Fixed NAV -->
+  <header class="cc-nav" role="banner">
     <div class="cc-nav__inner">
       <a class="cc-brand" href="index.html" aria-label="CoolourCoin — Home">
-        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img">
+        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img" />
       </a>
-      <nav class="cc-menu">
+      <nav class="cc-menu" role="navigation" aria-label="Main menu">
         <a href="genesis.html">Genesis Spectrum</a>
         <a href="how.html">How it works</a>
         <a href="whitepaper.html">Whitepaper</a>
@@ -29,55 +29,83 @@
   <!-- HERO -->
   <section class="cc-hero">
     <div class="cc-hero__copy">
-      <h1>Light-backed, floor-protected digital colours.</h1>
+      <h1>Light‑backed, floor‑protected digital colours.</h1>
       <p class="cc-tag">Put your value in light. Let it rest.</p>
+      <div class="cc-cta">
+        <a class="cc-btn" href="genesis.html">Explore Genesis</a>
+        <a class="cc-btn cc-btn--ghost" href="whitepaper.html">Read the Whitepaper</a>
+      </div>
     </div>
     <div class="cc-hero__glow" aria-hidden="true"></div>
   </section>
 
-  <!-- WATERMARK BG -->
+  <!-- Watermark -->
   <div class="cc-watermark" aria-hidden="true">
     <img src="assets/logo2.png" alt="">
   </div>
 
-  <!-- PILLARS -->
   <main class="cc-wrap">
+    <!-- Why / Pillars -->
     <section class="cc-grid">
       <article class="cc-card">
-        <h3>Spectral Floor Rule</h3>
-        <p>Every colour remembers its highest price. Listings below that floor are rejected at the contract level.</p>
+        <h3>Simplicity</h3>
+        <p>Colours are assets. Mine or buy them. No staking, no APY, no tricks.</p>
       </article>
       <article class="cc-card">
-        <h3>RGB Team Mining</h3>
-        <p>Three people, three channels (R, G, B). Mine an exact shade together during an open window.</p>
+        <h3>Transparency</h3>
+        <p>Open contracts, public treasury, verifiable rules. Everyone can audit.</p>
       </article>
       <article class="cc-card">
-        <h3>Licences</h3>
-        <p>Simple, fixed-price per channel at start. Capacity is consumed proportionally when you mine.</p>
+        <h3>Stability</h3>
+        <p><strong>Spectral Floor Rule</strong>: a colour can never be listed below its all‑time high. Enforced by contract.</p>
+      </article>
+      <article class="cc-card">
+        <h3>Human Mining</h3>
+        <p>RGB teams of three mine an exact shade together in a live window. Accessible and fair.</p>
       </article>
       <article class="cc-card">
         <h3>Treasury</h3>
-        <p>Holds protocol colours and receives transparent fees. No hidden emissions. No yield promises.</p>
+        <p>Fees flow to a transparent on‑chain treasury. No hidden emissions. Community‑first.</p>
       </article>
       <article class="cc-card">
         <h3>Assemblies</h3>
-        <p>Combine owned colours into a single on-chain asset (e.g., a flag palette). Dissolve only if you own all parts.</p>
-      </article>
-      <article class="cc-card">
-        <h3>Open & Human</h3>
-        <p>Public code and verifiable rules. Audit anyone, anytime. The only secret: the colour release seed.</p>
+        <p>Combine owned colours into an on‑chain set (e.g., a flag palette). Dissolve only if you own all parts.</p>
       </article>
     </section>
 
-    <section class="cc-cta">
-      <a class="cc-btn" href="genesis.html">Explore the Genesis Spectrum</a>
-      <a class="cc-btn cc-btn--ghost" href="whitepaper.html">Read the Whitepaper</a>
+    <!-- How in 30 seconds -->
+    <section class="steps">
+      <h2>How it works — in 30 seconds</h2>
+      <div class="steps__grid">
+        <div class="step"><span class="badge">1</span><h4>Get licences</h4><p>Each channel (R, G, B) has a simple fixed price at start. Licences hold capacity.</p></div>
+        <div class="step"><span class="badge">2</span><h4>Form a team</h4><p>Three people connect as R, G or B and choose a target shade (e.g., R200 G128 B099).</p></div>
+        <div class="step"><span class="badge">3</span><h4>Mine the exact shade</h4><p>When the protocol opens a window for that shade, the online team that matches it mints the colour.</p></div>
+        <div class="step"><span class="badge">4</span><h4>Spectral floor</h4><p>The colour’s minimum price is set to the highest price ever paid. Listings below floor are rejected.</p></div>
+      </div>
+    </section>
+
+    <!-- Road -->
+    <section class="road">
+      <h2>Road to Mainnet</h2>
+      <ul class="roadlist">
+        <li><strong>v0.1</strong> — Public website & concept.</li>
+        <li><strong>v0.2</strong> — Testnet contracts (ERC‑721 + Market with spectral floor). Open audits.</li>
+        <li><strong>v0.3</strong> — Genesis licences & first colours. Treasury live.</li>
+        <li><strong>v1.0</strong> — Mainnet launch & marketplace. </li>
+      </ul>
+    </section>
+
+    <!-- Legal -->
+    <section class="legal">
+      <h2>Clarity & Compliance</h2>
+      <p>No yield, no staking, no promises of profit. CoolourCoin is a collectible marketplace with a built‑in floor rule. For large purchases or fiat ramps, KYC/AML partners may be used.</p>
     </section>
   </main>
 
   <footer class="cc-foot">
     <p>© 2025 CoolourCoin — The Contact of Light.</p>
   </footer>
+
   <script src="app.js"></script>
 </body>
 </html>

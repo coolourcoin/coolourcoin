@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CoolourCoin — Genesis Spectrum</title>
+  <meta name="description" content="The 4,096‑shade Genesis Spectrum — a premium auroral pyramid." />
   <link rel="icon" type="image/png" href="assets/logo2.png">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -11,7 +12,7 @@
   <header class="cc-nav">
     <div class="cc-nav__inner">
       <a class="cc-brand" href="index.html" aria-label="CoolourCoin — Home">
-        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img">
+        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img" />
       </a>
       <nav class="cc-menu">
         <a class="is-active" href="genesis.html">Genesis Spectrum</a>
@@ -24,7 +25,7 @@
 
   <section class="cc-hero cc-hero--compact">
     <h1>Genesis Spectrum — 4,096 unique shades</h1>
-    <p>Bottom-up pyramid. Near-white at the apex. An auroral gradient ensures a premium, living look.</p>
+    <p>Bottom‑up pyramid. Near‑white at the apex. A calm auroral gradient for a premium look.</p>
   </section>
 
   <main class="cc-wrap">
@@ -32,7 +33,7 @@
       <canvas id="pyr" width="1400" height="1100" aria-label="Genesis pyramid canvas"></canvas>
       <div class="aurora-overlay" aria-hidden="true"></div>
     </div>
-    <p class="legend">Visualisation only. Actual mint order follows the protocol’s oscillator (semi-random, verifiable).</p>
+    <p class="legend">Visualisation only. Mint order follows the protocol oscillator (semi‑random, verifiable).</p>
   </main>
 
   <footer class="cc-foot">
@@ -41,20 +42,17 @@
 
   <script src="app.js"></script>
   <script>
-    // draw a neat auroral pyramid of 4096 swatches (64 rows, triangular layout)
+    // Draw a clean auroral pyramid with 4096 swatches (64x64 right triangle).
     window.addEventListener('load', () => {
       const c = document.getElementById('pyr');
       const ctx = c.getContext('2d');
-      const rows = 64;                 // 1 + 2 + ... + 64 = 2080 (nope) → we want exactly 4096 cells
-      // So we’ll draw a RIGHT pyramid: row i has 64 cells; mask visually into a triangle.
-      // Then softly fade edges, and force top cells to near-white for a premium feel.
-
-      const cell = 18;                 // cell size
+      const rows = 64;
+      const cell = 18;
       const cols = 64;
       c.width  = cols * cell + 80;
       c.height = cols * cell * 0.9 + 120;
 
-      // background
+      // backdrop
       const grad = ctx.createLinearGradient(0,0,0,c.height);
       grad.addColorStop(0, '#05070c');
       grad.addColorStop(1, '#0a1222');
@@ -65,39 +63,37 @@
       const offsetY = 60;
 
       for (let r = 0; r < rows; r++) {
-        // number of blocks in this visual row (triangular)
-        const n = cols - r;
+        const n = cols - r; // length of this row in the triangle
         for (let k = 0; k < n; k++) {
           const x = offsetX + ( (cols - n)/2 + k ) * cell;
           const y = offsetY + r * (cell - 2);
 
-          // auroral HSL: hue sweeps slowly, saturation moderate, lightness climbs to top
-          const hue = (220 + (k*4 + r*2)) % 360;      // blues→teals→violets
-          const sat = Math.max(42, 70 - r * 0.3);     // a bit less saturation higher
-          const lightTop = 96;                        // keep the apex near-white, not black
-          const lightBase = 22;
-          const lt = lightBase + (lightTop - lightBase) * (1 - r/(rows-1)); // up = brighter
+          // harmonic auroral palette
+          const hue = (210 + (k*3.2 + r*1.7)) % 360; // blue → teal → violet
+          const sat = Math.max(40, 68 - r * 0.35);
+          const lightTop = 96;   // apex near‑white
+          const lightBase = 20;
+          const lt = lightBase + (lightTop - lightBase) * (1 - r/(rows-1));
 
           ctx.fillStyle = `hsl(${hue}deg, ${sat}%, ${lt}%)`;
           ctx.fillRect(x, y, cell-1, cell-1);
         }
       }
 
-      // soft mask to get a crisp pyramid silhouette with glossy vibe
+      // soft gloss & apex glow
       const g2 = ctx.createLinearGradient(0,0,0,c.height);
-      g2.addColorStop(0, 'rgba(255,255,255,0.15)');
-      g2.addColorStop(0.45, 'rgba(255,255,255,0.04)');
+      g2.addColorStop(0, 'rgba(255,255,255,0.12)');
+      g2.addColorStop(0.45, 'rgba(255,255,255,0.03)');
       g2.addColorStop(1, 'rgba(0,0,0,0.35)');
       ctx.fillStyle = g2;
       ctx.fillRect(0,0,c.width,c.height);
 
-      // apex glow
       ctx.save();
       ctx.globalCompositeOperation = 'screen';
       const cx = c.width/2, cy = offsetY + 6;
       const rad = 120;
       const g3 = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-      g3.addColorStop(0, 'rgba(255,255,255,0.9)');
+      g3.addColorStop(0, 'rgba(255,255,255,0.85)');
       g3.addColorStop(1, 'rgba(0,200,255,0)');
       ctx.fillStyle = g3;
       ctx.beginPath();

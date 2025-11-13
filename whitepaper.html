@@ -1,112 +1,43 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Whitepaper — CoolourCoin</title>
-<link rel="icon" href="assets/logo2.png">
-<style>
-:root{
-  --bg:#0b1020;
-  --panel:#0f1630;
-  --text:#e9f0ff;
-  --muted:#a9b8d9;
-  --accent:#6ee7ff;
-  --accent2:#ff9af0;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-/* Header */
-.header{position:sticky;top:0;z-index:999;background:linear-gradient(180deg,rgba(11,16,32,0.95),rgba(11,16,32,0.75));backdrop-filter: blur(8px);border-bottom:1px solid rgba(255,255,255,0.08)}
-.nav{display:flex;align-items:center;gap:18px;padding:10px 16px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0.4px}
-.brand img{width:42px;height:42px;display:block;filter: drop-shadow(0 0 12px rgba(110,231,255,0.45))}
-.brand a{color:var(--text);text-decoration:none}
-.spacer{flex:1}
-.nav a.link{color:var(--muted);padding:8px 10px;border-radius:10px}
-.nav a.link:hover{background:rgba(255,255,255,0.06);color:var(--text)}
-.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0f1f;padding:8px 12px;border-radius:12px;font-weight:700}
-/* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06)}
-.hero .container{padding-top:46px;padding-bottom:46px}
-.h1{font-size:42px;line-height:1.12;margin:18px 0 8px 0}
-.sub{color:var(--muted);max-width:740px}
-.btns{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-.btn{display:inline-block;padding:10px 14px;border-radius:12px;font-weight:700}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0f1f}
-.btn.ghost{border:1px solid rgba(255,255,255,0.15);color:var(--text)}
-/* Aurora background */
-.aurora{
-  position:absolute;inset:-20% -10% auto -10%;height:320px;pointer-events:none;z-index:0;
-  background: radial-gradient(1200px 240px at 20% 50%, rgba(110,231,255,0.25), transparent 60%),
-              radial-gradient(900px 200px at 60% 40%, rgba(255,154,240,0.22), transparent 65%),
-              radial-gradient(700px 240px at 85% 60%, rgba(120,255,200,0.18), transparent 70%);
-  filter: blur(16px);
-  opacity:.9;
-}
-/* Sections */
-.section{padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.card{background:var(--panel);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:18px}
-.grid{display:grid;gap:16px}
-.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}.h1{font-size:32px}}
-.footer{color:var(--muted);padding:24px 0}
-.small{font-size:14px;color:var(--muted)}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoolourCoin — Whitepaper</title>
+  <link rel="icon" type="image/png" href="assets/logo2.png">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-
-<div class="header">
-  <div class="nav container">
-    <a href="index.html" class="brand" title="CoolourCoin — Home">
-      <img src="assets/logo2.png" alt="CoolourCoin logo" />
-      <span>CoolourCoin</span>
-    </a>
-    <div class="spacer"></div>
-    <a class="link" href="index.html">Home</a>
-    <a class="link" href="genesis.html">Genesis Spectrum</a>
-    <a class="link" href="how.html">How it Works</a>
-    <a class="link" href="whitepaper.html">Whitepaper</a>
-    <a class="cta" href="mailto:admin@coolourcoin.com">Contact</a>
-  </div>
-</div>
-
-<section class="hero">
-  <div class="aurora"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <h1 class="h1">Whitepaper</h1>
-    <p class="sub">Light‑backed, floor‑protected digital colours. Read the full design: palette, social mining, spectral floor, governance.</p>
-    <div class="btns">
-      <a class="btn primary" href="https://coolourcoin.github.io/coolourcoin/CoolourCoin.pdf" target="_blank" rel="noopener">Open PDF</a>
+<body class="page--wp">
+  <header class="cc-nav">
+    <div class="cc-nav__inner">
+      <a class="cc-brand" href="index.html" aria-label="CoolourCoin — Home">
+        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img" />
+      </a>
+      <nav class="cc-menu">
+        <a href="genesis.html">Genesis Spectrum</a>
+        <a href="how.html">How it works</a>
+        <a class="is-active" href="whitepaper.html">Whitepaper</a>
+        <a href="mailto:admin@coolourcoin.com">Contact</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="section">
-  <div class="container">
-    <div class="card">
-      <h3>Highlights</h3>
-      <ul>
-        <li>Finite Genesis palette, phased expansions.</li>
-        <li>Protocol‑level resale floor (no dumps below ATH).</li>
-        <li>Team‑based mining with live windows.</li>
-        <li>Assemblies (e.g., flags) with their own floors.</li>
-        <li>Open‑source, audit‑first, no passive yield.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  <section class="cc-hero cc-hero--compact">
+    <h1>Whitepaper</h1>
+    <p>Concept, rules and the Spectral Floor protocol — in detail.</p>
+  </section>
 
+  <main class="cc-wrap">
+    <section class="docbox">
+      <p>You can host the full PDF in this repository and link it below. For now we’ll use a placeholder link.</p>
+      <p><a class="cc-btn" href="CoolourCoin.pdf">Open PDF</a></p>
+      <p class="muted">Tip: place <code>CoolourCoin.pdf</code> in the repository root (same level as this file) or update the link to your actual file name.</p>
+    </section>
+  </main>
 
-<div class="footer">
-  <div class="container small">
-    © 2025 CoolourCoin — Light‑backed, floor‑protected digital colours.
-  </div>
-</div>
-
+  <footer class="cc-foot">
+    <p>© 2025 CoolourCoin — The Contact of Light.</p>
+  </footer>
+  <script src="app.js"></script>
 </body>
 </html>

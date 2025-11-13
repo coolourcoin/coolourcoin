@@ -1,115 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How it Works — CoolourCoin</title>
-<link rel="icon" href="assets/logo2.png">
-<style>
-:root{
-  --bg:#0b1020;
-  --panel:#0f1630;
-  --text:#e9f0ff;
-  --muted:#a9b8d9;
-  --accent:#6ee7ff;
-  --accent2:#ff9af0;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-/* Header */
-.header{position:sticky;top:0;z-index:999;background:linear-gradient(180deg,rgba(11,16,32,0.95),rgba(11,16,32,0.75));backdrop-filter: blur(8px);border-bottom:1px solid rgba(255,255,255,0.08)}
-.nav{display:flex;align-items:center;gap:18px;padding:10px 16px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0.4px}
-.brand img{width:42px;height:42px;display:block;filter: drop-shadow(0 0 12px rgba(110,231,255,0.45))}
-.brand a{color:var(--text);text-decoration:none}
-.spacer{flex:1}
-.nav a.link{color:var(--muted);padding:8px 10px;border-radius:10px}
-.nav a.link:hover{background:rgba(255,255,255,0.06);color:var(--text)}
-.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0f1f;padding:8px 12px;border-radius:12px;font-weight:700}
-/* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06)}
-.hero .container{padding-top:46px;padding-bottom:46px}
-.h1{font-size:42px;line-height:1.12;margin:18px 0 8px 0}
-.sub{color:var(--muted);max-width:740px}
-.btns{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-.btn{display:inline-block;padding:10px 14px;border-radius:12px;font-weight:700}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0f1f}
-.btn.ghost{border:1px solid rgba(255,255,255,0.15);color:var(--text)}
-/* Aurora background */
-.aurora{
-  position:absolute;inset:-20% -10% auto -10%;height:320px;pointer-events:none;z-index:0;
-  background: radial-gradient(1200px 240px at 20% 50%, rgba(110,231,255,0.25), transparent 60%),
-              radial-gradient(900px 200px at 60% 40%, rgba(255,154,240,0.22), transparent 65%),
-              radial-gradient(700px 240px at 85% 60%, rgba(120,255,200,0.18), transparent 70%);
-  filter: blur(16px);
-  opacity:.9;
-}
-/* Sections */
-.section{padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.card{background:var(--panel);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:18px}
-.grid{display:grid;gap:16px}
-.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}.h1{font-size:32px}}
-.footer{color:var(--muted);padding:24px 0}
-.small{font-size:14px;color:var(--muted)}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoolourCoin — How it works</title>
+  <link rel="icon" type="image/png" href="assets/logo2.png">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-
-<div class="header">
-  <div class="nav container">
-    <a href="index.html" class="brand" title="CoolourCoin — Home">
-      <img src="assets/logo2.png" alt="CoolourCoin logo" />
-      <span>CoolourCoin</span>
-    </a>
-    <div class="spacer"></div>
-    <a class="link" href="index.html">Home</a>
-    <a class="link" href="genesis.html">Genesis Spectrum</a>
-    <a class="link" href="how.html">How it Works</a>
-    <a class="link" href="whitepaper.html">Whitepaper</a>
-    <a class="cta" href="mailto:admin@coolourcoin.com">Contact</a>
-  </div>
-</div>
-
-<section class="hero">
-  <div class="aurora"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <h1 class="h1">How it Works</h1>
-    <p class="sub">From licences to the Spectral Floor. Everything you need in one page — written for non‑crypto users.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container grid cols-2">
-    <div class="card">
-      <h3>1) Buy a Licence</h3>
-      <p>Choose a channel (R, G or B). A team needs three licences (one of each). Licences are limited and priced in phases.</p>
+<body class="page--how">
+  <header class="cc-nav">
+    <div class="cc-nav__inner">
+      <a class="cc-brand" href="index.html" aria-label="CoolourCoin — Home">
+        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img" />
+      </a>
+      <nav class="cc-menu">
+        <a href="genesis.html">Genesis Spectrum</a>
+        <a class="is-active" href="how.html">How it works</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="mailto:admin@coolourcoin.com">Contact</a>
+      </nav>
     </div>
-    <div class="card">
-      <h3>2) Team Up & Capture</h3>
-      <p>When a colour window opens (e.g., R200 G128 B099), your team must be online with exact capacities to capture it.</p>
-    </div>
-    <div class="card">
-      <h3>3) Spectral Floor</h3>
-      <p>Once bought or mined, a colour <b>cannot</b> be sold below its all‑time high. This is enforced by the contract.</p>
-    </div>
-    <div class="card">
-      <h3>4) Resell or Assemble</h3>
-      <p>Hold, resell on the marketplace, or combine multiple colours into an Assembly (e.g., a flag). You can dissolve anytime.</p>
-    </div>
-  </div>
-</section>
+  </header>
 
+  <section class="cc-hero cc-hero--compact">
+    <h1>How it works</h1>
+    <p>Ultra‑simple and transparent. No jargon, just rules you can verify.</p>
+  </section>
 
-<div class="footer">
-  <div class="container small">
-    © 2025 CoolourCoin — Light‑backed, floor‑protected digital colours.
-  </div>
-</div>
+  <main class="cc-wrap">
+    <section class="steps steps--wide">
+      <div class="steps__grid">
+        <div class="step"><span class="badge">1</span><h4>Licences</h4><p>Buy capacity for R, G or B. At start, each channel has a fixed price. Capacity is consumed proportionally when you mine.</p></div>
+        <div class="step"><span class="badge">2</span><h4>Teams</h4><p>Three unique people (different devices/locations) form a team: one R, one G, one B. Only one colour can be mined per team at a time.</p></div>
+        <div class="step"><span class="badge">3</span><h4>Mining</h4><p>Pick an exact target shade. When the oscillator opens a window for that shade, if your team is online with matching capacities, you mint it.</p></div>
+        <div class="step"><span class="badge">4</span><h4>Floor</h4><p>The colour’s minimum listing price is the highest price ever paid for it. Smart contracts reject lower listings automatically.</p></div>
+        <div class="step"><span class="badge">5</span><h4>Treasury</h4><p>Marketplace fees flow to the on‑chain treasury. Auditable. No hidden minting, no magic yield.</p></div>
+        <div class="step"><span class="badge">6</span><h4>Assemblies</h4><p>Optionally combine colours you own (e.g., a national flag palette). Dissolve only if you own all components.</p></div>
+      </div>
+    </section>
 
+    <section class="legal">
+      <h2>What CoolourCoin is <em>not</em></h2>
+      <ul class="plain">
+        <li>Not a bank and not an investment product.</li>
+        <li>No staking, no APY, no passive yield.</li>
+        <li>No admin backdoors to override the floor rule.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="cc-foot">
+    <p>© 2025 CoolourCoin — The Contact of Light.</p>
+  </footer>
+  <script src="app.js"></script>
 </body>
 </html>
