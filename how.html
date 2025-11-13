@@ -1,81 +1,192 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CoolourCoin — The Contact of Light</title>
-  <meta name="description" content="Light‑backed, floor‑protected digital colours. Put your value in light. Let it rest.">
-  <link rel="preload" href="assets/styles.css" as="style">
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8" />
+  <title>CoolourCoin — How it works</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div id="aurora-bg" aria-hidden="true"></div>
-  <div class="spectral-ring" aria-hidden="true"></div>
+  <div class="site-bg"></div>
 
-  <header class="site-nav">
-    <a class="brand" href="index.html">
-      <img src="assets/logo2.png" alt="CoolourCoin" class="brand-logo" onerror="this.src='assets/logo.png'">
-      <span>CoolourCoin</span>
-    </a>
-    <nav>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" />
+        <span>CoolourCoin</span>
+      </a>
+    </div>
+    <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="how.html">How it works</a>
-      <a href="genesis.html">Genesis spectrum</a>
-      <a href="manifesto.html">Manifest</a>
+      <a href="how-it-works.html" class="active">How it works</a>
+      <a href="genesis.html">Genesis Spectrum</a>
       <a href="whitepaper.html">Whitepaper</a>
     </nav>
   </header>
-  <main class="page">
 
-  <section class="title">
+  <main class="page narrow">
     <h1>How CoolourCoin works</h1>
-    <p class="lead">Simple, transparent, human. The first light‑backed asset with a hard <em>Spectral Floor</em>.</p>
-  </section>
 
-  <section class="content">
-    <h2>1) Palette & tiers</h2>
-    <p>We begin with a finite Genesis palette (4,096 shades) arranged from dark to white. Each colour has an ID, an RGB/HEX code, a tier and rarity rank.</p>
+    <section class="text-block">
+      <h2>1. Genesis Spectrum</h2>
+      <p>
+        CoolourCoin starts from a finite, public set of <strong>4,096 base colours</strong>.
+        Think of them as the first layer of a pyramid. Each colour has:
+      </p>
+      <ul>
+        <li>a numerical ID;</li>
+        <li>a precise RGB / HEX code;</li>
+        <li>a Tier (1–4), based on its distance to white;</li>
+        <li>a rarity level known from day one.</li>
+      </ul>
+      <p>
+        No new Genesis colours can be invented later. They are published once and remain the
+        backbone of the protocol.
+      </p>
+    </section>
 
-    <h2>2) Mining with teams (RGB)</h2>
-    <ul>
-      <li>Create a team of three. One plays Red, one Green, one Blue.</li>
-      <li>When a colour appears (e.g., <code>R200 G128 B099</code>), a team holding the exact values commits it first and wins.</li>
-      <li>Licenses allocate capacity per channel (R/G/B) and deplete proportionally to what you used.</li>
-      <li>One team can mine only one colour at a time. Disconnect? You have 15 minutes to rejoin or the slot reopens.</li>
-    </ul>
+    <section class="text-block">
+      <h2>2. Spectral Floor Rule</h2>
+      <p>
+        Every colour has a <strong>spectral floor</strong>: the highest price it has ever
+        been bought for (in the base currency of the chain, e.g. USDC).
+      </p>
+      <p>
+        The core rule is enforced in the smart contract:
+        <strong>no sale can be executed below that floor.</strong>
+      </p>
+      <p>
+        Technically, the contract keeps a mapping:
+      </p>
+      <pre class="code-block">
+spectralFloor[colorId] = max(spectralFloor[colorId], lastSalePrice);
+      </pre>
+      <p>
+        and requires, on each sale:
+      </p>
+      <pre class="code-block">
+require(salePrice &gt;= spectralFloor[colorId], "Below spectral floor");
+      </pre>
+      <p>
+        This is not marketing language; it is a hard rule. If the contract is live,
+        the floor cannot be bypassed from inside the protocol.
+      </p>
+    </section>
 
-    <h2>3) Spectral Floor (price protection)</h2>
-    <p>Every colour stores the highest price it ever achieved. Marketplace enforces <strong>never below floor</strong>, on‑chain.</p>
+    <section class="text-block">
+      <h2>3. Mining by RGB teams</h2>
+      <p>
+        Mining a new colour is not done with GPUs or hash power. It is done by
+        <strong>human coordination</strong>.
+      </p>
+      <p>
+        To mine a colour, you need an <strong>RGB team</strong>:
+      </p>
+      <ul>
+        <li>one user with a Red licence (R channel),</li>
+        <li>one user with a Green licence (G channel),</li>
+        <li>one user with a Blue licence (B channel).</li>
+      </ul>
+      <p>
+        All three must be online and connected to the mining server at the same time.
+        They choose together a target colour, e.g. R=120, G=40, B=200.
+      </p>
+      <p>
+        Each licence has a maximum channel capacity (for example 255 units of R, 255 of G, 255 of B).
+        When the team successfully mines a colour:
+      </p>
+      <ul>
+        <li>the used part is consumed from their licences (R-=120, G-=40, B-=200);</li>
+        <li>the colour is minted to the team and assigned an initial floor equal
+            to the fraction of licence value they used.</li>
+      </ul>
+      <p>
+        If any member disconnects and does not return within the safety window,
+        the team is dropped from that mining round and the colour remains unclaimed.
+      </p>
+    </section>
 
-    <h2>4) Direct purchase</h2>
-    <p>Any available colour can be bought directly at its tier price. This sets the initial floor. High‑tier catalogue prices are intentionally steep to protect miners’ upside.</p>
+    <section class="text-block">
+      <h2>4. Licences and value</h2>
+      <p>
+        Mining licences are <strong>the only entry point</strong> where fresh value
+        enters the system.
+      </p>
+      <p>
+        Example:
+      </p>
+      <ul>
+        <li>One licence per channel costs 10 USD equivalent.</li>
+        <li>A full RGB team (R + G + B) has 30 USD of mining capacity.</li>
+      </ul>
+      <p>
+        If a team mines a colour using a part of their channels, the initial
+        floor of that colour is proportional to the fraction of licence capacity they spent.
+      </p>
+      <p>
+        No subsidy, no inflation, no hidden rewards: the protocol only redistributes
+        what users put in, and protects the lowest price each colour has seen.
+      </p>
+    </section>
 
-    <h2>5) Splits & merges</h2>
-    <ul>
-      <li><strong>Split</strong>: pricey colours can be split into smaller, tradable parts once thresholds are met.</li>
-      <li><strong>Merge</strong>: you can recombine siblings into the parent token if you hold them all.</li>
-      <li>Provenance, history, and floors are preserved across operations.</li>
-    </ul>
+    <section class="text-block">
+      <h2>5. Direct purchase of colours</h2>
+      <p>
+        Not everyone wants to mine. Some users or companies may want to
+        <strong>acquire a specific colour directly</strong> — for example, the exact shade
+        used in their logo.
+      </p>
+      <p>
+        The protocol can expose a set of colours for direct purchase at a
+        deterministic price, always:
+      </p>
+      <ul>
+        <li>above the expected mining cost,</li>
+        <li>respecting the Spectral Floor Rule,</li>
+        <li>and clearly visible in the UI.</li>
+      </ul>
+      <p>
+        This creates a clean relationship between miners (who discover colours)
+        and buyers (who assign them high value).
+      </p>
+    </section>
 
-    <h2>6) Assemblies (e.g., flags, logos)</h2>
-    <p>Own multiple colours that form a meaningful set? Lock them into an <em>Assembly</em>. A fixed fee mints the bundle with its own identity and floor. Dissolving returns the colours; the fee is not refunded.</p>
+    <section class="text-block">
+      <h2>6. Treasury and long-term stability</h2>
+      <p>
+        A fraction of licence revenue flows into the <strong>CoolourCoin Treasury</strong>.
+        The Treasury can:
+      </p>
+      <ul>
+        <li>hold colours as a long-term reserve,</li>
+        <li>pay contributors directly in colours,</li>
+        <li>support protocol maintenance and audits.</li>
+      </ul>
+      <p>
+        All Treasury movements are transparent. The protocol does not promise yield.
+        It only keeps an auditable record of where value goes.
+      </p>
+    </section>
 
-    <h2>7) Fees & treasury</h2>
-    <p>Fees are minimal and public: primary sales, marketplace trades, assembly creation, and withdrawals. A portion goes to maintenance; a portion strengthens community tools. No secret taxes. No dangling yields.</p>
-
-    <h2>8) Clarity by design</h2>
-    <ul>
-      <li>No passive yield. No staking. No “number go up” promises.</li>
-      <li>Open‑source contracts. Third‑party audits. Public changelog.</li>
-      <li>Compliance first: KYC/AML where law requires. Honest geofencing where we must.</li>
-    </ul>
-  </section>
-
+    <section class="text-block">
+      <h2>7. What CoolourCoin is not</h2>
+      <ul>
+        <li>It is not a leveraged product.</li>
+        <li>It is not a yield farm.</li>
+        <li>It is not a casino.</li>
+      </ul>
+      <p>
+        CoolourCoin is a way to park value in unique, uncopyable colours, with a
+        floor that cannot be pushed down by panic or manipulation inside the protocol.
+      </p>
+    </section>
   </main>
-  <footer class="site-footer">
-    <p>© 2025 CoolourCoin · Light‑backed, floor‑protected digital colours.</p>
+
+  <footer class="footer">
+    <span>© 2025 CoolourCoin.</span>
+    <span>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></span>
   </footer>
-  <script src="assets/script.js"></script>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
