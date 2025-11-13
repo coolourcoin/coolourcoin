@@ -1,74 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CoolourCoin — The Contact of Light</title>
-  <meta name="description" content="Light‑backed, floor‑protected digital colours. Put your value in light. Let it rest.">
-  <link rel="preload" href="assets/styles.css" as="style">
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8" />
+  <title>CoolourCoin — Light-backed, floor-protected digital colours.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div id="aurora-bg" aria-hidden="true"></div>
-  <div class="spectral-ring" aria-hidden="true"></div>
+  <div class="site-bg"></div>
 
-  <header class="site-nav">
-    <a class="brand" href="index.html">
-      <img src="assets/logo2.png" alt="CoolourCoin" class="brand-logo" onerror="this.src='assets/logo.png'">
-      <span>CoolourCoin</span>
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="how.html">How it works</a>
-      <a href="genesis.html">Genesis spectrum</a>
-      <a href="manifesto.html">Manifest</a>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" />
+        <span>CoolourCoin</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="genesis.html">Genesis Spectrum</a>
       <a href="whitepaper.html">Whitepaper</a>
     </nav>
   </header>
+
   <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>CoolourCoin</h1>
+        <h2>Light-backed, floor-protected digital colours.</h2>
 
-  <section class="hero">
-    <h1>The contact of light</h1>
-    <p class="tag">Light‑backed, floor‑protected digital colours.</p>
-    <div class="cta">
-      <a class="btn primary" href="how.html">How it works</a>
-      <a class="btn" href="genesis.html">See Genesis spectrum</a>
-      <a class="btn ghost" href="whitepaper.html">Read Whitepaper</a>
-    </div>
-  </section>
+        <p class="hero-sub">
+          A protocol where every colour is unique, cannot be sold below its highest price,
+          and is mined only through human coordination — Red, Green and Blue together.
+        </p>
 
-  <section class="grid features">
-    <article>
-      <h3>Spectral Floor</h3>
-      <p>Each colour keeps the highest price it ever achieved. No one can sell it below its own light.</p>
-    </article>
-    <article>
-      <h3>RGB Team Mining</h3>
-      <p>Three people, one shade. Red + Green + Blue commit the exact triplet when a colour appears.</p>
-    </article>
-    <article>
-      <h3>Direct Purchase</h3>
-      <p>Prefer to buy instead of mine? Acquire colours at tier prices, locked by the Spectral Floor.</p>
-    </article>
-    <article>
-      <h3>Splits & Merges</h3>
-      <p>Expensive colours can be split; neighbours can be merged back — provenance remains forever.</p>
-    </article>
-    <article>
-      <h3>Treasury & Ethics</h3>
-      <p>Open rules, published fees, no hidden yield. We preserve value; we don’t promise returns.</p>
-    </article>
-    <article>
-      <h3>Open & Transparent</h3>
-      <p>Contracts are open‑source. Audits public. Compliance first. A geometry of trust.</p>
-    </article>
-  </section>
+        <div class="hero-actions">
+          <a href="how-it-works.html" class="btn primary">Understand the protocol</a>
+          <a href="whitepaper.html" class="btn ghost">Read the whitepaper</a>
+        </div>
 
+        <div class="hero-note">
+          No yield. No leverage. No promises of profit.<br />
+          Just a transparent floor and a finite spectrum of light.
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-ring"></div>
+        <div class="hero-ring-core"></div>
+      </div>
+    </section>
+
+    <section class="grid-section">
+      <h3>The trust geometry of CoolourCoin</h3>
+      <div class="info-grid">
+        <!-- Row 1 -->
+        <article class="info-card">
+          <h4>1. Finite Genesis Spectrum</h4>
+          <p>
+            CoolourCoin starts from a fixed, public Genesis Spectrum of
+            <strong>4,096 base colours</strong>. No hidden mint. No secret supply.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h4>2. Spectral Floor Rule</h4>
+          <p>
+            Each colour stores the highest price it has ever been bought for.
+            The protocol enforces: <strong>no sale below that floor</strong>.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h4>3. Human-coordinated mining</h4>
+          <p>
+            A colour can only be mined by a live <strong>RGB team</strong>:
+            three people, three licences, three channels (R, G, B) online at the same time.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h4>4. Licence-based entry</h4>
+          <p>
+            Access to mining is done through <strong>time-limited licences</strong> for R, G and B.
+            No GPUs, no hardware race — just presence, coordination and spectrum.
+          </p>
+        </article>
+
+        <!-- Row 2 -->
+        <article class="info-card">
+          <h4>5. Direct colour purchase</h4>
+          <p>
+            Some colours can be acquired directly from the protocol at a deterministic
+            price, always above the mining cost. This keeps miners and buyers in balance.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h4>6. Transparent treasury</h4>
+          <p>
+            A portion of licence revenue feeds the <strong>Treasury</strong>.
+            From there, colours can be used to pay contributors or form long-term reserves.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h4>7. No yield, no leverage</h4>
+          <p>
+            CoolourCoin does not pay interest, does not auto-compound
+            and does not promise any financial return. It only protects the floor.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h4>8. Open-source & verifiable</h4>
+          <p>
+            The contract logic is <strong>open-source</strong>, audit-ready
+            and focused on one core guarantee: you cannot push a colour below its own history.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="oath-section">
+      <h3>A declaration of value</h3>
+      <div class="oath-text">
+        <p>1. Light is not a commodity. It is the first right.</p>
+        <p>2. You cannot devalue colour once it is mined with intention. Every drop of light has a memory.</p>
+        <p>3. Spectral Floor = Aura of Trust. It protects value like gravity protects form.</p>
+        <p>4. A colour cannot be copied, blurred, or duplicated. It exists once. And that is enough.</p>
+        <p>5. Trust is not a function of money. Trust is a spectrum.</p>
+        <p>6. Ownership may change, but origin does not. The discoverer’s light is forever recorded.</p>
+        <p>7. Each colour holds its floor. No one shall pull it down.</p>
+        <p>8. To mine a shade, you need three. Red, Green, Blue — a communion of presence.</p>
+        <p>9. CoolourCoin is not a casino. It is a resting place for light.</p>
+        <p>10. The rule is simple: never sell below the light it cost.</p>
+      </div>
+    </section>
   </main>
-  <footer class="site-footer">
-    <p>© 2025 CoolourCoin · Light‑backed, floor‑protected digital colours.</p>
+
+  <footer class="footer">
+    <span>© 2025 CoolourCoin. All protocol rules are public.</span>
+    <span>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></span>
   </footer>
-  <script src="assets/script.js"></script>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
