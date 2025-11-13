@@ -1,232 +1,110 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CoolourCoin — Genesis Spectrum (4096)</title>
-<link rel="icon" href="assets/logo2.png">
-<style>
-  :root{
-    --bg:#050816;
-    --ink:#eaf2ff;
-    --muted:#9fb0d0;
-    --glass: rgba(10,16,35,.55);
-    --edge: rgba(255,255,255,.08);
-    --glow: rgba(120,255,240,.10);
-    --container-w:min(92vw,1280px);
-    --gap:2px;
-    --maxcount:127; /* bottom row width in tiles = 2*64-1 */
-    --tile: calc((var(--container-w) - (var(--gap) * (var(--maxcount) - 1))) / var(--maxcount));
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%; margin:0; color:var(--ink); font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;}
-  body{
-    background:
-      radial-gradient(1400px 700px at 50% -20%, #0e1a3d 0%, #081228 45%, #050816 70%) fixed,
-      conic-gradient(from 210deg at 60% -10%, rgba(0,255,191,.15), rgba(30,144,255,.12), rgba(186,85,211,.12), rgba(0,255,191,.15)) fixed;
-    animation: aurora 18s ease-in-out infinite alternate;
-  }
-  @keyframes aurora{
-    0%{ filter:hue-rotate(0deg) saturate(1.04) contrast(1.02) }
-    100%{ filter:hue-rotate(16deg) saturate(1.12) contrast(1.04) }
-  }
-
-  a{color:inherit; text-decoration:none}
-
-  /* Header */
-  .topbar{
-    position:sticky; top:0; z-index:20;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 16px;
-    backdrop-filter: blur(10px);
-    background: linear-gradient(180deg, rgba(5,8,22,.80), rgba(5,8,22,.45));
-    border-bottom:1px solid rgba(255,255,255,.06);
-  }
-  .brand{display:flex; align-items:center; gap:10px}
-  .brand-logo{height:28px; width:auto; display:block}
-  .brand-text{font-weight:700; letter-spacing:.4px}
-  .nav a{margin-left:16px; opacity:.88}
-  .nav a:hover{opacity:1}
-
-  /* Hero */
-  .hero{ width:var(--container-w); margin:26px auto 10px; text-align:center; }
-  .hero h1{margin:0 0 6px; font-size:clamp(20px,2.4vw,28px)}
-  .hero p{margin:0; color:var(--muted); font-size:clamp(13px,1.6vw,15px)}
-
-  /* Board */
-  .board-wrap{
-    width:var(--container-w); margin:18px auto 64px;
-    padding:14px 10px 26px;
-    border-radius:16px;
-    border:1px solid var(--edge);
-    background:
-      radial-gradient(900px 260px at 50% -50px, var(--glow), transparent 70%),
-      linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-    box-shadow:
-      0 10px 30px rgba(0,0,0,.45),
-      inset 0 1px 0 rgba(255,255,255,.06);
-    filter: saturate(1.08) contrast(1.03);
-  }
-  .board{
-    display:flex; flex-direction:column; align-items:center; gap:var(--gap);
-  }
-  .row{ display:flex; gap:var(--gap); justify-content:center; }
-
-  .tile{
-    width:var(--tile);
-    height:var(--tile);
-    border-radius:2px;
-    position:relative;
-    box-shadow:
-      0 0 0 1px rgba(0,0,0,.28),
-      inset 0 0 0 1px rgba(255,255,255,.04);
-    transition: transform .08s ease, box-shadow .08s ease, filter .08s ease;
-  }
-  .tile:hover{
-    transform: translateY(-2px) scale(1.02);
-    box-shadow:
-      0 8px 18px rgba(0,0,0,.35),
-      0 0 12px rgba(110,240,255,.16),
-      inset 0 0 0 1px rgba(255,255,255,.07);
-    z-index:2;
-    filter: brightness(1.07) saturate(1.05);
-  }
-  .tile::after{
-    content: attr(data-hex) " • " attr(data-rgb);
-    position:absolute; left:50%; bottom:calc(100% + 6px);
-    transform:translateX(-50%);
-    white-space:nowrap; font-size:11px; padding:4px 8px; border-radius:8px;
-    background:rgba(0,0,0,.72); color:#fff; opacity:0; pointer-events:none;
-    transition:opacity .12s ease;
-    box-shadow:0 4px 12px rgba(0,0,0,.4);
-  }
-  .tile:hover::after{opacity:1}
-
-  .legend{
-    width:var(--container-w); margin:8px auto 0;
-    display:flex; justify-content:space-between; color:var(--muted); font-size:12px; opacity:.9;
-  }
-
-  .footer{
-    text-align:center; color:var(--muted); opacity:.85; font-size:12px; padding:28px 0 44px;
-  }
-
-  @media (max-width:640px){
-    :root{ --container-w: 94vw; }
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoolourCoin — Genesis Spectrum</title>
+  <link rel="icon" type="image/png" href="assets/logo2.png">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="page--genesis">
+  <header class="cc-nav">
+    <div class="cc-nav__inner">
+      <a class="cc-brand" href="index.html" aria-label="CoolourCoin — Home">
+        <img src="assets/logo.png" alt="CoolourCoin" class="cc-brand__img">
+      </a>
+      <nav class="cc-menu">
+        <a class="is-active" href="genesis.html">Genesis Spectrum</a>
+        <a href="how.html">How it works</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="mailto:admin@coolourcoin.com">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header class="topbar">
-  <a class="brand" href="index.html" aria-label="CoolourCoin home">
-    <img src="assets/logo2.png" alt="CoolourCoin logo" class="brand-logo">
-    <span class="brand-text">CoolourCoin</span>
-  </a>
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="genesis.html">Genesis Spectrum</a>
-    <a href="how.html">How it works</a>
-    <a href="whitepaper.html">Whitepaper</a>
-  </nav>
-</header>
+  <section class="cc-hero cc-hero--compact">
+    <h1>Genesis Spectrum — 4,096 unique shades</h1>
+    <p>Bottom-up pyramid. Near-white at the apex. An auroral gradient ensures a premium, living look.</p>
+  </section>
 
-<section class="hero">
-  <h1>Genesis Spectrum — 4096 Colours</h1>
-  <p>Curated 12-bit palette (16×16×16), arranged from light to dark with an auroral sweep per row.</p>
-</section>
+  <main class="cc-wrap">
+    <div class="pyramid-wrap">
+      <canvas id="pyr" width="1400" height="1100" aria-label="Genesis pyramid canvas"></canvas>
+      <div class="aurora-overlay" aria-hidden="true"></div>
+    </div>
+    <p class="legend">Visualisation only. Actual mint order follows the protocol’s oscillator (semi-random, verifiable).</p>
+  </main>
 
-<div class="board-wrap">
-  <div class="board" id="board"></div>
-</div>
+  <footer class="cc-foot">
+    <p>© 2025 CoolourCoin — The Contact of Light.</p>
+  </footer>
 
-<div class="legend">
-  <span>Top • brightest (white)</span>
-  <span>— smooth auroral order —</span>
-  <span>Base • darkest band</span>
-</div>
+  <script src="app.js"></script>
+  <script>
+    // draw a neat auroral pyramid of 4096 swatches (64 rows, triangular layout)
+    window.addEventListener('load', () => {
+      const c = document.getElementById('pyr');
+      const ctx = c.getContext('2d');
+      const rows = 64;                 // 1 + 2 + ... + 64 = 2080 (nope) → we want exactly 4096 cells
+      // So we’ll draw a RIGHT pyramid: row i has 64 cells; mask visually into a triangle.
+      // Then softly fade edges, and force top cells to near-white for a premium feel.
 
-<footer class="footer">© 2025 CoolourCoin — Light-backed, floor-protected digital colours.</footer>
+      const cell = 18;                 // cell size
+      const cols = 64;
+      c.width  = cols * cell + 80;
+      c.height = cols * cell * 0.9 + 120;
 
-<script>
-  /* Build the 12-bit palette (16 levels/channel → 4096 colours) */
-  function buildPalette4096(){
-    const list=[];
-    for(let r=0;r<16;r++){
-      for(let g=0;g<16;g++){
-        for(let b=0;b<16;b++){
-          const R=r*17, G=g*17, B=b*17;
-          const hex = '#'+[R,G,B].map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
-          const {Y,h,s} = metrics(R,G,B);
-          list.push({R,G,B,hex,Y,h,s});
+      // background
+      const grad = ctx.createLinearGradient(0,0,0,c.height);
+      grad.addColorStop(0, '#05070c');
+      grad.addColorStop(1, '#0a1222');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0,0,c.width,c.height);
+
+      const offsetX = 40;
+      const offsetY = 60;
+
+      for (let r = 0; r < rows; r++) {
+        // number of blocks in this visual row (triangular)
+        const n = cols - r;
+        for (let k = 0; k < n; k++) {
+          const x = offsetX + ( (cols - n)/2 + k ) * cell;
+          const y = offsetY + r * (cell - 2);
+
+          // auroral HSL: hue sweeps slowly, saturation moderate, lightness climbs to top
+          const hue = (220 + (k*4 + r*2)) % 360;      // blues→teals→violets
+          const sat = Math.max(42, 70 - r * 0.3);     // a bit less saturation higher
+          const lightTop = 96;                        // keep the apex near-white, not black
+          const lightBase = 22;
+          const lt = lightBase + (lightTop - lightBase) * (1 - r/(rows-1)); // up = brighter
+
+          ctx.fillStyle = `hsl(${hue}deg, ${sat}%, ${lt}%)`;
+          ctx.fillRect(x, y, cell-1, cell-1);
         }
       }
-    }
 
-    // Sort aesthetic:
-    // 1) By luminance (desc) → top = bright
-    // 2) Within same luminance band, by a "rotated hue" so rows sweep like an aurora (start near green/cyan)
-    // 3) And slightly by lower saturation first near the top for precious/pearl look
-    const rotateHue = (h, pivot=140)=> ((h - pivot + 360) % 360); // pivot ~ aurora green
-    list.sort((a,b)=>{
-      if (b.Y !== a.Y) return b.Y - a.Y;                     // brighter first
-      const ar = rotateHue(a.h), br = rotateHue(b.h);
-      if (ar !== br) return ar - br;                          // auroral sweep
-      return a.s - b.s;                                       // lower sat first
+      // soft mask to get a crisp pyramid silhouette with glossy vibe
+      const g2 = ctx.createLinearGradient(0,0,0,c.height);
+      g2.addColorStop(0, 'rgba(255,255,255,0.15)');
+      g2.addColorStop(0.45, 'rgba(255,255,255,0.04)');
+      g2.addColorStop(1, 'rgba(0,0,0,0.35)');
+      ctx.fillStyle = g2;
+      ctx.fillRect(0,0,c.width,c.height);
+
+      // apex glow
+      ctx.save();
+      ctx.globalCompositeOperation = 'screen';
+      const cx = c.width/2, cy = offsetY + 6;
+      const rad = 120;
+      const g3 = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+      g3.addColorStop(0, 'rgba(255,255,255,0.9)');
+      g3.addColorStop(1, 'rgba(0,200,255,0)');
+      ctx.fillStyle = g3;
+      ctx.beginPath();
+      ctx.arc(cx, cy, rad, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
     });
-
-    // Guarantee first tile is pure white
-    const iWhite = list.findIndex(c=>c.R===255 && c.G===255 && c.B===255);
-    if(iWhite>0){ const white = list.splice(iWhite,1)[0]; list.unshift(white); }
-
-    return list;
-  }
-
-  function metrics(R,G,B){
-    // Luminance (Rec.709)
-    const Y = 0.2126*R + 0.7152*G + 0.0722*B;
-
-    // Hue & saturation (HSL-like quick calc)
-    const r=R/255, g=G/255, b=B/255;
-    const max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min;
-    let h=0;
-    if (d!==0){
-      if (max===r) h = ((g-b)/d) % 6;
-      else if (max===g) h = (b-r)/d + 2;
-      else h = (r-g)/d + 4;
-      h = (h*60 + 360) % 360;
-    }
-    const l=(max+min)/2;
-    const s = d===0 ? 0 : d/(1-Math.abs(2*l-1));
-    return {Y,h,s};
-  }
-
-  /* Build a perfect 64-row pyramid: row k has 2k−1 tiles; sum = 4096 */
-  function buildPyramid(containerId){
-    const palette = buildPalette4096();
-    const board = document.getElementById(containerId);
-    let idx=0;
-    const rows = 64;
-
-    for(let r=1; r<=rows; r++){
-      const count = 2*r - 1; // 1,3,5,...,127
-      const row = document.createElement('div');
-      row.className='row';
-
-      for(let i=0;i<count;i++){
-        const c = palette[idx++];
-        const tile = document.createElement('div');
-        tile.className='tile';
-        tile.style.background = c.hex;
-        tile.setAttribute('data-hex', c.hex);
-        tile.setAttribute('data-rgb', `${c.R},${c.G},${c.B}`);
-        row.appendChild(tile);
-      }
-      board.appendChild(row);
-    }
-  }
-
-  buildPyramid('board');
-</script>
+  </script>
 </body>
 </html>
