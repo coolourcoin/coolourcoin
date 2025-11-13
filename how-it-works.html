@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CoolourCoin — How it works</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" />
+        <span>CoolourCoin</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html" class="active">How it works</a>
+      <a href="genesis.html">Genesis Spectrum</a>
+      <a href="whitepaper.html">Whitepaper</a>
+    </nav>
+  </header>
+
+  <main class="page narrow">
+    <h1>How CoolourCoin works</h1>
+
+    <section class="text-block">
+      <h2>1. Fixed Genesis Spectrum</h2>
+      <p>
+        CoolourCoin starts from a finite, public set of <strong>4,096 base colours</strong>.
+        Each colour has:
+      </p>
+      <ul>
+        <li>a stable ID,</li>
+        <li>a precise RGB / HEX value,</li>
+        <li>a rarity Tier (1–4), based on distance to white,</li>
+        <li>a known position inside the Genesis pyramid.</li>
+      </ul>
+      <p>
+        No new Genesis colours can be added later. The spectrum is fixed, visible,
+        and can be inspected by anyone.
+      </p>
+    </section>
+
+    <section class="text-block">
+      <h2>2. Spectral Floor Rule</h2>
+      <p>
+        Every colour has a <strong>spectral floor</strong>: the highest price it has ever
+        been bought for on the official marketplace.
+      </p>
+      <p>The contract logic is simple:</p>
+      <pre class="code-block">
+spectralFloor[colorId] = max(spectralFloor[colorId], lastSalePrice);
+
+require(salePrice &gt;= spectralFloor[colorId], "Below spectral floor");
+      </pre>
+      <p>
+        This makes each colour an asset with <strong>price memory</strong>.
+        Panic selling cannot push it below its own history from inside the protocol.
+      </p>
+    </section>
+
+    <section class="text-block">
+      <h2>3. RGB mining teams</h2>
+      <p>
+        New colours are not mined with hash power. They are mined by
+        <strong>RGB teams</strong> — three people online at the same time:
+      </p>
+      <ul>
+        <li>one Red miner (R licence),</li>
+        <li>one Green miner (G licence),</li>
+        <li>one Blue miner (B licence).</li>
+      </ul>
+      <p>
+        Each licence gives a limited channel capacity (for example 255 units of its colour)
+        for a fixed time window. Together, the team chooses a target RGB triple and
+        mines that exact shade.
+      </p>
+      <p>
+        If any member disconnects and does not return within a short grace period,
+        the team is dropped from that mining attempt. One team can mine only one colour
+        at a time.
+      </p>
+    </section>
+
+    <section class="text-block">
+      <h2>4. Licences and initial floor</h2>
+      <p>
+        Licences are the <strong>only controlled entry</strong> for new value.
+      </p>
+      <p>Example (simplified):</p>
+      <ul>
+        <li>Each licence costs 10 USD equivalent.</li>
+        <li>A full RGB team has 3 licences → 30 USD of mining capacity.</li>
+      </ul>
+      <p>
+        If they mine a colour using a fraction of each licence, the initial floor
+        is proportional to what they actually spent. Rounded amounts (cents etc.)
+        can be directed into protocol reserves to keep accounting clean.
+      </p>
+      <p>
+        No free inflation, no hidden rewards. You get colours in proportion
+        to what you put in and how you coordinate.
+      </p>
+    </section>
+
+    <section class="text-block">
+      <h2>5. Direct colour purchase</h2>
+      <p>
+        Some users prefer to buy a specific colour directly — for example a
+        corporate shade or a national flag combination.
+      </p>
+      <p>
+        For selected colours, the protocol can offer <strong>direct purchase</strong>
+        from a pool held by the Treasury. These prices are:
+      </p>
+      <ul>
+        <li>always above expected mining cost,</li>
+        <li>always respecting the Spectral Floor Rule,</li>
+        <li>fully visible and deterministic.</li>
+      </ul>
+    </section>
+
+    <section class="text-block">
+      <h2>6. Treasury and contributors</h2>
+      <p>
+        A defined share of licence revenue goes into a transparent Treasury.
+        The Treasury may:
+      </p>
+      <ul>
+        <li>hold rare colours as long-term reserves,</li>
+        <li>pay core contributors directly in colours,</li>
+        <li>support audits, security and protocol maintenance.</li>
+      </ul>
+      <p>
+        Nobody receives yield just for holding. The protocol is designed
+        as a <strong>resting place for light</strong>, not a yield farm.
+      </p>
+    </section>
+
+    <section class="text-block">
+      <h2>7. What CoolourCoin is not</h2>
+      <ul>
+        <li>It is not a leveraged trading platform.</li>
+        <li>It does not pay interest or “APY”.</li>
+        <li>It does not guarantee profit.</li>
+      </ul>
+      <p>
+        The only guarantee is structural: a colour cannot be sold below its own floor
+        inside the official protocol.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2025 CoolourCoin.</span>
+    <span>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></span>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
