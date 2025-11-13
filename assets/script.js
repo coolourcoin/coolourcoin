@@ -1,6 +1,12 @@
 
-document.addEventListener('click',(e)=>{const link=e.target.closest('[data-home]');if(link){window.location.href='index.html'}});
-const bubble=document.createElement('div');bubble.className='spectral-cursor';document.body.appendChild(bubble);
-let t=null;window.addEventListener('mousemove',(e)=>{bubble.style.left=e.clientX+'px';bubble.style.top=e.clientY+'px';
-bubble.classList.add('show-cursor');clearTimeout(t);t=setTimeout(()=>bubble.classList.remove('show-cursor'),300)});
-setInterval(()=>{document.querySelectorAll('.coin').forEach(el=>el.style.filter=`hue-rotate(${(Date.now()/100)%360}deg)`)},1500);
+// Add a tiny check to link a PDF if present
+(async function(){
+  const el = document.getElementById('pdf-link');
+  if(!el) return;
+  try{
+    const resp = await fetch('CoolourCoin.pdf', {method:'HEAD'});
+    if(resp.ok){
+      el.innerHTML = '<a class="btn" href="CoolourCoin.pdf" target="_blank" rel="noopener">Download the PDF</a>';
+    }
+  }catch(e){ /* ignore */ }
+})();
