@@ -2,107 +2,169 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Genesis Spectrum — CoolourCoin</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoolourCoin — Genesis Spectrum (4096)</title>
 <link rel="icon" href="assets/logo2.png">
 <style>
-:root{
-  --bg:#0b1020;
-  --panel:#0f1630;
-  --text:#e9f0ff;
-  --muted:#a9b8d9;
-  --accent:#6ee7ff;
-  --accent2:#ff9af0;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-/* Header */
-.header{position:sticky;top:0;z-index:999;background:linear-gradient(180deg,rgba(11,16,32,0.95),rgba(11,16,32,0.75));backdrop-filter: blur(8px);border-bottom:1px solid rgba(255,255,255,0.08)}
-.nav{display:flex;align-items:center;gap:18px;padding:10px 16px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0.4px}
-.brand img{width:42px;height:42px;display:block;filter: drop-shadow(0 0 12px rgba(110,231,255,0.45))}
-.brand a{color:var(--text);text-decoration:none}
-.spacer{flex:1}
-.nav a.link{color:var(--muted);padding:8px 10px;border-radius:10px}
-.nav a.link:hover{background:rgba(255,255,255,0.06);color:var(--text)}
-.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0f1f;padding:8px 12px;border-radius:12px;font-weight:700}
-/* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06)}
-.hero .container{padding-top:46px;padding-bottom:46px}
-.h1{font-size:42px;line-height:1.12;margin:18px 0 8px 0}
-.sub{color:var(--muted);max-width:740px}
-.btns{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-.btn{display:inline-block;padding:10px 14px;border-radius:12px;font-weight:700}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0f1f}
-.btn.ghost{border:1px solid rgba(255,255,255,0.15);color:var(--text)}
-/* Aurora background */
-.aurora{
-  position:absolute;inset:-20% -10% auto -10%;height:320px;pointer-events:none;z-index:0;
-  background: radial-gradient(1200px 240px at 20% 50%, rgba(110,231,255,0.25), transparent 60%),
-              radial-gradient(900px 200px at 60% 40%, rgba(255,154,240,0.22), transparent 65%),
-              radial-gradient(700px 240px at 85% 60%, rgba(120,255,200,0.18), transparent 70%);
-  filter: blur(16px);
-  opacity:.9;
-}
-/* Sections */
-.section{padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.card{background:var(--panel);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:18px}
-.grid{display:grid;gap:16px}
-.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}.h1{font-size:32px}}
-.footer{color:var(--muted);padding:24px 0}
-.small{font-size:14px;color:var(--muted)}
+  :root{
+    --bg:#050816;
+    --ink:#eaf2ff;
+    --muted:#9fb0d0;
+    --accent:#62e3ff;
+    --container-w:min(92vw,1280px);
+    --gap:2px;
+    --maxcount:127; /* bottom row tiles = 2*64-1 = 127 */
+    --tile: calc((var(--container-w) - (var(--gap) * (var(--maxcount) - 1))) / var(--maxcount));
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;background:radial-gradient(1200px 600px at 50% -20%, #0c1630 0%, #070e1f 45%, #050816 70%), var(--bg); color:var(--ink); margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;}
+  a{color:var(--ink); text-decoration:none}
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 16px; backdrop-filter:blur(8px);
+    background:linear-gradient(180deg, rgba(5,8,22,.85), rgba(5,8,22,.55));
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .brand{display:flex; align-items:center; gap:10px}
+  .brand-logo{height:28px; width:auto; display:block}
+  .brand-text{font-weight:700; letter-spacing:.4px}
+  .nav a{margin-left:16px; opacity:.85}
+  .nav a:hover{opacity:1}
+  .hero{
+    width:var(--container-w); margin:24px auto 8px; text-align:center;
+  }
+  .hero h1{margin:0 0 6px; font-size:clamp(20px,2.4vw,28px)}
+  .hero p{margin:0; color:var(--muted); font-size:clamp(13px,1.6vw,15px)}
+  .board{
+    width:var(--container-w);
+    margin:16px auto 56px;
+    display:flex; flex-direction:column; align-items:center; gap:var(--gap);
+    padding:8px 0 24px;
+    border-radius:14px;
+    background:
+      radial-gradient(800px 240px at 50% -40px, rgba(98,227,255,.12), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.008));
+    box-shadow:0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .row{display:flex; gap:var(--gap); justify-content:center;}
+  .tile{
+    width:var(--tile);
+    height:var(--tile);
+    border-radius:2px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.05);
+    position:relative;
+    transition:transform .06s ease-out, box-shadow .06s ease-out;
+  }
+  .tile:hover{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 6px 14px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
+    z-index:2;
+  }
+  .tile::after{
+    content: attr(data-hex) " • " attr(data-rgb);
+    position:absolute; left:50%; bottom:calc(100% + 6px); transform:translateX(-50%);
+    white-space:nowrap; font-size:11px; padding:4px 8px; border-radius:8px;
+    background:rgba(0,0,0,.7); color:#fff; opacity:0; pointer-events:none;
+    transition:opacity .12s ease;
+    box-shadow:0 4px 12px rgba(0,0,0,.4);
+  }
+  .tile:hover::after{opacity:1}
+  .legend{
+    width:var(--container-w); margin:6px auto 36px;
+    display:flex; justify-content:space-between; color:var(--muted); font-size:12px; opacity:.9;
+  }
+  .footer{
+    text-align:center; color:var(--muted); opacity:.8; font-size:12px; padding:24px 0 40px;
+  }
+  @media (max-width:640px){
+    :root{ --container-w: 94vw; }
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="nav container">
-    <a href="index.html" class="brand" title="CoolourCoin — Home">
-      <img src="assets/logo2.png" alt="CoolourCoin logo" />
-      <span>CoolourCoin</span>
-    </a>
-    <div class="spacer"></div>
-    <a class="link" href="index.html">Home</a>
-    <a class="link" href="genesis.html">Genesis Spectrum</a>
-    <a class="link" href="how.html">How it Works</a>
-    <a class="link" href="whitepaper.html">Whitepaper</a>
-    <a class="cta" href="mailto:admin@coolourcoin.com">Contact</a>
-  </div>
-</div>
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="CoolourCoin home">
+    <img src="assets/logo2.png" alt="CoolourCoin logo" class="brand-logo">
+    <span class="brand-text">CoolourCoin</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="genesis.html">Genesis Spectrum</a>
+    <a href="how.html">How it works</a>
+    <a href="whitepaper.html">Whitepaper</a>
+  </nav>
+</header>
 
 <section class="hero">
-  <div class="aurora"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <h1 class="h1">Genesis Spectrum</h1>
-    <p class="sub">4,096 launch colours arranged by perceptual distance from white. Ultra‑rares at the apex; broader tiers below.</p>
-  </div>
+  <h1>Genesis Spectrum — 4096 Colours</h1>
+  <p>64 rows • 2n−1 tiles per row • perceptually smooth, unique 12-bit palette (16×16×16).</p>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="card">
-      <h3>Tiers</h3>
-      <ul>
-        <li><b>Tier 0:</b> White & near‑whites — supply 1 each (auction).</li>
-        <li><b>Tier 1:</b> Very rare — small supply caps.</li>
-        <li><b>Tier 2–4:</b> Wider spectrum — increasing caps.</li>
-      </ul>
-      <p class="small">Note: exact tier thresholds and caps are set in the smart contract and published before mint.</p>
-    </div>
-  </div>
-</section>
-
-
-<div class="footer">
-  <div class="container small">
-    © 2025 CoolourCoin — Light‑backed, floor‑protected digital colours.
-  </div>
+<div class="board" id="board"></div>
+<div class="legend">
+  <span>Top • 1 tile</span>
+  <span>Middle • …</span>
+  <span>Base • 127 tiles</span>
 </div>
 
+<footer class="footer">© 2025 CoolourCoin — Light-backed, floor-protected digital colours.</footer>
+
+<script>
+  // 12-bit palette generator (16 levels per channel → 4096 colours)
+  function buildPalette4096(){
+    const list=[];
+    for(let r=0;r<16;r++){
+      for(let g=0;g<16;g++){
+        for(let b=0;b<16;b++){
+          const R=r*17, G=g*17, B=b*17; // 0..255 in steps of 17
+          const hex = '#'+[R,G,B].map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
+          list.push({hex, rgb:`${R},${G},${B}`});
+        }
+      }
+    }
+    // Optional: sort for a nicer sweep (by hue-ish, then lightness)
+    return list.sort((a,b)=>{
+      const [r1,g1,b1]=a.rgb.split(',').map(Number);
+      const [r2,g2,b2]=b.rgb.split(',').map(Number);
+      const h1 = approxHue(r1,g1,b1), l1=(r1+g1+b1);
+      const h2 = approxHue(r2,g2,b2), l2=(r2+g2+b2);
+      return h1===h2 ? l1-h2 : h1-h2;
+    });
+    function approxHue(r,g,b){
+      // simple hue proxy (no heavy math): sector by max channel + ratios
+      const M=Math.max(r,g,b), m=Math.min(r,g,b), d=M-m || 1;
+      let h = M===r ? (g-b)/d : (M===g ? 2+(b-r)/d : 4+(r-g)/d);
+      h = (h*60+360)%360;
+      return Math.round(h);
+    }
+  }
+
+  function buildPyramid(containerId){
+    const palette = buildPalette4096(); // array of 4096
+    const board = document.getElementById(containerId);
+    let idx=0;
+    const rows = 64; // sum of odd numbers = rows^2 = 4096
+    for(let r=1; r<=rows; r++){
+      const count = 2*r - 1; // 1,3,5,...,127
+      const row = document.createElement('div');
+      row.className='row';
+      for(let i=0;i<count;i++){
+        const c = palette[idx++];
+        const tile = document.createElement('div');
+        tile.className='tile';
+        tile.style.background = c.hex;
+        tile.setAttribute('data-hex', c.hex);
+        tile.setAttribute('data-rgb', c.rgb);
+        row.appendChild(tile);
+      }
+      board.appendChild(row);
+    }
+  }
+
+  buildPyramid('board');
+</script>
 </body>
 </html>
