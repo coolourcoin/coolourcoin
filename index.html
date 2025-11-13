@@ -1,109 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CoolourCoin – Light-backed, floor-protected digital colours</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="page-home">
-  <header class="cc-header">
-    <div class="cc-header-inner">
-      <a href="index.html" class="cc-logo">
-        <img src="assets/logo2.png" alt="CoolourCoin logo">
-        <span>CoolourCoin</span>
-      </a>
-      <nav class="cc-nav">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="how.html" class="nav-link">How it works</a>
-        <a href="genesis.html" class="nav-link">Genesis Spectrum</a>
-        <a href="whitepaper.html" class="nav-link">Whitepaper</a>
-      </nav>
-    </div>
-  </header>
+  <meta charset="UTF-8" />
+  <title>CoolourCoin — Light-backed, floor-protected digital colours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="CoolourCoin is a colour-first crypto asset where every shade of light has a protected price floor and a transparent, open protocol."
+  />
+  <link rel="stylesheet" href="styles.css" />
 
-  <main class="cc-main">
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Light-backed, floor-protected digital colours.</h1>
-        <p class="hero-sub">
-          CoolourCoin is a colour-based asset system where each shade of light
-          is unique, finite, and protected by a hard spectral price floor.
-          Once a colour has seen a certain price, it can never be sold below it again.
+  <style>
+    /* ===== Base layout ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: #e9f1ff;
+      background: radial-gradient(circle at top left, #172335 0, #050814 55%, #02030a 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    /* ===== Header / nav ===== */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.5rem 0 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: contain;
+      box-shadow: 0 0 14px rgba(130, 220, 255, 0.75);
+      background: radial-gradient(circle at 30% 20%, #ffffff, #c7f3ff 60%, #050814);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.78rem;
+      opacity: 0.75;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+    }
+
+    nav a {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(134, 196, 255, 0.28);
+      background: radial-gradient(circle at top, rgba(29, 88, 160, 0.8), rgba(3, 10, 30, 0.9));
+      backdrop-filter: blur(10px);
+      opacity: 0.96;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease,
+        opacity 0.15s ease;
+    }
+
+    nav a:hover {
+      background: radial-gradient(circle at top, rgba(58, 140, 220, 0.98), rgba(6, 18, 50, 0.95));
+      box-shadow: 0 0 18px rgba(120, 210, 255, 0.6);
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+
+    nav a.active {
+      border-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 20px rgba(150, 230, 255, 0.8);
+    }
+
+    /* ===== Hero ===== */
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0 2.25rem;
+    }
+
+    .hero-text {
+      flex: 1 1 320px;
+      min-width: 0;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9bbdff;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw + 1rem, 2.9rem);
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #9fe8ff, #ffe9b1, #f7a5ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.02rem;
+      max-width: 36rem;
+      color: #c3d4ff;
+      opacity: 0.96;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-phrase {
+      font-size: 0.97rem;
+      font-style: italic;
+      color: #a7c5ff;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: none;
+      color: inherit;
+      text-decoration: none;
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease,
+        border-color 0.2s ease, opacity 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #5fd3ff, #ffdf9c);
+      color: #050814;
+      box-shadow: 0 0 18px rgba(140, 225, 255, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(170, 235, 255, 0.95);
+    }
+
+    .btn-ghost {
+      border-color: rgba(156, 196, 255, 0.6);
+      background: radial-gradient(circle at top, rgba(24, 54, 104, 0.95), rgba(4, 11, 36, 0.95));
+      opacity: 0.95;
+    }
+
+    .btn-ghost:hover {
+      opacity: 1;
+      box-shadow: 0 0 18px rgba(115, 190, 255, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      opacity: 0.75;
+      max-width: 30rem;
+    }
+
+    /* ===== Hero visual (logo) ===== */
+
+    .hero-visual {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    .hero-coin-wrap {
+      position: relative;
+      width: min(220px, 52vw);
+      height: min(220px, 52vw);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-coin-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        rgba(139, 222, 255, 0.2),
+        rgba(122, 255, 199, 0.55),
+        rgba(255, 229, 165, 0.55),
+        rgba(247, 173, 255, 0.45),
+        rgba(139, 222, 255, 0.2)
+      );
+      box-shadow:
+        0 0 30px rgba(130, 210, 255, 0.5),
+        0 0 60px rgba(120, 240, 210, 0.4);
+      opacity: 0.95;
+      animation: ringSlow 22s linear infinite;
+    }
+
+    .hero-coin-inner {
+      position: relative;
+      width: 72%;
+      height: 72%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #d4f4ff 55%, #050814);
+      box-shadow:
+        0 0 18px rgba(0, 0, 0, 0.85),
+        0 0 36px rgba(130, 220, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-coin-inner img {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    @keyframes ringSlow {
+      0% {
+        transform: rotate(0deg);
+        filter: hue-rotate(0deg) saturate(1.1);
+      }
+      50% {
+        filter: hue-rotate(30deg) saturate(1.2);
+      }
+      100% {
+        transform: rotate(360deg);
+        filter: hue-rotate(0deg) saturate(1.1);
+      }
+    }
+
+    /* ===== Trust / feature grid ===== */
+
+    .section {
+      margin-top: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9bbdff;
+      opacity: 0.9;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-heading {
+      font-size: 1.35rem;
+      margin: 0 0 0.7rem;
+    }
+
+    .section-intro {
+      font-size: 0.95rem;
+      max-width: 44rem;
+      color: #c5d8ff;
+      opacity: 0.96;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-card {
+      border-radius: 16px;
+      border: 1px solid rgba(148, 205, 255, 0.3);
+      background: radial-gradient(circle at top left, rgba(25, 61, 120, 0.9), rgba(5, 11, 35, 0.98));
+      box-shadow: 0 0 22px rgba(5, 12, 30, 0.95);
+      padding: 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .feature-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .feature-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9fd9ff;
+      opacity: 0.85;
+    }
+
+    .feature-text {
+      font-size: 0.86rem;
+      color: #c9dcff;
+      opacity: 0.94;
+    }
+
+    /* ===== Footer ===== */
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(90, 130, 190, 0.5);
+      font-size: 0.78rem;
+      color: #9eb4e6;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+      opacity: 0.9;
+    }
+
+    footer a:hover {
+      opacity: 1;
+    }
+
+    /* ===== Responsive tweaks ===== */
+
+    @media (max-width: 720px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+      }
+      .hero {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+      .hero-visual {
+        align-self: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="assets/logo2.png" alt="CoolourCoin logo" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-name">CoolourCoin</div>
+          <div class="brand-tagline">Light-backed, floor-protected digital colours</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="how.html">How it works</a>
+        <a href="genesis.html">Genesis Spectrum</a>
+        <a href="whitepaper.html">Read whitepaper</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <div class="hero-kicker">A different kind of crypto</div>
+          <h1 class="hero-title">
+            A protocol where <span>colour</span> becomes a protected store of value.
+          </h1>
+          <p class="hero-subtitle">
+            Each CoolourCoin is a unique shade of light from a finite Genesis Spectrum.
+            Once a colour is bought or mined, its price floor can never go below the highest price it has ever seen.
+          </p>
+          <p class="hero-phrase">
+            Put your value in light. Let it rest.
+          </p>
+
+          <div class="hero-actions">
+            <a href="how.html" class="btn-primary">See how it works</a>
+            <a href="whitepaper.html" class="btn-ghost">Read the whitepaper</a>
+          </div>
+
+          <p class="hero-note">
+            No staking. No yield promises. No lotteries. CoolourCoin is designed as a long-term, transparent
+            value-parking protocol – not a casino.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-coin-wrap">
+            <div class="hero-coin-ring"></div>
+            <div class="hero-coin-inner">
+              <img src="assets/logo2.png" alt="CoolourCoin" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Trust stack</div>
+        <h2 class="section-heading">What makes CoolourCoin different</h2>
+        <p class="section-intro">
+          Under the visuals, CoolourCoin is a precise, rule-based system:
+          a finite palette, a hard price floor, and a social mining mechanic that requires three independent people to
+          bring a colour into existence.
         </p>
 
-        <div class="hero-bullets">
-          <p><strong>Spectral Floor:</strong> no colour can be sold below its all-time high.</p>
-          <p><strong>RGB Social Mining:</strong> three people, three channels – one shared colour.</p>
-          <p><strong>Finite Genesis Palette:</strong> 4,096 core colours, not infinite inflation.</p>
-          <p><strong>No yield, no leverage:</strong> value preservation, not “get rich quick”.</p>
-        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-tag">Rule 1</div>
+            <div class="feature-title">Spectral Floor – no sell below the light</div>
+            <p class="feature-text">
+              Every colour has a <strong>spectral floor</strong>: the highest price ever paid for it.
+              Smart contracts enforce that no future sale can go below this floor.
+              The protocol remembers the peak – and protects it.
+            </p>
+          </article>
 
-        <div class="hero-cta">
-          <a href="how.html" class="btn primary">How it works</a>
-          <a href="whitepaper.html" class="btn subtle">Read whitepaper</a>
-        </div>
-      </div>
+          <article class="feature-card">
+            <div class="feature-tag">Rule 2</div>
+            <div class="feature-title">Finite Genesis Spectrum</div>
+            <p class="feature-text">
+              The system starts from a finite set of 4,096 base colours.
+              No new base colours are ever minted.
+              Some colours may later be split into sub-units, but the total light of the spectrum stays constant.
+            </p>
+          </article>
 
-      <div class="hero-visual">
-  <div class="aurora-ring">
-    <div class="aurora-glow"></div>
-    <img src="assets/logo2.png" alt="CoolourCoin logo" class="hero-logo">
+          <article class="feature-card">
+            <div class="feature-tag">Rule 3</div>
+            <div class="feature-title">RGB Team Mining</div>
+            <p class="feature-text">
+              To mine a colour, three people must cooperate: one Red, one Green, one Blue.
+              They connect from different devices and locations and commit exactly the R, G, B values needed.
+              Mining is social by design – not a GPU race.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Rule 4</div>
+            <div class="feature-title">Two ways to obtain colour</div>
+            <p class="feature-text">
+              You can either <strong>mine</strong> with a team using mining licences,
+              or <strong>buy directly</strong> from the protocol’s current price tiers.
+              Direct purchases are always significantly above the mining cost, reinforcing the floor.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Rule 5</div>
+            <div class="feature-title">No yield, no hidden promises</div>
+            <p class="feature-text">
+              CoolourCoin does not promise passive income, APY, staking rewards or airdrops.
+              Its core promise is simpler and more honest:
+              the protocol will never let your colour be sold under its established floor.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Rule 6</div>
+            <div class="feature-title">Transparent treasury & fees</div>
+            <p class="feature-text">
+              A fixed part of protocol fees goes into a public treasury that is never used for speculation.
+              The treasury exists to maintain infrastructure, audits and long-term resilience of the protocol.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Rule 7</div>
+            <div class="feature-title">Origin is permanent</div>
+            <p class="feature-text">
+              Colours can change hands, but the <strong>discovering team</strong> is always recorded on-chain.
+              The origin story of each shade – who mined it, when, and with what RGB values – remains visible forever.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-tag">Rule 8</div>
+            <div class="feature-title">Open protocol, auditable logic</div>
+            <p class="feature-text">
+              The core logic – spectral floors, mining rules, and licence economics –
+              is intended to be open for anyone to inspect, verify and stress-test.
+              If the light is honest, the code must be too.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2025 CoolourCoin. All protocol logic subject to independent review and audit.</div>
+      <div>Contact: <a href="mailto:admin@coolourcoin.com">admin@coolourcoin.com</a></div>
+    </footer>
   </div>
-</div>
-    </section>
-
-    <section class="grid-section">
-      <h2>The four pillars of trust</h2>
-      <div class="grid four">
-        <article class="card">
-          <h3>Spectral Floor</h3>
-          <p>
-            Each colour keeps the highest price it has ever reached on the official market.
-            The protocol never allows a sale below that floor.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Finite Genesis Palette</h3>
-          <p>
-            CoolourCoin starts from a finite set of genesis colours.
-            No unbounded inflation, no endless minting – just a clean, auditable spectrum.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>RGB Social Mining</h3>
-          <p>
-            Colours are mined by small RGB teams.
-            Three people, three channels (R, G, B) working together to unlock a single shade.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>No yield, no leverage</h3>
-          <p>
-            There is no staking, no passive yield and no leverage in the protocol.
-            The only guarantee: a colour cannot be pushed below its own light.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="statement">
-      <h2>A declaration of value</h2>
-      <p>CoolourCoin is not a casino. It is a resting place for light.</p>
-      <p>
-        When you hold a colour, you hold a right. When you sell it, you honour the floor.
-        When you mine, you become part of the spectrum.
-      </p>
-    </section>
-  </main>
-
-  <footer class="cc-footer">
-    <p>© 2025 CoolourCoin. Light-backed, floor-protected digital colours.</p>
-  </footer>
-
-  <script src="scripts.js"></script>
 </body>
 </html>
