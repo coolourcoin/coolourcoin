@@ -1,61 +1,119 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Genesis Spectrum — CoolourCoin</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genesis Spectrum — CoolourCoin</title>
+<meta name="description" content="Genesis Spectrum: the first finite set of ~4096 colours for CoolourCoin.">
+<link rel="icon" href="coolourcoin.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+  color:#eaf3ff;
+  background: radial-gradient(1000px 600px at 10% 10%, #0a1a33 0%, #050b16 60%, #03060c 100%);
+  line-height:1.6;
+}
+.aurora{position:fixed; inset:0; pointer-events:none; z-index:-1; overflow:hidden}
+.aurora span{position:absolute; filter: blur(60px); opacity:.45; mix-blend-mode: screen;
+  width:40vw; height:40vh; border-radius:40%; animation: float 18s ease-in-out infinite}
+.aurora .a1{ background: linear-gradient(120deg,#4fd1ff,#8a9bff); top:10%; left:-5%; animation-delay: -2s}
+.aurora .a2{ background: linear-gradient(120deg,#70ffbf,#00ffd9); top:35%; right:-10%; animation-delay: -6s}
+.aurora .a3{ background: linear-gradient(120deg,#ff7ad6,#ffd36b); bottom:-5%; left:15%; animation-delay: -10s}
+.aurora .a4{ background: linear-gradient(120deg,#c1a3ff,#73e0ff); bottom:15%; right:20%; animation-delay: -14s}
+@keyframes float{0%,100%{ transform: translate3d(0,0,0) rotate(0deg) } 50%{ transform: translate3d(3vw,-3vh,0) rotate(10deg) }}
+.topbar{position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px; background: rgba(4,10,22,.55); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(255,255,255,.06)}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:#eaf3ff; font-weight:700; letter-spacing:.3px}
+.brand .logo{height:36px; width:auto; display:block}
+.nav a{ color:#cfe3ff; text-decoration:none; margin-left:18px; font-weight:600; opacity:.9}
+.nav a:hover{ opacity:1; text-decoration:underline}
+.container{ max-width:1100px; margin:0 auto; padding:48px 24px}
+.hero{ text-align:center; padding:60px 12px 40px }
+h1{ font-size: clamp(28px, 4vw, 48px); line-height:1.1; margin-bottom:12px; letter-spacing:.2px}
+h2{ font-size: clamp(22px, 3vw, 28px); margin:26px 0 10px }
+p.lead{font-size: clamp(16px, 2.2vw, 20px); color:#cfe3ff; opacity:.95}
+.kicker{ color:#99c8ff; text-transform:uppercase; font-weight:700; letter-spacing:.2em; font-size:12px; margin-bottom:10px; opacity:.9}
+.grid{ display:grid; gap:24px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:28px}
+.card{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px 18px 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25)}
+.card h3{ margin-bottom:8px; font-size:18px}
+.card p{ color:#cfe3ff; font-size:15px}
+.cta{ margin-top:26px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+.button{ display:inline-block; padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; 
+  border:1px solid rgba(255,255,255,.2); background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); color:#eaf3ff}
+.button:hover{ transform: translateY(-1px)}
+.button.primary{ background: linear-gradient(180deg,#7dd3fc,#60a5fa); color:#0b1220; border:none}
+footer{ color:#a9c6f6; opacity:.9; font-size:14px; padding:32px 24px; text-align:center}
+.small{font-size:13px; color:#a9c6f6}
+hr{border:0; height:1px; background:linear-gradient(90deg,transparent, rgba(255,255,255,.2), transparent); margin:28px 0}
+ul{padding-left:18px} li{margin:6px 0}
+
+.shelf{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));margin-top:14px}
+.chip{height:56px;border-radius:10px;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.chip small{font-weight:600;opacity:.9}
+.note{color:#cfe3ff}
+</style>
 </head>
 <body>
-  
-<div class="nav">
-  <div class="nav-inner container">
-    <a class="brand" href="index.html" title="CoolourCoin — home">
-      <img src="assets/logo.svg" alt="logo"/><span>CoolourCoin</span>
-    </a>
-    <div class="spacer"></div>
-    <a class="item" href="index.html">Home</a>
-<a class="item active" href="genesis.html">Genesis Spectrum</a>
-<a class="item" href="how.html">How it works</a>
-<a class="item" href="whitepaper.html">Whitepaper</a>
-<a class="item" href="transparency.html">Transparency</a>
-    <a class="btn" href="index.html" title="Main site">Home</a>
-  </div>
+<div class="aurora" aria-hidden="true">
+  <span class="a1"></span><span class="a2"></span><span class="a3"></span><span class="a4"></span>
 </div>
-  <header class="hero">
-    <div class="hero-inner container">
-      <div>
-        <h1>Genesis Spectrum (4096)</h1>
-        <p class="small">A 12‑bit palette (16×16×16). Each swatch is unique. Click to see HEX & distance from white.</p>
-      </div>
-      <div class="card">
-        <div class="alert small">Preview only. Final IDs and rarity bands are assigned on‑chain.</div>
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="CoolourCoin home">
+    <img class="logo" src="coolourcoin.png" alt="CoolourCoin logo" width="144" height="36" />
+    <span>CoolourCoin</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="genesis.html">Genesis Spectrum</a>
+    <a href="how.html">How it Works</a>
+    <a href="whitepaper.html">Whitepaper</a>
+    <a href="mailto:admin@coolourcoin.com">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="kicker">genesis</div>
+    <h1>Genesis Spectrum (≈ 4096 colours)</h1>
+    <p class="lead">Launch set with clear tiers & supply. More resolution unlocks as adoption grows.</p>
+  </section>
+  <section class="grid">
+    <div class="card">
+      <h3>Tiers & scarcity</h3>
+      <ul>
+        <li>Tier 0 — Near‑white (ultra‑rare, auction‑only)</li>
+        <li>Tier 1 — Rare primaries & near‑whites</li>
+        <li>Tier 2 — Mid tones</li>
+        <li>Tier 3 — Base spectrum</li>
+      </ul>
+      <p class="note">Exact thresholds and supply per tier will be published in the Palette CSV.</p>
+    </div>
+    <div class="card">
+      <h3>Preview (illustrative)</h3>
+      <div class="shelf">
+        <div class="chip" style="background:#F7FAFF;color:#09101f">#F7FAFF</div>
+        <div class="chip" style="background:#FFEDF6;color:#220d18">#FFEDF6</div>
+        <div class="chip" style="background:#E8FFE7;color:#06130a">#E8FFE7</div>
+        <div class="chip" style="background:#EAF3FF;color:#0b1220">#EAF3FF</div>
+        <div class="chip" style="background:#FFEED1;color:#1a0f03">#FFEED1</div>
+        <div class="chip" style="background:#D9F1FF;color:#06101a">#D9F1FF</div>
+        <div class="chip" style="background:#C8F8EE;color:#051013">#C8F8EE</div>
+        <div class="chip" style="background:#FFD7EC;color:#1d0b15">#FFD7EC</div>
+        <div class="chip" style="background:#E0E8FF;color:#0b1022">#E0E8FF</div>
       </div>
     </div>
-  </header>
-  <main class="container">
-    <div id="palette" class="palette"></div>
-    <div id="info" class="card" style="margin-top:14px;font-family:ui-monospace, SFMono-Regular, Menlo, monospace"></div>
-  </main>
-  <footer class="footer"><div>© 2025 CoolourCoin</div></footer>
-  <script src="script.js"></script>
-  <script>
-    const grid = document.getElementById('palette');
-    const info = document.getElementById('info');
-    const to255 = v => Math.round(v*17);
-    const hex2 = v => v.toString(16).padStart(2,'0').toUpperCase();
-    const dWhite = (r,g,b) => { const rn=1-r/255, gn=1-g/255, bn=1-b/255; return Math.sqrt(rn*rn+gn*gn+bn*bn)/Math.sqrt(3); }
-    let id=0;
-    for(let r4=0;r4<16;r4++){ for(let g4=0;g4<16;g4++){ for(let b4=0;b4<16;b4++){ 
-      const r=to255(r4), g=to255(g4), b=to255(b4);
-      const hex = `#${hex2(r)}${hex2(g)}${hex2(b)}`;
-      const d = dWhite(r,g,b);
-      const sw = document.createElement('div'); sw.className='sw'; sw.style.background = hex;
-      sw.title = `${hex} · id=${id} · d_white=${d.toFixed(3)}`;
-      sw.addEventListener('click',()=>{ info.innerHTML = `<strong>${hex}</strong> · id=${id} · RGB(${r},${g},${b}) · d_white=${d.toFixed(4)}`; });
-      grid.appendChild(sw); id++;
-    }}
-  </script>
-</body>
-</html>
+    <div class="card">
+      <h3>Listing rules</h3>
+      <ul>
+        <li>Colours unlock in lines (bottom → up) over time windows.</li>
+        <li>Direct buy is enabled one line above active mining, at premium pricing.</li>
+        <li>All sales respect the Spectral Floor Rule.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer>© 2025 CoolourCoin · Genesis Spectrum</footer>
+</body></html>
