@@ -1,75 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CoolourCoin Whitepaper</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CoolourCoin — Whitepaper & Stack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #01030a, #0a1228, #01010e);
+      background-size: 300% 300%;
+      animation: bgLoop 40s ease-in-out infinite;
+      color: #e1f2ff;
+    }
+
+    @keyframes bgLoop {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header, footer {
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #bde5ff;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #7fffd4;
+    }
+
+    .logo span {
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: #9cdcff;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .page-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+      color: #f2fbff;
+      text-shadow: 0 0 14px rgba(129,255,236,0.3);
+    }
+
+    .page-hero p {
+      font-size: 1rem;
+      color: #c1dbff;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .doc-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(148, 163, 255, 0.08), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(129, 212, 250, 0.18);
+      box-shadow: 0 0 30px rgba(129, 212, 250, 0.08);
+      padding: 1.5rem 1.8rem;
+      border-radius: 16px;
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      color: #b7f4ff;
+      margin-top: 0;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #d3eaff;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #02121a;
+      background: linear-gradient(to right, #7ae0ff, #fff0a8);
+      text-decoration: none;
+      box-shadow: 0 0 12px rgba(129, 255, 236, 0.3);
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 22px rgba(129, 255, 236, 0.4);
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: #aab8ee;
+      margin-top: 6px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #9bbde8;
+    }
+
+    @media (max-width: 720px) {
+      header, footer {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-<body class="page-whitepaper">
-  <header class="cc-header">
-    <div class="cc-header-inner">
-      <a href="index.html" class="cc-logo">
-        <img src="assets/logo2.png" alt="CoolourCoin logo">
-        <span>CoolourCoin</span>
-      </a>
-      <nav class="cc-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="how.html" class="nav-link">How it works</a>
-        <a href="genesis.html" class="nav-link">Genesis Spectrum</a>
-        <a href="whitepaper.html" class="nav-link active">Whitepaper</a>
-      </nav>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/logo2.png" alt="CoolourCoin logo" />
+      <span>CoolourCoin</span>
     </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="how.html">How it works</a>
+      <a href="genesis.html">Genesis Spectrum</a>
+      <a href="whitepaper.html" class="active">Whitepaper</a>
+    </nav>
   </header>
 
-  <main class="cc-main narrow">
+  <main>
     <section class="page-hero">
       <h1>Whitepaper & Technical Stack</h1>
-      <p class="page-sub">
-        The formal specification of the protocol, the trust stack and the
-        Spectral Floor mechanism.
-      </p>
+      <p>The formal specification of the protocol, the trust stack, and the Spectral Floor mechanism.</p>
     </section>
 
     <section class="doc-links">
       <article class="card">
-        <h2>Main whitepaper</h2>
+        <h2>Main Whitepaper 📘</h2>
         <p>
-          The core document describing the economic model, genesis palette,
-          RGB social mining, and the Spectral Floor rule.
+          Describes the economic model, genesis palette, RGB social mining, and the Spectral Floor rule.
+          <br><br><strong>Note:</strong> CoolourCoin makes no promises of yield or staking.
         </p>
-        <p>
-          <strong>Note:</strong> CoolourCoin does not promise yield, staking
-          rewards or passive income. It defines a way to preserve value in colour.
-        </p>
-        <a href="CoolourCoin Trust Stack v1.0.pdf" class="btn primary" target="_blank">
-          Open PDF
-        </a>
-        <p class="hint">
-          Make sure the PDF in your repository has exactly this name,
-          or adjust the link in <code>whitepaper.html</code>.
-        </p>
+        <a href="CoolourCoin Trust Stack v1.0.pdf" class="btn" target="_blank">Open PDF</a>
+        <p class="hint">Ensure your PDF is named correctly or adjust the link in whitepaper.html.</p>
       </article>
 
       <article class="card">
-        <h2>Repository & audits</h2>
+        <h2>Repository & Audits 🔍</h2>
         <p>
-          The smart contract code, tests and audits will live alongside the
-          whitepaper in the public repository. Over time, this will include:
+          All code, audits, and verification notes are hosted in the public repository. Includes:
         </p>
         <ul>
-          <li>reference contracts for the palette and Spectral Floor,</li>
-          <li>formal verification notes when available,</li>
-          <li>security review reports.</li>
+          <li>Reference contracts for palette & spectral floor</li>
+          <li>Formal verification notes</li>
+          <li>Security review reports</li>
         </ul>
       </article>
     </section>
   </main>
 
-  <footer class="cc-footer">
-    <p>© 2025 CoolourCoin. Light-backed, floor-protected digital colours.</p>
+  <footer>
+    &copy; 2025 CoolourCoin. Light-backed, floor-protected digital colours.
   </footer>
-
-  <script src="scripts.js"></script>
 </body>
 </html>
