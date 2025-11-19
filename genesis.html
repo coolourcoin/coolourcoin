@@ -1,52 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Genesis Spectrum – CoolourCoin</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #02030a, #0b1224, #02050f);
+      background-size: 400% 400%;
+      animation: bgFlow 45s ease-in-out infinite;
+      color: #e3f3ff;
+    }
+
+    @keyframes bgFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header, footer {
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #bde5ff;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #7fffd4;
+    }
+
+    .logo span {
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: #9cdcff;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .page-hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+      color: #f2fbff;
+      text-shadow: 0 0 14px rgba(129,255,236,0.3);
+    }
+
+    .page-hero p {
+      font-size: 1rem;
+      color: #c1dbff;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .genesis-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .genesis-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: radial-gradient(circle at center, #101b3a, #050d1a);
+      border-radius: 20px;
+      box-shadow:
+        0 0 24px rgba(90, 210, 255, 0.15),
+        0 0 60px rgba(60, 180, 255, 0.1);
+    }
+
+    .genesis-image img {
+      max-width: 100%;
+      max-height: 420px;
+      border-radius: 12px;
+      border: 1px solid rgba(129, 212, 250, 0.25);
+    }
+
+    .genesis-text h2 {
+      color: #b9f3ff;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .genesis-text p {
+      font-size: 0.95rem;
+      color: #d4ecff;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .genesis-text .poem {
+      font-style: italic;
+      color: #c6f2ff;
+      font-size: 0.92rem;
+      border-left: 3px solid rgba(129,212,250,0.3);
+      padding-left: 12px;
+      margin: 1.5rem 0;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #9bbde8;
+    }
+
+    @media (max-width: 720px) {
+      header, footer {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-<body class="page-genesis">
-  <header class="cc-header">
-    <div class="cc-header-inner">
-      <a href="index.html" class="cc-logo">
-        <img src="assets/logo2.png" alt="CoolourCoin logo">
-        <span>CoolourCoin</span>
-      </a>
-      <nav class="cc-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="how.html" class="nav-link">How it works</a>
-        <a href="genesis.html" class="nav-link active">Genesis Spectrum</a>
-        <a href="whitepaper.html" class="nav-link">Whitepaper</a>
-      </nav>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/logo2.png" alt="CoolourCoin logo" />
+      <span>CoolourCoin</span>
     </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="how.html">How it works</a>
+      <a href="genesis.html" class="active">Genesis Spectrum</a>
+      <a href="whitepaper.html">Whitepaper</a>
+    </nav>
   </header>
 
-  <main class="cc-main">
+  <main>
     <section class="page-hero">
       <h1>Genesis Spectrum</h1>
-      <p class="page-sub">
-        A finite, ordered set of colours – the starting point for all CoolourCoin assets.
-      </p>
+      <p>A finite, ordered set of colours – the starting point for all CoolourCoin assets.</p>
     </section>
 
     <section class="genesis-layout">
       <div class="genesis-image">
-        <!-- Pune imaginea ta cu piramida aici, numită assets/genesis-pyramid.png -->
-        <img src="assets/genesis-pyramid.png" alt="CoolourCoin Genesis Spectrum">
+        <img src="assets/genesis-pyramid.png" alt="CoolourCoin Genesis Spectrum"/>
       </div>
       <div class="genesis-text">
         <h2>The 4,096-colour core</h2>
         <p>
           At the foundation of CoolourCoin sits a finite genesis palette,
-          composed of 4,096 carefully quantised colours. Each block in the
-          spectrum represents a single, unique shade that can be mined, owned
-          and transferred – but never duplicated.
+          composed of 4,096 carefully quantised colours. Each block represents
+          a unique shade that can be mined, owned, and transferred – but never duplicated.
         </p>
         <p>
-          The palette is structured: darker, more saturated tones near the base;
-          softer mid-tones in the centre; rare near-white shades towards the apex.
-          This creates a natural hierarchy of scarcity without artificial tricks.
+          The palette is structured: darker, saturated tones near the base; softer
+          mid-tones in the middle; rare near-white hues at the apex. A natural
+          scarcity – no artificial trickery.
         </p>
         <p class="poem">
           You cannot re-mint a sunrise.<br>
@@ -54,17 +198,15 @@
         </p>
         <p>
           Once a genesis colour leaves the spectrum and is mined into existence,
-          it carries with it an immutable record: who first discovered it,
-          what mining costs were paid, and which path its price took over time.
+          it carries an immutable record: who discovered it, the mining cost, and
+          the price history over time.
         </p>
       </div>
     </section>
   </main>
 
-  <footer class="cc-footer">
-    <p>© 2025 CoolourCoin. Light-backed, floor-protected digital colours.</p>
+  <footer>
+    &copy; 2025 CoolourCoin. Origin is permanent. Light is remembered.
   </footer>
-
-  <script src="scripts.js"></script>
 </body>
 </html>
